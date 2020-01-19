@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="448331c5-31ba-4151-a687-9041d5e73305" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1WaKZDbGpg9U90abFVDRCTftl6M" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\React\my-cofee-app\src\assets\web" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="448331c5-31ba-4151-a687-9041d5e73305" name="Default Changelist" comment="" />
+      <created>1579382318372</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579382318372</updated>
+      <workItem from="1579382320526" duration="5231000" />
+      <workItem from="1579443730004" duration="3279000" />
+      <workItem from="1579462296738" duration="3281000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="432" y="168" key="#ESLint" timestamp="1579462447994">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="432" y="168" key="#ESLint/0.0.1680.1020@0.0.1680.1020" timestamp="1579462447994" />
+    <state x="474" y="288" key="EditFileWatcherDialog" timestamp="1579386273115">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="474" y="288" key="EditFileWatcherDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1579386273115" />
+    <state x="620" y="264" key="FileChooserDialogImpl" timestamp="1579446093482">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="620" y="264" key="FileChooserDialogImpl/0.0.1680.1020@0.0.1680.1020" timestamp="1579446093482" />
+    <state width="1155" height="278" key="GridCell.Tab.0.bottom" timestamp="1579386280231">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1155" height="278" key="GridCell.Tab.0.bottom/0.0.1680.1020@0.0.1680.1020" timestamp="1579386280231" />
+    <state width="1155" height="278" key="GridCell.Tab.0.center" timestamp="1579386280231">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1155" height="278" key="GridCell.Tab.0.center/0.0.1680.1020@0.0.1680.1020" timestamp="1579386280231" />
+    <state width="1155" height="278" key="GridCell.Tab.0.left" timestamp="1579386280231">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1155" height="278" key="GridCell.Tab.0.left/0.0.1680.1020@0.0.1680.1020" timestamp="1579386280231" />
+    <state width="1155" height="278" key="GridCell.Tab.0.right" timestamp="1579386280231">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1155" height="278" key="GridCell.Tab.0.right/0.0.1680.1020@0.0.1680.1020" timestamp="1579386280231" />
+    <state x="92" y="92" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579444505376">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="92" y="92" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1579444505376" />
+    <state x="285" y="255" width="607" height="526" key="find.popup" timestamp="1579465589677">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="285" y="255" width="607" height="526" key="find.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1579465589677" />
+  </component>
+</project>
