@@ -10848,7 +10848,7 @@ h1, h2, h3, h4, h5,
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 1260px) {
     .ftco-intro .wrap .info {
         width: 100%;
     }
@@ -10863,7 +10863,7 @@ h1, h2, h3, h4, h5,
     background: #c49b63;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 1260px) {
     .ftco-intro .wrap .book {
         width: 100%;
     }
@@ -11583,7 +11583,7 @@ h1, h2, h3, h4, h5,
     padding-left: 0;
     padding-right: 0;
     background: transparent !important;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgb(18, 9, 25) !important;
     font-size: 13px;
     border-radius: 0px;
     -webkit-box-shadow: none !important;
@@ -12953,4 +12953,15 @@ textarea.form-control {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -136px;
     }
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance:textfield !important;;
 }

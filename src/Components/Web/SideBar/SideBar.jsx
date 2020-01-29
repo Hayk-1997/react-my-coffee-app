@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 
 class SideBar extends Component {
-    constructor (props) {
-        super(props);
-    }
 
     render () {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
                 <div className="container">
-                    <a className="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
+                    <a className="navbar-brand" href="#">Coffee<small>Blend</small></a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="oi oi-menu"></span> Menu
+                        <span className="oi oi-menu"/> Menu
                     </button>
                     <div className="collapse navbar-collapse" id="ftco-nav">
                         <ul className="navbar-nav ml-auto">
@@ -33,7 +30,7 @@ class SideBar extends Component {
                             </li>
                             <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
                             <li className="nav-item cart"><a href="cart.html" className="nav-link">
-                                <span className="icon icon-shopping_cart"></span><span
+                                <span className="icon icon-shopping_cart"/><span
                                 className="bag d-flex justify-content-center align-items-center"><small>1</small></span></a>
                             </li>
                         </ul>

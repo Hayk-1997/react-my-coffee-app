@@ -1,16 +1,28 @@
-//#carouselExampleIndicators {
-//  height: 100vh;
-//  overflow: hidden;
-//
-//  .carousel-item.active {
-//    height: 100vh;
-//  }
-//
-//  .carousel-indicators {
-//    li {
-//      width: 20px;
-//      height: 20px;
-//      border-radius: 50%;
-//    }
-//  }
-//}
+main {
+  width: 100%;
+  height: 100vh;
+
+  .glitch__img {
+
+    &:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to bottom, #151618, #1e2122c2, #292d2d80, #353837a1, #484d4054);
+    }
+  }
+  .slider-header {
+    display: block;
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    transform: translate(0%, 100%);
+
+    .button-box {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}

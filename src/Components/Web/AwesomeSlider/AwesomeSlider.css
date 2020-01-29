@@ -1,3 +1,25 @@
-
+main {
+  width: 100%;
+  height: 100vh;
+}
+main .glitch__img:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #151618, #1e2122c2, #292d2d80, #353837a1, #484d4054);
+}
+main .slider-header {
+  display: block;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  transform: translate(0%, 100%);
+}
+main .slider-header .button-box {
+  display: flex;
+  justify-content: space-evenly;
+}
 
 /*# sourceMappingURL=AwesomeSlider.css.map */

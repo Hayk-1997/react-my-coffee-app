@@ -1,13 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="448331c5-31ba-4151-a687-9041d5e73305" name="Default Changelist" comment="" />
+    <list default="true" id="448331c5-31ba-4151-a687-9041d5e73305" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Web/Branches/Branches.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Web/OurHistory/OurHistory.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Web/OurHistory/OurHistory.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Web/OurMenu/OurMenu.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Web/Services/Services.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dogs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScriptLoader/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/web/css/demo/about.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/web/css/demo/demo1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/web/js/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/web/js/imagesloaded.pkgd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/AwesomeSlider/AwesomeSlider.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Web/SideBar/SideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/SideBar/SideBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Layouts/WebLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/WebLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/aos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/aos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/jquery-3.2.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/jquery-3.2.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/jquery-migrate-3.0.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/jquery-migrate-3.0.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/jquery.magnific-popup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/jquery.magnific-popup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/jquery.timepicker.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/jquery.timepicker.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/jquery.waypoints.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/jquery.waypoints.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/js/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/js/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/web/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/web/scss/style.scss" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1WaKZDbGpg9U90abFVDRCTftl6M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -27,9 +82,13 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="E:\Program Files\JetBrains\WebStorm 2019.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\React\my-cofee-app" />
+      <recent name="E:\React\my-cofee-app\src\assets\web\css\demo" />
       <recent name="E:\React\my-cofee-app\src\assets\web" />
     </key>
   </component>
@@ -57,7 +116,13 @@
       <updated>1579382318372</updated>
       <workItem from="1579382320526" duration="5231000" />
       <workItem from="1579443730004" duration="3279000" />
-      <workItem from="1579462296738" duration="3281000" />
+      <workItem from="1579462296738" duration="7783000" />
+      <workItem from="1579639178125" duration="2683000" />
+      <workItem from="1579724657608" duration="5444000" />
+      <workItem from="1579971161405" duration="12321000" />
+      <workItem from="1580028831430" duration="8253000" />
+      <workItem from="1580069191589" duration="5185000" />
+      <workItem from="1580147215964" duration="8079000" />
     </task>
     <servers />
   </component>
@@ -65,18 +130,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="432" y="168" key="#ESLint" timestamp="1579462447994">
+    <state x="432" y="168" key="#ESLint" timestamp="1579974004362">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="432" y="168" key="#ESLint/0.0.1680.1020@0.0.1680.1020" timestamp="1579462447994" />
+    <state x="432" y="168" key="#ESLint/0.0.1680.1020@0.0.1680.1020" timestamp="1579974004362" />
+    <state x="605" y="312" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579975086834">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="605" y="312" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1020@0.0.1680.1020" timestamp="1579975086834" />
     <state x="474" y="288" key="EditFileWatcherDialog" timestamp="1579386273115">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="474" y="288" key="EditFileWatcherDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1579386273115" />
-    <state x="620" y="264" key="FileChooserDialogImpl" timestamp="1579446093482">
+    <state x="620" y="264" key="FileChooserDialogImpl" timestamp="1580148641814">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="620" y="264" key="FileChooserDialogImpl/0.0.1680.1020@0.0.1680.1020" timestamp="1579446093482" />
+    <state x="620" y="264" key="FileChooserDialogImpl/0.0.1680.1020@0.0.1680.1020" timestamp="1580148641814" />
     <state width="1155" height="278" key="GridCell.Tab.0.bottom" timestamp="1579386280231">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
@@ -93,13 +162,21 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state width="1155" height="278" key="GridCell.Tab.0.right/0.0.1680.1020@0.0.1680.1020" timestamp="1579386280231" />
+    <state x="657" y="220" key="RollbackChangesDialog" timestamp="1580030839069">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="657" y="220" key="RollbackChangesDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1580030839069" />
+    <state x="682" y="152" key="SettingsEditor" timestamp="1579974815032">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="682" y="152" key="SettingsEditor/0.0.1680.1020@0.0.1680.1020" timestamp="1579974815032" />
     <state x="92" y="92" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579444505376">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="92" y="92" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1579444505376" />
-    <state x="285" y="255" width="607" height="526" key="find.popup" timestamp="1579465589677">
+    <state x="285" y="255" width="607" height="526" key="find.popup" timestamp="1580070189828">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="285" y="255" width="607" height="526" key="find.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1579465589677" />
+    <state x="285" y="255" width="607" height="526" key="find.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1580070189828" />
   </component>
 </project>

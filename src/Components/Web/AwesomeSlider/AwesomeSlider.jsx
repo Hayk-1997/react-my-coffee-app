@@ -1,7 +1,8 @@
-import React, { Component } from  'react';
-import img from '../../../assets/web/images/bg_1.jpg';
-import img2 from '../../../assets/web/images/burger-1.jpg';
-// import './AwesomeSlider.css';
+import React, { Component } from 'react';
+import img from '../../../assets/web/images/about.jpg';
+import './AwesomeSlider.css';
+import '../../../assets/web/css/demo/demo1.css';
+import { ScriptLoader } from '../../../ScriptLoader';
 
 class AwesomeCarouselSlider extends Component {
     constructor (props) {
@@ -9,38 +10,44 @@ class AwesomeCarouselSlider extends Component {
         this.state = {};
     }
 
+    componentDidMount () {
+        ScriptLoader();
+    }
+
     render () {
         return (
-            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                <ol className="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"/>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"/>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"/>
-                </ol>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <img className="d-block w-100" src={img} alt="First slide" />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>...</h5>
-                            <p>...</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100" src={img2} alt="Second slide" />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>...</h5>
-                            <p>...</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100" src={img2} alt="Third slide" />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>...</h5>
-                            <p>...</p>
+            <main>
+                <div id="carouselExampleIndicators">
+                    <div className="content">
+                        <div className="glitch">
+                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                            <span className="slider-header">
+                                <div className="slider-item">
+                                    <div className="overlay"/>
+                                    <div className="container">
+                                      <div className="row slider-text justify-content-center align-items-center">
+                                        <div className="col-md-8 col-sm-12 text-center ftco-animate">
+                                            <span className="subheading">Welcome</span>
+                                          <h1 className="mb-4">Amazing Taste &amp; Beautiful Place</h1>
+                                          <p className="mb-4 mb-md-5">
+                                              A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                                          </p>
+                                          <div className="button-box">
+                                              <a href="#" className="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a>
+                                              <a href="#" className="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                           </span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
         )
     }
 }

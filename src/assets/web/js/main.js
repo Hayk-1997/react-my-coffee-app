@@ -5,7 +5,7 @@
 
 (function($) {
 
-	"use strict";
+	
 
 	$(window).stellar({
     responsive: true,
