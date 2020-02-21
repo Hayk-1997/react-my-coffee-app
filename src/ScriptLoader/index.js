@@ -8,6 +8,6 @@ export const ScriptLoader = (...src) => {
 
 export default ScriptLoader(
     [
-        '../../../assets/web/js/demo',
+        '../../../assets/web/js/demo.js',
         '../../../assets/web/js/imagesloaded.pkgd.min',
     ]);

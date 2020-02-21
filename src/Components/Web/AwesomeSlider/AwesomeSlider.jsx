@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import img from '../../../assets/web/images/about.jpg';
 import './AwesomeSlider.css';
 import '../../../assets/web/css/demo/demo1.css';
-import { ScriptLoader } from '../../../ScriptLoader';
 
 class AwesomeCarouselSlider extends Component {
     constructor (props) {
@@ -11,7 +10,7 @@ class AwesomeCarouselSlider extends Component {
     }
 
     componentDidMount () {
-        ScriptLoader();
+
     }
 
     render () {

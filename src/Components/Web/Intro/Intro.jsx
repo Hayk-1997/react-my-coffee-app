@@ -24,13 +24,8 @@ class Intro extends Component {
         };
     }
 
-    componentDidMount () {
-
-    }
-
     onDateChange = date => this.setState({  date });
     onTimeChange = (time, timeString) => {
-        console.log(time, timeString);
         this.setState({time: timeString});
     };
     handleInputChange = (e, key) => {
@@ -47,16 +42,17 @@ class Intro extends Component {
     });
 
     validateForm = () => {
-        if (!validator.isLength(this.state.phone, {min:9, max:9})) {
+        const { phone, first_name, last_name, message} = this.state;
+        if (!validator.isLength(phone, {min:9, max:9})) {
             this.notify('Incorrect Phone Number!', 1500);
         }
-        if (validator.isEmpty(this.state.first_name)) {
+        if (validator.isEmpty(first_name)) {
             this.notify('Please fill the Name!', 1800);
         }
-        if (validator.isEmpty(this.state.last_name)) {
+        if (validator.isEmpty(last_name)) {
             this.notify('Please fill the Last Name!', 2000);
         }
-        if (validator.isEmpty(this.state.message)) {
+        if (validator.isEmpty(message)) {
             this.notify('Please fill the Message Field!', 2200);
         }
     };
@@ -64,7 +60,6 @@ class Intro extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.validateForm();
-        console.log((this.state.date));
     };
 
     render () {
@@ -179,8 +174,9 @@ class Intro extends Component {
                                     <div className="form-group">
                                         <button
                                             type="submit"
-                                            className="btn btn-white py-3 px-4 intro-submit"
-                                        >Appointment</button>
+                                            className="btn btn-white py-3 px-4 intro-submit">
+                                            Appointment
+                                        </button>
                                     </div>
                                 </div>
                             </form>
