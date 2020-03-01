@@ -20,11 +20,11 @@ function App () {
         <ApolloProvider client={client}>
             <Provider store={rootStore.store}>
                 <Router history={hist}>
-                    <BrowserRouter>
+                    <Switch>
                         {/*<Route exact path="/" render={() => <Redirect to="/coffee" />} />*/}
-                        <Route path="/coffee" component={WebLayout}/>
+                        <Route exact path="/coffee" component={WebLayout}/>
                         <Route path="/admin" component={AdminLayout}/>
-                    </BrowserRouter>
+                    </Switch>
                 </Router>
             </Provider>
         </ApolloProvider>

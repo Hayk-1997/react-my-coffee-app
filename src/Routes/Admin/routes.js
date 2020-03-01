@@ -1,6 +1,7 @@
 import Login from "../../Components/Admin/Auth/Login/Login";
 import Dashboard from "../../Components/Admin/Dashboard/Dashboard";
 import Register from "../../Components/Admin/Auth/Register/Register";
+import {Hello} from "../../Components/Admin/Hello";
 
 const routes = [
     {
@@ -25,6 +26,15 @@ const routes = [
         name: 'admin-dashboard',
         component: Dashboard,
         layout: 'admin',
+        auth: true,
+    },
+    {
+        id: 4,
+        path: '/admin/to-do',
+        name: 'admin-to-do',
+        component: Hello,
+        layout: 'admin',
+        auth: true,
     }
 ];
 export default routes;

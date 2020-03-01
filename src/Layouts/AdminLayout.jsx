@@ -1,60 +1,21 @@
-import React, {Component} from 'react';
-import {Router, Route, Switch, Redirect, BrowserRouter} from "react-router-dom";
-import '../Components/Admin/Styles/styles.css';
-import routes from "../Routes/Admin/routes";
+import React  from 'react';
+import { Route, Switch } from 'react-router-dom';
 
+import Layout from "../Components/Admin/Layout/Layout";
+import Login from "../Components/Admin/Auth/Login/Login";
+import ProtectedRoute from "../Components/Admin/ProtectedRoute";
 
-class AdminLayout extends Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            isAuthenticated: !!localStorage.getItem('token'),
-        };
-    }
+const AdminLayout = () => {
+    return (
+        <>
+            <Switch>
+                <Route path="/admin/login" component={Login} />
+                <ProtectedRoute exact path="/admin/*"  component={Layout} />
+                {/*<Route path="/admin/*" component={() => "404 NOT FOUND"} />*/}
+            </Switch>
+        </>
+    );
+};
 
-    getRoutes = routes => {
-        const {isAuthenticated} = this.state;
-        return routes.map((route) => {
-            let RouteVal;
-            if (!isAuthenticated) {
-                RouteVal = route.component;
-                debugger
-                return (
-                    <Route
-                        key={route.id}
-                        path={route.path}
-                        render={(props) => {
-                            return (
-                                <RouteVal{...props} />
-                            )
-                        }}
-                    />
-                )
-            } else {
-                RouteVal = route.component;
-                return (
-                    <Route
-                        key={route.id}
-                        path={route.path}
-                        exact
-                        render={(props) => (
-                            <RouteVal{...props} />
-                        )}
-                    />
-                );
-            }
-        });
-    };
-
-    render () {
-        return (
-            <>
-                {
-                    this.getRoutes(routes)
-                }
-            </>
-        )
-    }
-}
 
 export default AdminLayout;

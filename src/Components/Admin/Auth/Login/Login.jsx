@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
+import React, {useEffect, useRef, useState} from 'react';
+import { Link } from 'react-router-dom';
 import validator from 'validator';
 import { ToastContainer } from 'react-toastify';
-import { notify } from "../../../../Config/Notify";
+import { notify } from '../../../../Config/Notify';
 import { connect } from 'react-redux';
 import { AdminLoginRequest } from '../../../../Redux/Admin/Auth/Login/actions';
+import '../../../Admin/Styles/styles.css';
 
 const Login = (props) => {
+    const { AdminLoginSuccess, AdminLoginToken } = props;
     const [form, setState] = useState({
         email: '',
         password: '',
@@ -15,14 +17,12 @@ const Login = (props) => {
         emailVerify: true,
         passwordVerify: true,
     });
-
     const updateField = e => {
         setState({
             ...form,
             [e.target.name]: e.target.value
         });
     };
-
     const validateForm = () => {
         if (!validator.isEmail(form.email)) {
             notify('Incorrect Email!', 1500);
@@ -47,7 +47,23 @@ const Login = (props) => {
             AdminLogin(form);
         }
     };
-
+    const usePrevious = (value) => {
+        const ref = useRef();
+        useEffect(() => {
+            ref.current = value;
+        });
+        return ref.current;
+    };
+    const prevState = usePrevious(AdminLoginSuccess);
+    useEffect(() => {
+        localStorage.clear();
+    }, []);
+    useEffect(() => {
+        if (AdminLoginSuccess && !prevState) {
+            localStorage.setItem('token', AdminLoginToken );
+            props.history.push('/admin/dashboard');
+        }
+    }, [AdminLoginSuccess]);
     return (
         <div className="login-page">
             <ToastContainer />
@@ -111,13 +127,16 @@ const Login = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    AdminLoginSuccess: state.AdminLogin.AdminLoginSuccess
+    AdminLoginSuccess: state.AdminLogin.AdminLoginSuccess,
+    AdminLoginToken: state.AdminLogin.AdminLoginToken,
 });
-function mapDispatchToProps(dispatch) {
+
+const mapDispatchToProps = (dispatch) => {
     return {
         AdminLogin: (data) => dispatch(AdminLoginRequest(data))
     }
-}
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 
