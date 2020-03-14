@@ -1,0 +1,61 @@
+.sign-in-heading {
+  color: white;
+}
+
+.form-button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-box {
+  height: 50px;
+  width: 50px;
+  float: left;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social-box div {
+  width: 100%;
+}
+.social-box span {
+  font-size: 20px;
+}
+
+.social-box::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid unset;
+  transition: ease-in 0.5s;
+  z-index: -11111;
+}
+.social-box:hover::after {
+  border: 1px solid rebeccapurple;
+}
+.social-box:hover span {
+  transition: ease-in 0.5s;
+  color: rebeccapurple;
+}
+
+.sign-in {
+  flex: 4;
+}
+
+.social-list {
+  flex: 2 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=Login.css.map */

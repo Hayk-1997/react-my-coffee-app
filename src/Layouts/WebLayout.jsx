@@ -1,26 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Route, Switch} from "react-router-dom";
 import '../Components/Web/Styles/style.css';
-import Sidebar from '../Components/Web/SideBar/SideBar';
-import AwesomeCarouselSlider from "../Components/Web/AwesomeSlider/AwesomeSlider";
-import Intro from "../Components/Web/Intro/Intro";
-import OurHistory from "../Components/Web/OurHistory/OurHistory";
-import Services from "../Components/Web/Services/Services";
-import OurMenu from "../Components/Web/OurMenu/OurMenu";
-import Branches from "../Components/Web/Branches/Branches";
-import Dogs from "../Dogs";
+import Login from '../Components/Web/Auth/Login/Login';
+import Layout from "../Components/Web/Layout/Layout";
+import Register from "../Components/Web/Auth/Register/Register";
 
 function WebLayout () {
     return (
-        <div>
-            <Sidebar/>
-            <AwesomeCarouselSlider/>
-            <Intro/>
-            <OurHistory/>
-            <Services/>
-            <OurMenu/>
-            <Branches/>
-            <Dogs />
-        </div>
+        <>
+            <Switch>
+                <Route path="/coffee/login" component={Login}/>
+                <Route path="/coffee/register" component={Register}/>
+                <Route exact path="/coffee/*" component={Layout} />
+                {/*<Route path="/admin/*" component={() => "404 NOT FOUND"} />*/}
+            </Switch>
+        </>
     )
 }
 

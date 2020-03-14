@@ -27,6 +27,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import Collapse from '@material-ui/core/Collapse';
+import StarBorder from '@material-ui/icons/StarBorder';
+import RenderMenu from "./RenderMenu/RenderMenu";
 
 const drawerWidth = 240;
 
@@ -151,6 +154,9 @@ const useStyles = makeStyles(theme => ({
             display: 'none',
         },
     },
+    nested: {
+        paddingLeft: theme.spacing(4),
+    },
 }));
 
 const Layout = () => {
@@ -184,8 +190,13 @@ const Layout = () => {
         setOpen(false);
     };
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    // const [anchorEl, setAnchorEl] = React.useState(null);
+    // const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const [open2, setOpen2] = React.useState(true);
+
+    const handleClick = () => {
+        setOpen2(!open2);
+    };
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -364,11 +375,21 @@ const Layout = () => {
                 <Divider />
                 <List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
+                        <ListItem button key={text}   onClick={handleClick}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
+                    <Collapse in={open2} timeout="auto" unmountOnExit >
+                        <List component="div" disablePadding>
+                            <ListItem button className={classes.nested}>
+                                <ListItemIcon>
+                                    <StarBorder />
+                                </ListItemIcon>
+                                <ListItemText primary="Starred" />
+                            </ListItem>
+                        </List>
+                    </Collapse>
                 </List>
                 <Divider />
                 <List>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './OurHistory.css';
-import img from '../../../assets/web/images/about.jpg'
+import img from '../../../../assets/web/images/about.jpg'
 class OurHistory extends Component {
 
     componentDidMount () {

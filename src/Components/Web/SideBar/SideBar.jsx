@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 
 class SideBar extends Component {
 
@@ -29,6 +30,14 @@ class SideBar extends Component {
                                 </div>
                             </li>
                             <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
+                            <li className="nav-item">
+                                <Link
+                                    className="nav-link"
+                                    to='/coffee/login'
+                                >
+                                    Sign In
+                                </Link>
+                            </li>
                             <li className="nav-item cart"><a href="cart.html" className="nav-link">
                                 <span className="icon icon-shopping_cart"/><span
                                 className="bag d-flex justify-content-center align-items-center"><small>1</small></span></a>

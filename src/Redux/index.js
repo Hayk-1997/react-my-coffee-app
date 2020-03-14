@@ -3,12 +3,14 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import AdminLogin from './Admin/Auth/Login/reducer';
 import AdminRegister from './Admin/Auth/Register/reducer';
 import GetAdminRequest from './Admin/getAdmin/reducer';
+import SocialSignIn from './Web/Auth/SocialLogin/reducer';
 
 const AppReducer = combineReducers({
     // toastr: toastrReducer,
     AdminLogin,
     AdminRegister,
     GetAdminRequest,
+    SocialSignIn
 });
 
 const rootReducer = (state, action) => {

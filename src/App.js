@@ -1,13 +1,13 @@
 import React from 'react';
-import {createBrowserHistory} from "history";
-import {Router, Route, Switch, Redirect, BrowserRouter} from "react-router-dom";
+import { createBrowserHistory } from 'history';
+import { Router, Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 import WebLayout from './Layouts/WebLayout';
 import AdminLayout from './Layouts/AdminLayout';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import rootStore from './Redux/store';
 import ReduxToastr from 'react-redux-toastr';
-import ApolloClient from "apollo-boost";
-import {ApolloProvider} from "react-apollo";
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
     uri: "http://localhost:4000/",
@@ -22,7 +22,7 @@ function App () {
                 <Router history={hist}>
                     <Switch>
                         {/*<Route exact path="/" render={() => <Redirect to="/coffee" />} />*/}
-                        <Route exact path="/coffee" component={WebLayout}/>
+                        <Route exact path="/coffee*" component={WebLayout}/>
                         <Route path="/admin" component={AdminLayout}/>
                     </Switch>
                 </Router>

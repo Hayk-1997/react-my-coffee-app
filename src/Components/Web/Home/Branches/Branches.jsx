@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img from '../../../assets/web/images/bg_2.jpg';
+import img from '../../../../assets/web/images/bg_2.jpg';
 class Branches extends Component {
     render () {
         return (

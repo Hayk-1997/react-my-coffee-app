@@ -1,0 +1,76 @@
+.ftco-intro .react-date-picker,
+.ftco-intro .ant-time-picker,
+.ftco-appointment .react-date-picker,
+.ftco-appointment .ant-time-picker {
+  display: block;
+  width: 100% !important;
+}
+.ftco-intro .wrap .book,
+.ftco-appointment .wrap .book {
+  background: rgba(0, 0, 0, 0.5);
+}
+.ftco-intro .wrap .info,
+.ftco-intro .wrap .text h3,
+.ftco-appointment .wrap .info,
+.ftco-appointment .wrap .text h3 {
+  color: white !important;
+}
+.ftco-intro .book .form-control,
+.ftco-intro .react-date-picker__inputGroup input,
+.ftco-intro h3,
+.ftco-appointment .book .form-control,
+.ftco-appointment .react-date-picker__inputGroup input,
+.ftco-appointment h3 {
+  color: white !important;
+}
+.ftco-intro .input-wrap svg,
+.ftco-appointment .input-wrap svg {
+  stroke: white;
+}
+.ftco-intro .input-wrap path,
+.ftco-appointment .input-wrap path {
+  color: white !important;
+}
+.ftco-intro .ant-time-picker-input,
+.ftco-appointment .ant-time-picker-input {
+  background-color: inherit !important;
+  color: white;
+}
+.ftco-intro .ant-time-picker-input:hover,
+.ftco-appointment .ant-time-picker-input:hover {
+  border-color: unset !important;
+}
+.ftco-intro .intro-submit,
+.ftco-appointment .intro-submit {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  position: relative;
+  color: white !important;
+}
+.ftco-intro .intro-submit:hover,
+.ftco-appointment .intro-submit:hover {
+  border: none;
+}
+.ftco-intro .intro-submit:after,
+.ftco-appointment .intro-submit:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transition: ease-in 0.5s;
+  transform-origin: right;
+}
+.ftco-intro .intro-submit:hover:after,
+.ftco-appointment .intro-submit:hover:after {
+  background: #3e6f7c;
+}
+
+@media (max-width: 1261px) {
+  .ftco-intro {
+    margin-top: unset;
+  }
+}
+
+/*# sourceMappingURL=Booking.css.map */
