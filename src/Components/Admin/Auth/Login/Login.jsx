@@ -1,52 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import validator from 'validator';
 import { ToastContainer } from 'react-toastify';
-import { notify } from '../../../../Config/Notify';
 import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 import { AdminLoginRequest } from '../../../../Redux/Admin/Auth/Login/actions';
 import '../../../Admin/Styles/styles.css';
+import {useForm} from "../../../../CustomHooks/useForm";
+import {validateForm} from "../../../../Helpers/validateForm";
 
 const Login = (props) => {
     const { AdminLoginSuccess, AdminLoginToken } = props;
-    const [form, setState] = useState({
-        email: '',
-        password: '',
-    });
+    const [form, handleFormChange] = useForm({ email: '', password: ''});
     const [verify, setVerify] = useState({
         emailVerify: true,
         passwordVerify: true,
     });
-    const updateField = e => {
-        setState({
-            ...form,
-            [e.target.name]: e.target.value
-        });
-    };
-    const validateForm = () => {
-        if (!validator.isEmail(form.email)) {
-            notify('Incorrect Email!', 1500);
-            setVerify({
-                ...verify,
-                emailVerify: false
-            });
-        }
-        if (!validator.isLength(form.password, {min:8})) {
-            notify('Incorrect Password!', 2500);
-            setVerify({
-                ...verify,
-                passwordVerify: false
-            });
-        }
-    };
+
     const handleSubmit = event => {
         event.preventDefault();
-        validateForm();
+        validateForm(form, setVerify);
         if (verify.emailVerify && verify.passwordVerify) {
             const { AdminLogin } = props;
             AdminLogin(form);
         }
     };
+
     const usePrevious = (value) => {
         const ref = useRef();
         useEffect(() => {
@@ -54,16 +32,20 @@ const Login = (props) => {
         });
         return ref.current;
     };
+
     const prevState = usePrevious(AdminLoginSuccess);
+
     useEffect(() => {
         localStorage.clear();
     }, []);
+
     useEffect(() => {
         if (AdminLoginSuccess && !prevState) {
             localStorage.setItem('token', AdminLoginToken );
             props.history.push('/admin/dashboard');
         }
     }, [AdminLoginSuccess]);
+
     return (
         <div className="login-page">
             <ToastContainer />
@@ -91,7 +73,7 @@ const Login = (props) => {
                                                    className="input-material"
                                                    placeholder="User Email"
                                                    value={form.email}
-                                                   onChange={updateField}
+                                                   onChange={handleFormChange}
                                             />
                                         </div>
                                         <div className="form-group">
@@ -101,7 +83,7 @@ const Login = (props) => {
                                                    className="input-material"
                                                    placeholder="Password"
                                                    value={form.password}
-                                                   onChange={updateField}
+                                                   onChange={handleFormChange}
                                             />
                                         </div>
                                         <button type="submit" className="btn btn-primary">Login</button>
@@ -124,6 +106,12 @@ const Login = (props) => {
             </div>
         </div>
     )
+};
+
+Login.propTypes = {
+    AdminLoginSuccess: PropTypes.bool.isRequired,
+    AdminLoginToken: PropTypes.string.isRequired,
+    AdminLogin: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

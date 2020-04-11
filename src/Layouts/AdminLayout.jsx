@@ -1,19 +1,21 @@
-import React  from 'react';
-import { Route, Switch } from 'react-router-dom';
-
+import React  from "react";
+import { Route, Switch } from "react-router-dom";
+import ProtectedRoute from "../Components/Admin/ProtectedRoute";
 import Layout from "../Components/Admin/Layout/Layout";
 import Login from "../Components/Admin/Auth/Login/Login";
-import ProtectedRoute from "../Components/Admin/ProtectedRoute";
+import useStyles from "../Components/Admin/useStyles/useStyle";
+
 
 const AdminLayout = () => {
+    const classes = useStyles();
     return (
-        <>
+        <div className={classes.layout}>
             <Switch>
                 <Route path="/admin/login" component={Login} />
                 <ProtectedRoute exact path="/admin/*"  component={Layout} />
                 {/*<Route path="/admin/*" component={() => "404 NOT FOUND"} />*/}
             </Switch>
-        </>
+        </div>
     );
 };
 

@@ -1,0 +1,26 @@
+.Awesome {
+  border-color: #424242;
+  padding: 8px;
+  .title-field {
+    margin: 8px;
+    #filled-title {
+      color: #fff;
+    }
+    .MuiFilledInput-underline:after {
+      transform: scaleX(1);
+      border-bottom: 2px solid #fff;
+      pointer-events: none;
+    }
+  }
+  .description-field,
+  .upload-field {
+    margin: 8px;
+  }
+  .submit-box {
+    display: flex;
+    justify-content: end;
+  }
+  .filepond--panel-root {
+    background: unset !important;
+  }
+}

@@ -2,15 +2,17 @@ import { combineReducers } from 'redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import AdminLogin from './Admin/Auth/Login/reducer';
 import AdminRegister from './Admin/Auth/Register/reducer';
-import GetAdminRequest from './Admin/getAdmin/reducer';
+import VerifyAdminToken from './Admin/VerifyAdminToken/reducer';
 import SocialSignIn from './Web/Auth/SocialLogin/reducer';
+import UpdateAwesomeSlider from './Admin/AwesomeSlider/reducer';
 
 const AppReducer = combineReducers({
     // toastr: toastrReducer,
     AdminLogin,
     AdminRegister,
-    GetAdminRequest,
-    SocialSignIn
+    VerifyAdminToken,
+    SocialSignIn,
+    UpdateAwesomeSlider
 });
 
 const rootReducer = (state, action) => {

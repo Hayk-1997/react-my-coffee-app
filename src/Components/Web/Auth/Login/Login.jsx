@@ -1,47 +1,24 @@
 import React, { useEffect, useState } from "react";
 import './Login.css';
 import { OldSocialLogin as SocialLogin } from 'react-social-login'
-import validator from 'validator';
 import { ToastContainer } from 'react-toastify';
-import { notify } from '../../../../Config/Notify';
 import { connect } from 'react-redux';
-import {SocialLoginRequest} from "../../../../Redux/Web/Auth/SocialLogin/actions";
+import { SocialLoginRequest } from "../../../../Redux/Web/Auth/SocialLogin/actions";
+import { useForm } from "../../../../CustomHooks/useForm";
+import { validateForm } from "../../../../Helpers/validateForm";
+
 
 const Login = (props) => {
-    const [form, setState] = useState({
-        email: '',
-        password: '',
-    });
+    const [form, handleFormChange] = useForm({ email: '', password: ''});
     const [verify, setVerify] = useState({
         emailVerify: true,
         passwordVerify: true,
     });
-    const updateField = e => {
-        setState({
-            ...form,
-            [e.target.name]: e.target.value
-        });
-    };
-    const validateForm = () => {
-        if (!validator.isEmail(form.email)) {
-            notify('Incorrect Email!', 1500);
-            setVerify({
-                ...verify,
-                emailVerify: false
-            });
-        }
-        if (!validator.isLength(form.password, {min:8})) {
-            notify('Incorrect Password!', 2500);
-            setVerify({
-                ...verify,
-                passwordVerify: false
-            });
-        }
-    };
     const handleSubmit = event => {
         event.preventDefault();
-        validateForm();
+        validateForm(form, setVerify);
     };
+
     const handleSocialLogin = (user, err) => {
         console.log('user',user)
         console.log('err', err)
@@ -76,7 +53,7 @@ const Login = (props) => {
                                                 placeholder=""
                                                 name="email"
                                                 value={form.email}
-                                                onChange={updateField}
+                                                onChange={handleFormChange}
                                             />
                                         </div>
                                     </div>
@@ -91,7 +68,7 @@ const Login = (props) => {
                                                 placeholder=""
                                                 name="password"
                                                 value={form.password}
-                                                onChange={updateField}
+                                                onChange={handleFormChange}
                                             />
                                         </div>
                                     </div>

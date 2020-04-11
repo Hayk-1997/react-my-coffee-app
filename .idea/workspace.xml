@@ -2,53 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="448331c5-31ba-4151-a687-9041d5e73305" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/RenderMenu/RenderMenu.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Auth/Login/Login.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Auth/Register/Register.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Auth/Register/Register.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Booking/Booking.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Booking/Booking.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Footer/Footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Home/Appointment/Appointment.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Home/CoffeeSellers/CoffeeSellers.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Home/Customers/Customers.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Home/Gallery/Gallery.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Home/Home.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Home/RecentBlog/RecentBlog.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Info/Info.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Web/Layout/Layout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Web/Auth/SocialLogin/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Web/Auth/SocialLogin/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Web/Auth/SocialLogin/sagas.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Routes/Web/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Context/HomeToggleContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/Intro/Intro.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/RenderMobileMenu/RenderMobileMenu.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/RouteList/RouteList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admin/useStyles/useStyle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomHooks/useForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Helpers/validateForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/sagas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/sagas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Admin/Auth/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Auth/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Dashboard/Dashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Admin/Layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Styles/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Styles/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Styles/styles.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Styles/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/Branches/Branches.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Home/Branches/Branches.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Intro/Intro.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/OurHistory/OurHistory.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Home/OurHistory/OurHistory.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/OurHistory/OurHistory.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Home/OurHistory/OurHistory.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/OurHistory/OurHistory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Home/OurHistory/OurHistory.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/OurHistory/OurHistory.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Home/OurHistory/OurHistory.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/OurMenu/OurMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Home/OurMenu/OurMenu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/Services/Services.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Home/Services/Services.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/SideBar/SideBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/SideBar/SideBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/verifyAdminToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Auth/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Layouts/WebLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/WebLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Layout/RenderMenu/RenderMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/RenderMenu/RenderMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admin/ProtectedRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/ProtectedRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Web/Auth/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Auth/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Config/Axios/axiosInstance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/Axios/axiosInstance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Layouts/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/AdminLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/getAdmin/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/getAdmin/reducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/getAdmin/sagas.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/rootSagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/rootSagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/admin/css/style.default.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/admin/css/style.default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Routes/Admin/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Admin/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +71,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../coffee-app-api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -97,18 +86,18 @@
     <property name="ts.external.directory.path" value="E:\Program Files\JetBrains\WebStorm 2019.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\React\my-cofee-app\src\Components\Admin" />
+      <recent name="E:\React\my-cofee-app\src\Components\Web\Home" />
+      <recent name="E:\React\my-cofee-app\src\Components\Web\Layout" />
+      <recent name="E:\React\my-cofee-app\src\Components\Web" />
+      <recent name="E:\React\my-cofee-app\src\Components\Admin\Layout" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\React\my-cofee-app\src\assets\admin" />
       <recent name="E:\React\my-cofee-app" />
       <recent name="E:\React\my-cofee-app\src\assets\web\css\demo" />
       <recent name="E:\React\my-cofee-app\src\assets\web" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\React\my-cofee-app\src\Components\Web\Home" />
-      <recent name="E:\React\my-cofee-app\src\Components\Web\Layout" />
-      <recent name="E:\React\my-cofee-app\src\Components\Web" />
-      <recent name="E:\React\my-cofee-app\src\Components\Admin\Layout" />
-      <recent name="E:\React\my-cofee-app\src\Redux" />
     </key>
   </component>
   <component name="RunManager">
@@ -209,6 +198,30 @@
       <workItem from="1583956831601" duration="670000" />
       <workItem from="1584040064288" duration="1496000" />
       <workItem from="1584129735867" duration="10647000" />
+      <workItem from="1584180590211" duration="14555000" />
+      <workItem from="1584217556203" duration="8389000" />
+      <workItem from="1584263359137" duration="1867000" />
+      <workItem from="1584280518870" duration="2414000" />
+      <workItem from="1584301061911" duration="9871000" />
+      <workItem from="1584390697503" duration="8160000" />
+      <workItem from="1584473538927" duration="7459000" />
+      <workItem from="1585253812025" duration="1213000" />
+      <workItem from="1585313448020" duration="448000" />
+      <workItem from="1585342577499" duration="2145000" />
+      <workItem from="1585378381502" duration="385000" />
+      <workItem from="1585426428753" duration="2196000" />
+      <workItem from="1585510748219" duration="4290000" />
+      <workItem from="1585595148940" duration="714000" />
+      <workItem from="1585595890343" duration="9633000" />
+      <workItem from="1585685999726" duration="4357000" />
+      <workItem from="1586029018450" duration="2058000" />
+      <workItem from="1586205446425" duration="83000" />
+      <workItem from="1586205547198" duration="3341000" />
+      <workItem from="1586295713163" duration="2098000" />
+      <workItem from="1586376149057" duration="5829000" />
+      <workItem from="1586466008104" duration="10462000" />
+      <workItem from="1586551708544" duration="5101000" />
+      <workItem from="1586628083424" duration="6788000" />
     </task>
     <servers />
   </component>
@@ -261,26 +274,30 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="474" y="288" key="EditFileWatcherDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1579386273115" />
-    <state x="620" y="264" key="FileChooserDialogImpl" timestamp="1584041321259">
+    <state x="620" y="264" key="FileChooserDialogImpl" timestamp="1586628969722">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="620" y="264" key="FileChooserDialogImpl/0.0.1680.1020@0.0.1680.1020" timestamp="1584041321259" />
-    <state width="1637" height="177" key="GridCell.Tab.0.bottom" timestamp="1584180740899">
+    <state x="620" y="264" key="FileChooserDialogImpl/0.0.1680.1020@0.0.1680.1020" timestamp="1586628969722" />
+    <state width="1637" height="160" key="GridCell.Tab.0.bottom" timestamp="1586640783841">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="177" key="GridCell.Tab.0.bottom/0.0.1680.1020@0.0.1680.1020" timestamp="1584180740899" />
-    <state width="1637" height="177" key="GridCell.Tab.0.center" timestamp="1584180740899">
+    <state width="1637" height="160" key="GridCell.Tab.0.bottom/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783841" />
+    <state width="1637" height="160" key="GridCell.Tab.0.center" timestamp="1586640783840">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="177" key="GridCell.Tab.0.center/0.0.1680.1020@0.0.1680.1020" timestamp="1584180740899" />
-    <state width="1637" height="177" key="GridCell.Tab.0.left" timestamp="1584180740898">
+    <state width="1637" height="160" key="GridCell.Tab.0.center/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783840" />
+    <state width="1637" height="160" key="GridCell.Tab.0.left" timestamp="1586640783840">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="177" key="GridCell.Tab.0.left/0.0.1680.1020@0.0.1680.1020" timestamp="1584180740898" />
-    <state width="1637" height="177" key="GridCell.Tab.0.right" timestamp="1584180740899">
+    <state width="1637" height="160" key="GridCell.Tab.0.left/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783840" />
+    <state width="1637" height="160" key="GridCell.Tab.0.right" timestamp="1586640783841">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="177" key="GridCell.Tab.0.right/0.0.1680.1020@0.0.1680.1020" timestamp="1584180740899" />
+    <state width="1637" height="160" key="GridCell.Tab.0.right/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783841" />
+    <state x="420" y="244" key="IDE.errors.dialog" timestamp="1584397695306">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="420" y="244" key="IDE.errors.dialog/0.0.1680.1020@0.0.1680.1020" timestamp="1584397695306" />
     <state x="657" y="220" key="RollbackChangesDialog" timestamp="1580030839069">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
@@ -289,18 +306,18 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="421" y="147" key="SettingsEditor/0.0.1680.1020@0.0.1680.1020" timestamp="1582406299742" />
-    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582578172163">
+    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1586467917216">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1582578172163" />
+    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1586467917216" />
     <state x="-7" y="0" width="679" height="1027" key="dock-window-1" timestamp="1582576582786">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="-7" y="0" width="679" height="1027" key="dock-window-1/0.0.1680.1020@0.0.1680.1020" timestamp="1582576582786" />
-    <state x="285" y="255" width="627" height="558" key="find.popup" timestamp="1584135719588">
+    <state x="285" y="255" width="627" height="558" key="find.popup" timestamp="1586553941157">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="285" y="255" width="627" height="558" key="find.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1584135719588" />
+    <state x="285" y="255" width="627" height="558" key="find.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1586553941157" />
     <state x="607" y="358" width="626" height="617" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1582062924462">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>

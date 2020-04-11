@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import PropTypes from "prop-types";
-import {GetAdminRequest} from '../../Redux/Admin/getAdmin/actions';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { AdminTokenVerifyRequest } from '../../Redux/Admin/VerifyAdminToken/actions';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-    const { GetAdminSuccess , AdminLoginSuccess, GetAdminError } = {...rest};
+    const { GetAdminTokenVerifySuccess, GetAdminTokenVerifyError, AdminLoginSuccess } = {...rest};
     const [tokenVerify, setVerifyToken] = useState(true);
     const token = localStorage.getItem('token');
     const usePrevious = (value) => {
@@ -15,22 +15,21 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
         });
         return !!ref.current;
     };
-    const prevSuccess = usePrevious(GetAdminSuccess);
+    const prevSuccess = usePrevious(GetAdminTokenVerifySuccess);
     useEffect(() => {
-        const { GetAdmin } = {...rest};
-        if (!prevSuccess && !GetAdminSuccess) {
-            GetAdmin(token);
-            if (GetAdminSuccess) {
+        const { VerifyAdminToken } = {...rest};
+        if (!prevSuccess && !GetAdminTokenVerifySuccess) {
+            VerifyAdminToken(token);
+            if (GetAdminTokenVerifySuccess) {
                 setVerifyToken(true);
             }
         }
-
     }, [AdminLoginSuccess]);
     useEffect(() => {
-        if (GetAdminError) {
+        if (GetAdminTokenVerifyError) {
             setVerifyToken(false);
         }
-    },[GetAdminError]);
+    },[GetAdminTokenVerifyError]);
     return (
         <Route
             {...rest}
@@ -55,21 +54,23 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
 };
 
 ProtectedRoute.propTypes = {
-    GetAdminSuccess:PropTypes.bool.isRequired,
-    GetAdminError:PropTypes.bool.isRequired,
+    // Verify Admin Token
+    VerifyAdminToken: PropTypes.func.isRequired,
+    GetAdminTokenVerifySuccess:PropTypes.bool.isRequired,
+    GetAdminTokenVerifyError:PropTypes.bool.isRequired,
+    // Handle Admin Login
     AdminLoginSuccess:PropTypes.bool.isRequired,
-    GetAdmin: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-    GetAdminSuccess: state.GetAdminRequest.GetAdminSuccess,
-    GetAdminError: state.GetAdminRequest.GetAdminError,
+    GetAdminTokenVerifySuccess: state.VerifyAdminToken.GetAdminTokenVerifySuccess,
+    GetAdminTokenVerifyError: state.VerifyAdminToken.GetAdminTokenVerifyError,
     AdminLoginSuccess: state.AdminLogin.AdminLoginSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => {
    return {
-       GetAdmin: (data) => dispatch(GetAdminRequest(data)),
+       VerifyAdminToken: (data) => dispatch(AdminTokenVerifyRequest(data)),
    }
 };
 

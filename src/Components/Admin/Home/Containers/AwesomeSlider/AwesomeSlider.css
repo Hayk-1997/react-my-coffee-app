@@ -1,0 +1,28 @@
+.Awesome {
+  border-color: #424242;
+  padding: 8px;
+}
+.Awesome .title-field {
+  margin: 8px;
+}
+.Awesome .title-field #filled-title {
+  color: #fff;
+}
+.Awesome .title-field .MuiFilledInput-underline:after {
+  transform: scaleX(1);
+  border-bottom: 2px solid #fff;
+  pointer-events: none;
+}
+.Awesome .description-field,
+.Awesome .upload-field {
+  margin: 8px;
+}
+.Awesome .submit-box {
+  display: flex;
+  justify-content: end;
+}
+.Awesome .filepond--panel-root {
+  background: unset !important;
+}
+
+/*# sourceMappingURL=AwesomeSlider.css.map */

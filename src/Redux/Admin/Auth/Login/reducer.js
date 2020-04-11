@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     AdminLoginSuccess: false,
-    AdminLoginToken: {},
+    AdminLoginToken: '',
     AdminLoginError: false,
 };
 
@@ -15,7 +15,7 @@ const reducer = handleActions(
         [AdminLoginRequest]: (state) => ({
             ...state,
             AdminLoginSuccess: false,
-            AdminLoginToken: {},
+            AdminLoginToken: '',
             AdminLoginError: false,
         }),
         [GetAdminLoginSuccess]: (state, data) => ({
@@ -27,7 +27,7 @@ const reducer = handleActions(
         [GetAdminLoginError]: (state) => ({
             ...state,
             AdminLoginSuccess: false,
-            AdminLoginToken: {},
+            AdminLoginToken: '',
             AdminLoginError: true,
         }),
     },
