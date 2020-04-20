@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="448331c5-31ba-4151-a687-9041d5e73305" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Auth/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Auth/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomHooks/useForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomHooks/useForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Layouts/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/AdminLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/sagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/Auth/Register/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/Auth/Register/sagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/sagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/sagas.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +197,7 @@
       <workItem from="1587243507092" duration="3238000" />
       <workItem from="1587310567883" duration="2881000" />
       <workItem from="1587324574554" duration="2973000" />
-      <workItem from="1587410347133" duration="1026000" />
+      <workItem from="1587410347133" duration="1588000" />
     </task>
     <servers />
   </component>
@@ -320,9 +302,9 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="496" y="235" key="run.anything.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1584136385953" />
-    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586719250706">
+    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587411764227">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1586719250706" />
+    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1587411764227" />
   </component>
 </project>

@@ -33,12 +33,12 @@ const reducer = handleActions(
             GetAwesomeSliderSuccess: false,
             GetAwesomeSliderError: false,
         }),
-        [GetAwesomeSliderRequest]: (state) => ({
+        [GetAwesomeSliderSuccess]: (state) => ({
            ...state,
             GetAwesomeSliderSuccess: true,
             GetAwesomeSliderError: false,
         }),
-        [GetAwesomeSliderRequest]: (state) => ({
+        [GetAwesomeSliderError]: (state) => ({
            ...state,
             GetAwesomeSliderSuccess: true,
             GetAwesomeSliderError: false,
