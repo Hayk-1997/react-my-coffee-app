@@ -2,11 +2,27 @@ import React, {useState, useRef, useEffect} from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import './AwesomeSlider.css';
 import Button from "@material-ui/core/Button";
 import SaveIcon from '@material-ui/icons/Save';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+// Require Editor JS files.
+import 'froala-editor/js/froala_editor.pkgd.min.js';
+
+// Require Editor CSS files.
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+
+// Require Font Awesome.
+// import 'font-awesome/css/font-awesome.css';
+
+import FroalaEditor from 'react-froala-wysiwyg';
+
 // Import React FilePond
 import { FilePond, registerPlugin } from "react-filepond";
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
@@ -40,27 +56,50 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
     },
 }));
+// Handle TabPanel
+const TabPanel = (props) => {
+    const { children, value, index, ...other } = props;
+    return (
+        <Typography
+            component="div"
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box p={3}>{children}</Box>}
+        </Typography>
+    );
+};
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
 
-// Our app
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
 const AwesomeSlider = (props) => {
     const { UpdateAwesomeSlider } = props;
     // State
     const classes = useStyles();
     const [image, setImage] = useState([]);
-    const editor = useRef(null);
-    const [description, setDescription] = useState('');
-    const [title, setTitle] = useState('');
-    const config = { readonly: false };
-    const [renderFilePond, setRenderFilePond] = useState(false);
-    const [renderEditor, setRenderEditor] = useState(false);
-
-    useEffect(() => {
-        setRenderFilePond(true);
-        setRenderEditor(true);
-    }, []);
-    const handleUpdate = e => {
+    const fields = { title: '', description: '' };
+    const [form, setForm] = useState({
+        en: fields,
+        arm: fields
+    });
+    const [tab, setTab] = useState(0);
+    const handleSubmit = e => {
         e.preventDefault();
-        UpdateAwesomeSlider({ image, title, description });
+        console.log(form);
+        UpdateAwesomeSlider({ image, form });
     };
     const handleRenderFilePond = () => {
         return (
@@ -90,64 +129,100 @@ const AwesomeSlider = (props) => {
             />
         )
     };
-    const handleRenderEditor = () => {
+    const handleModelChange = data => {
+        console.log(data);
+    };
+    const handleRenderEditor = (key) => {
         return (
-            <JoditEditor
-                // ref={useRef(null)}
-                value={description}
-                config={config}
-                tabIndex={1}
-                onBlur={newContent => setDescription(newContent)}
-                onChange={newContent => {}}
+            <FroalaEditor
+                tag='textarea'
+                model={form[key].description}
+                onModelChange={e => handleInputChange(key, 'description', e)}
+                config={{
+                    placeholder: "Edit Me",
+                    events : {
+                        'focus' : function(e, editor) {
+                            console.log(editor);
+                        }
+                    }
+                }}
             />
         )
     };
+    const handleTabChange = (event, newValue) => {
+        setTab(newValue);
+    };
+    const handleInputChange = (name, key, value) => {
+        console.log(name, key, value);
+        setForm((prevState) => ({
+            ...prevState,
+            [name]: {
+                ...prevState[name],
+                [key]: value
+            }
+        }));
+    };
 
     return (
-        <Grid container spacing={3} className={classes.container}>
-            <Grid item lg={6} md={8} xs={12} className={classes.formContent}>
-                <form noValidate autoComplete="off" className="Awesome" onSubmit={handleUpdate}>
-                    <div className="title-field">
-                        <TextField
-                            id="filled-title"
-                            className="awesome-title"
-                            placeholder="Title"
-                            fullWidth
-                            variant="filled"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                    </div>
-                    <div className="description-field">
-                        {
-                            renderEditor ? (
-                                handleRenderEditor()
-                            ): null
-                        }
-                    </div>
-                    <div className="upload-field">
-                        {
-                            renderFilePond ?
-                                (
-                                    handleRenderFilePond()
-                                ): null
-                        }
-                    </div>
-                    <div className="submit-box">
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            className={classes.button}
-                            type="submit"
-                            startIcon={<SaveIcon />}
-                        >
-                            Save
-                        </Button>
-                    </div>
-                </form>
-            </Grid>
-        </Grid>
+        <form noValidate autoComplete="off" className="Awesome" onSubmit={handleSubmit}>
+            <AppBar position="static">
+                <Tabs value={tab} onChange={handleTabChange} aria-label="simple tabs example">
+                    <Tab label="English Tab" {...a11yProps(0)} />
+                    <Tab label="Armenian Tab" {...a11yProps(1)} />
+                </Tabs>
+            </AppBar>
+            <TabPanel value={tab} index={0}>
+                <div className="title-field">
+                    <TextField
+                        id="en-title"
+                        className="en-awesome-title"
+                        placeholder="Title"
+                        fullWidth
+                        margin="normal"
+                        multiline={true}
+                        variant="filled"
+                        value={form.en.title}
+                        onChange={(e) => handleInputChange('en', 'title', e.target.value)}
+                    />
+                </div>
+                <div className="description-field">
+                    { handleRenderEditor('en') }
+                </div>
+            </TabPanel>
+            <TabPanel value={tab} index={1}>
+                <div className="title-field">
+                    <TextField
+                        id="arm-title"
+                        className="arm-awesome-title"
+                        placeholder="Title"
+                        fullWidth
+                        margin="normal"
+                        multiline={true}
+                        variant="filled"
+                        value={form.arm.title}
+                        onChange={(e) => handleInputChange('arm', 'title', e.target.value)}
+                    />
+                </div>
+                <div className="description-field">
+                    { handleRenderEditor('arm') }
+                </div>
+            </TabPanel>
+            <div className="upload-field">
+                { handleRenderFilePond() }
+            </div>
+            <div className="submit-box">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    className={classes.button}
+                    type="submit"
+                    startIcon={<SaveIcon/>}
+                >
+                    Update
+                </Button>
+            </div>
+        </form>
     )
 };
 AwesomeSlider.propTypes = {
@@ -160,8 +235,8 @@ const mapStateToProps = (state) => ({
     GetAwesomeSliderError: state.UpdateAwesomeSlider.GetAwesomeSliderError,
 });
 const mapDispatchToProps = (dispatch) => {
-  return {
-      UpdateAwesomeSlider: (data) => dispatch(AwesomeSliderRequest(data)),
-  }
+    return {
+        UpdateAwesomeSlider: (data) => dispatch(AwesomeSliderRequest(data)),
+    }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AwesomeSlider);

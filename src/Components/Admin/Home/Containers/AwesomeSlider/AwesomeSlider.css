@@ -5,7 +5,8 @@
 .Awesome .title-field {
   margin: 8px;
 }
-.Awesome .title-field #filled-title {
+.Awesome .title-field #arm-title,
+.Awesome .title-field #en-title {
   color: #fff;
 }
 .Awesome .title-field .MuiFilledInput-underline:after {
@@ -23,6 +24,9 @@
 }
 .Awesome .filepond--panel-root {
   background: unset !important;
+}
+.Awesome .MuiPaper-rounded {
+  background-color: inherit !important;
 }
 
 /*# sourceMappingURL=AwesomeSlider.css.map */

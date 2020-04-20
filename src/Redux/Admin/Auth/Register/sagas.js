@@ -4,7 +4,7 @@ import { axiosInstance } from '../../../../Config/Axios/axiosInstance';
 
 function* AdminRegister (action) {
     try {
-        const response = yield axiosInstance.post('admin-register', action.payload);
+        const response = yield axiosInstance.post('admin/register', action.payload);
         debugger
         if (response.status === 201) {
             yield put(GetAdminRegisterSuccess(response.data));

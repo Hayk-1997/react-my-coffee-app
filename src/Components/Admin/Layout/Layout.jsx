@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from 'react';
 import routes from "../../../Routes/Admin/routes";
 import {Route} from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -20,7 +20,7 @@ import RenderMobileMenu from "./RenderMobileMenu/RenderMobileMenu";
 import useStyles from "../useStyles/useStyle";
 import RouteList from "./RouteList/RouteList";
 //
-import {HomeToggleContext} from "../Context/HomeToggleContext";
+import { HomeToggleContext } from '../Context/HomeToggleContext';
 
 const Layout = (props) => {
     const getRoutes = () => {
@@ -43,9 +43,9 @@ const Layout = (props) => {
     };
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const [open, setOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     const [context, setContext] = useState();

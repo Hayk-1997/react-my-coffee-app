@@ -3,7 +3,8 @@
   padding: 8px;
   .title-field {
     margin: 8px;
-    #filled-title {
+    #arm-title,
+    #en-title {
       color: #fff;
     }
     .MuiFilledInput-underline:after {
@@ -22,5 +23,8 @@
   }
   .filepond--panel-root {
     background: unset !important;
+  }
+  .MuiPaper-rounded {
+    background-color: inherit !important;
   }
 }

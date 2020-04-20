@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { AdminLoginRequest } from '../../../../Redux/Admin/Auth/Login/actions';
 import '../../../Admin/Styles/styles.css';
-import {useForm} from "../../../../CustomHooks/useForm";
-import {validateForm} from "../../../../Helpers/validateForm";
+import { useForm } from '../../../../CustomHooks/useForm';
+import { validateForm } from '../../../../Helpers/validateForm';
 
 const Login = (props) => {
     const { AdminLoginSuccess, AdminLoginToken } = props;

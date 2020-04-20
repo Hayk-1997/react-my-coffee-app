@@ -2,42 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="448331c5-31ba-4151-a687-9041d5e73305" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Context/HomeToggleContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/Intro/Intro.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Home.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/RenderMobileMenu/RenderMobileMenu.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/RouteList/RouteList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Admin/useStyles/useStyle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CustomHooks/useForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Helpers/validateForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/sagas.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/sagas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Admin/Auth/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Auth/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Dashboard/Dashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Admin/Layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/Layout/RenderMenu/RenderMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/Layout/RenderMenu/RenderMenu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Admin/ProtectedRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admin/ProtectedRoute.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Web/Auth/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Web/Auth/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Config/Axios/axiosInstance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/Axios/axiosInstance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomHooks/useForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomHooks/useForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dogs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Layouts/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layouts/AdminLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/getAdmin/actions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/getAdmin/reducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/getAdmin/sagas.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/rootSagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/rootSagas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes/Admin/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Admin/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/Auth/Login/sagas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/Auth/Register/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/Auth/Register/sagas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/AwesomeSlider/sagas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/sagas.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Admin/VerifyAdminToken/sagas.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +54,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../coffee-app-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -221,7 +204,18 @@
       <workItem from="1586376149057" duration="5829000" />
       <workItem from="1586466008104" duration="10462000" />
       <workItem from="1586551708544" duration="5101000" />
-      <workItem from="1586628083424" duration="6788000" />
+      <workItem from="1586628083424" duration="8203000" />
+      <workItem from="1586704468374" duration="8708000" />
+      <workItem from="1586808555232" duration="5709000" />
+      <workItem from="1586895910555" duration="808000" />
+      <workItem from="1586987179003" duration="3646000" />
+      <workItem from="1587064097200" duration="5327000" />
+      <workItem from="1587156732424" duration="6053000" />
+      <workItem from="1587233921973" duration="2620000" />
+      <workItem from="1587243507092" duration="3238000" />
+      <workItem from="1587310567883" duration="2881000" />
+      <workItem from="1587324574554" duration="2973000" />
+      <workItem from="1587410347133" duration="1026000" />
     </task>
     <servers />
   </component>
@@ -246,10 +240,10 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="432" y="168" key="#ESLint/0.0.1680.1020@0.0.1680.1020" timestamp="1581807578988" />
-    <state x="490" y="173" key="#JavaScript" timestamp="1581626790795">
+    <state x="490" y="173" key="#JavaScript" timestamp="1586991811311">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="490" y="173" key="#JavaScript/0.0.1680.1020@0.0.1680.1020" timestamp="1581626790795" />
+    <state x="490" y="173" key="#JavaScript/0.0.1680.1020@0.0.1680.1020" timestamp="1586991811311" />
     <state x="294" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580502020605">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
@@ -274,26 +268,26 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="474" y="288" key="EditFileWatcherDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1579386273115" />
-    <state x="620" y="264" key="FileChooserDialogImpl" timestamp="1586628969722">
+    <state x="620" y="264" key="FileChooserDialogImpl" timestamp="1587324627518">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="620" y="264" key="FileChooserDialogImpl/0.0.1680.1020@0.0.1680.1020" timestamp="1586628969722" />
-    <state width="1637" height="160" key="GridCell.Tab.0.bottom" timestamp="1586640783841">
+    <state x="620" y="264" key="FileChooserDialogImpl/0.0.1680.1020@0.0.1680.1020" timestamp="1587324627518" />
+    <state width="1637" height="160" key="GridCell.Tab.0.bottom" timestamp="1587411386967">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="160" key="GridCell.Tab.0.bottom/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783841" />
-    <state width="1637" height="160" key="GridCell.Tab.0.center" timestamp="1586640783840">
+    <state width="1637" height="160" key="GridCell.Tab.0.bottom/0.0.1680.1020@0.0.1680.1020" timestamp="1587411386967" />
+    <state width="1637" height="160" key="GridCell.Tab.0.center" timestamp="1587411386967">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="160" key="GridCell.Tab.0.center/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783840" />
-    <state width="1637" height="160" key="GridCell.Tab.0.left" timestamp="1586640783840">
+    <state width="1637" height="160" key="GridCell.Tab.0.center/0.0.1680.1020@0.0.1680.1020" timestamp="1587411386967" />
+    <state width="1637" height="160" key="GridCell.Tab.0.left" timestamp="1587411386967">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="160" key="GridCell.Tab.0.left/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783840" />
-    <state width="1637" height="160" key="GridCell.Tab.0.right" timestamp="1586640783841">
+    <state width="1637" height="160" key="GridCell.Tab.0.left/0.0.1680.1020@0.0.1680.1020" timestamp="1587411386967" />
+    <state width="1637" height="160" key="GridCell.Tab.0.right" timestamp="1587411386967">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="160" key="GridCell.Tab.0.right/0.0.1680.1020@0.0.1680.1020" timestamp="1586640783841" />
+    <state width="1637" height="160" key="GridCell.Tab.0.right/0.0.1680.1020@0.0.1680.1020" timestamp="1587411386967" />
     <state x="420" y="244" key="IDE.errors.dialog" timestamp="1584397695306">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
@@ -306,18 +300,18 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="421" y="147" key="SettingsEditor/0.0.1680.1020@0.0.1680.1020" timestamp="1582406299742" />
-    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1586467917216">
+    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587159709916">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1586467917216" />
+    <state x="100" y="100" width="1496" height="832" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1680.1020@0.0.1680.1020" timestamp="1587159709916" />
     <state x="-7" y="0" width="679" height="1027" key="dock-window-1" timestamp="1582576582786">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="-7" y="0" width="679" height="1027" key="dock-window-1/0.0.1680.1020@0.0.1680.1020" timestamp="1582576582786" />
-    <state x="285" y="255" width="627" height="558" key="find.popup" timestamp="1586553941157">
+    <state x="285" y="255" width="627" height="558" key="find.popup" timestamp="1587327722634">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="285" y="255" width="627" height="558" key="find.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1586553941157" />
+    <state x="285" y="255" width="627" height="558" key="find.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1587327722634" />
     <state x="607" y="358" width="626" height="617" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1582062924462">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
@@ -326,9 +320,9 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="496" y="235" key="run.anything.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1584136385953" />
-    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1580335693604">
+    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586719250706">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1580335693604" />
+    <state x="127" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1680.1020@0.0.1680.1020" timestamp="1586719250706" />
   </component>
 </project>

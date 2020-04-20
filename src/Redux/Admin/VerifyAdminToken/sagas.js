@@ -4,7 +4,7 @@ import { axiosInstance } from '../../../Config/Axios/axiosInstance';
 
 function* VerifyAdminToken (action) {
     try {
-        const response = yield axiosInstance.post('verify-admin-token', {
+        const response = yield axiosInstance.post('admin/verify-token', {
             token: action.payload
         });
         if (response && response.status === 200) {

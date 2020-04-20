@@ -14,14 +14,11 @@ const Dogs = () => (
         query={GET_DOGS}
     >
         {({loading, error, data}) => {
-            console.log(data);
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error :(</p>;
             return (
                 <div>
-                    <div>
-                        sdfsdfsdf
-                    </div>
+                    <strong>Title: </strong> <small>{ data.title }</small>
                 </div>
             )
         }}
