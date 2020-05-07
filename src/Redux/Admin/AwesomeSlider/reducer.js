@@ -9,6 +9,7 @@ const initialState = {
     GetAwesomeSliderUpdateError: false,
     GetAwesomeSliderSuccess: false,
     GetAwesomeSliderError: false,
+    awesomeSliderData: {},
 };
 
 const reducer = handleActions(
@@ -25,23 +26,26 @@ const reducer = handleActions(
         }),
         [GetAwesomeSliderUpdateError]: (state) => ({
            ...state,
-            GetAwesomeSliderUpdateSuccess: true,
-            GetAwesomeSliderUpdateError: false,
+            GetAwesomeSliderUpdateSuccess: false,
+            GetAwesomeSliderUpdateError: true,
         }),
         [GetAwesomeSliderRequest]: (state) => ({
            ...state,
             GetAwesomeSliderSuccess: false,
             GetAwesomeSliderError: false,
+            awesomeSliderData: {},
         }),
-        [GetAwesomeSliderSuccess]: (state) => ({
+        [GetAwesomeSliderSuccess]: (state, { payload }) => ({
            ...state,
             GetAwesomeSliderSuccess: true,
             GetAwesomeSliderError: false,
+            awesomeSliderData: payload.data,
         }),
         [GetAwesomeSliderError]: (state) => ({
            ...state,
-            GetAwesomeSliderSuccess: true,
-            GetAwesomeSliderError: false,
+            GetAwesomeSliderSuccess: false,
+            GetAwesomeSliderError: true,
+            awesomeSliderData: {},
         }),
     },
     initialState

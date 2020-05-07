@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Router, Redirect, Link, Route} from "react-router-dom";
+import { Router, Redirect, Link, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import validator from "validator";
-import {notify} from "../../../../Config/Notify";
+import { notify } from '../../../../Config/Notify';
 import { ToastContainer } from 'react-toastify';
-import {AdminRegisterRequest} from "../../../../Redux/Admin/Auth/Register/actions";
-import Login from "../Login/Login";
+import { AdminRegisterRequest } from '../../../../Redux/Admin/Auth/Register/actions';
 import PropTypes from 'prop-types';
 
 

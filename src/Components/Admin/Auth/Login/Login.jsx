@@ -40,7 +40,7 @@ const Login = (props) => {
     }, []);
 
     useEffect(() => {
-        if (AdminLoginSuccess && !prevState) {
+        if (AdminLoginSuccess && prevState === false) {
             localStorage.setItem('token', AdminLoginToken );
             props.history.push('/admin/dashboard');
         }
@@ -88,7 +88,6 @@ const Login = (props) => {
                                         </div>
                                         <button type="submit" className="btn btn-primary">Login</button>
                                     </form>
-                                    {/*<a href="#" className="forgot-pass">Forgot Password?</a><br />*/}
                                     <small>Do not have an account? </small>
                                     <Link to="/admin/register">Sign Up</Link>
                                 </div>

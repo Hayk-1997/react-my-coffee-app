@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import routes from "../../../Routes/Admin/routes";
-import {Route} from "react-router-dom";
+import { Route } from "react-router-dom";
+import RouteList from './RouteList';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import clsx from "clsx";
@@ -9,20 +10,21 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import MailIcon from "@material-ui/icons/Mail";
-import { useTheme} from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
-import {AccountCircle} from "@material-ui/icons";
+import { AccountCircle } from "@material-ui/icons";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import RenderMenu from "./RenderMenu/RenderMenu";
 import RenderMobileMenu from "./RenderMobileMenu/RenderMobileMenu";
 import useStyles from "../useStyles/useStyle";
-import RouteList from "./RouteList/RouteList";
+
 //
 import { HomeToggleContext } from '../Context/HomeToggleContext';
 
 const Layout = (props) => {
+
     const getRoutes = () => {
         return routes.map((route) => {
             if (route.auth) {
@@ -42,13 +44,15 @@ const Layout = (props) => {
         });
     };
     const classes = useStyles();
-    const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     const [context, setContext] = useState();
+    const menuId = 'primary-search-account-menu';
+    const mobileMenuId = 'primary-search-account-menu-mobile';
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -71,8 +75,6 @@ const Layout = (props) => {
     const handleUseHomeToggleContext = context => {
         setContext(context);
     };
-    const menuId = 'primary-search-account-menu';
-    const mobileMenuId = 'primary-search-account-menu-mobile';
 
     return (
         <div className={classes.root}>
@@ -141,7 +143,6 @@ const Layout = (props) => {
                                 onClick={handleMobileMenuOpen}
                                 color="inherit"
                             >
-                                {/*<MoreIcon />*/}
                             </IconButton>
                         </div>
                     </Toolbar>
@@ -171,7 +172,6 @@ const Layout = (props) => {
                 classes={classes}
                 open={open}
                 handleDrawerClose={handleDrawerClose}
-                theme={theme}
                 handleUseHomeToggleContext={handleUseHomeToggleContext}
             />
             <main className={classes.content}>

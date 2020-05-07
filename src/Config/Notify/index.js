@@ -1,8 +1,8 @@
-import {toast} from "react-toastify";
+import { toast } from 'react-toastify';
 
-export const notify = (message, autoClose) => toast(message,{
+export const notify = (message, autoClose, variant) => toast(message,{
     draggable: false,
     autoClose: autoClose,
-    type: toast.TYPE.ERROR,
+    type: toast.TYPE[variant],
     hideProgressBar: true
 });

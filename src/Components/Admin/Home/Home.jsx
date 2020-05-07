@@ -35,17 +35,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Home = (props) => {
-    const context = useContext(HomeToggleContext);
+    const toggleContext = useContext(HomeToggleContext);
     const [passedContext, setPassedContext] = useState();
     useEffect(() => {
-        if (context) {
-            setPassedContext(context.context);
+        if (toggleContext) {
+            setPassedContext(toggleContext.context);
         }
-    }, [context]);
+    }, [toggleContext]);
 
     const classes = useStyles();
     const renderComponent = () => {
-        context.handleUseHomeToggleContext('AwesomeSlider');
+        toggleContext.handleUseHomeToggleContext('AwesomeSlider');
     };
 
     const gridLayout = () => {
