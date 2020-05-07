@@ -4,7 +4,7 @@ import AdminLogin from './Admin/Auth/Login/reducer';
 import AdminRegister from './Admin/Auth/Register/reducer';
 import VerifyAdminToken from './Admin/VerifyAdminToken/reducer';
 import SocialSignIn from './Web/Auth/SocialLogin/reducer';
-import AwesomeSliderData from './Admin/AwesomeSlider/reducer';
+import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
 
 const AppReducer = combineReducers({
     // toastr: toastrReducer,
@@ -12,7 +12,7 @@ const AppReducer = combineReducers({
     AdminRegister,
     VerifyAdminToken,
     SocialSignIn,
-    AwesomeSliderData
+    AdminAwesomeSlider
 });
 
 const rootReducer = (state, action) => {

@@ -1,21 +1,22 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import { axiosInstance } from '../../../Config/Axios/axiosInstance';
 import {
-    AwesomeSliderUpdateRequest, GetAwesomeSliderUpdateSuccess, GetAwesomeSliderUpdateError,
-    GetAwesomeSliderRequest, GetAwesomeSliderSuccess, GetAwesomeSliderError
+    AwesomeSliderUpdateRequest, AwesomeSliderUpdateSuccess,
+    AwesomeSliderUpdateError, AwesomeSliderRequest,
+    AwesomeSliderSuccess, AwesomeSliderError
 } from './actions';
 
-function* getAwesomeSliderData () {
+function* GetAwesomeSliderData () {
     try {
         const response = yield axiosInstance.get('admin/awesome-slider');
         if (response.status === 200) {
-            yield put(GetAwesomeSliderSuccess(response.data));
+            yield put(AwesomeSliderSuccess(response.data));
         } else {
-            yield put(GetAwesomeSliderError(response.data));
+            yield put(AwesomeSliderError(response.data));
         }
     } catch (e) {
         console.log('AwesomeSlider Error: ', e);
-        yield put(GetAwesomeSliderError());
+        yield put(AwesomeSliderError());
     }
 }
 function* UpdateAwesomeSlider (action) {
@@ -28,17 +29,17 @@ function* UpdateAwesomeSlider (action) {
          }
         const response = yield axiosInstance.put('admin/awesome-slider', formData);
         if (response && response.status === 200) {
-            yield  put(GetAwesomeSliderUpdateSuccess(response.data));
+            yield  put(AwesomeSliderUpdateSuccess(response.data));
         } else {
-            yield put(GetAwesomeSliderUpdateError());
+            yield put(AwesomeSliderUpdateError());
         }
     } catch (e) {
         console.log('AwesomeSlider Error: ', e);
-        yield put(GetAwesomeSliderUpdateError());
+        yield put(AwesomeSliderUpdateError());
     }
 }
 
 export default function* () {
     yield takeLatest(AwesomeSliderUpdateRequest, UpdateAwesomeSlider);
-    yield takeLatest(GetAwesomeSliderRequest, getAwesomeSliderData);
+    yield takeLatest(AwesomeSliderRequest, GetAwesomeSliderData);
 }

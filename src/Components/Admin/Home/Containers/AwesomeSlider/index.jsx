@@ -1,7 +1,10 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { AwesomeSliderUpdateRequest, GetAwesomeSliderRequest } from '../../../../../Redux/Admin/AwesomeSlider/actions';
+import {
+    AwesomeSliderUpdateRequest,
+    AwesomeSliderRequest
+} from '../../../../../Redux/Admin/AwesomeSlider/actions';
 import FroalaEditor from './FroalaEditor';
 import FilePond from './FilePond';
 import './AwesomeSlider.css';
@@ -54,15 +57,15 @@ function a11yProps(index) {
     };
 }
 
-const AwesomeSlider = (props) => {
+const Index = (props) => {
     const {
-        UpdateAwesomeSlider, getAwesomeSliderData,
-        GetAwesomeSliderSuccess, awesomeSliderData,
-        GetAwesomeSliderUpdateSuccess, GetAwesomeSliderUpdateError
+        UpdateAwesomeSlider, GetAwesomeSliderData,
+        AwesomeSliderSuccess, awesomeSliderData,
+        AwesomeSliderUpdateSuccess, AwesomeSliderUpdateError
     } = props;
     // State
-    const prevGetAwesomeSliderUpdateSuccess = usePrevious(GetAwesomeSliderUpdateSuccess);
-    const prevGetAwesomeSliderUpdateError = usePrevious(GetAwesomeSliderUpdateError);
+    const prevAwesomeSliderUpdateSuccess = usePrevious(AwesomeSliderUpdateSuccess);
+    const prevAwesomeSliderUpdateError = usePrevious(AwesomeSliderUpdateError);
     const classes = useStyles();
     const [image, setImage] = useState([
         {
@@ -80,11 +83,11 @@ const AwesomeSlider = (props) => {
     const [tab, setTab] = useState(0);
 
     useEffect(() => {
-        getAwesomeSliderData();
+        GetAwesomeSliderData();
     }, []);
 
     useEffect(() => {
-        if (GetAwesomeSliderSuccess) {
+        if (AwesomeSliderSuccess) {
             const { en, arm, image } = awesomeSliderData;
             const formData = {
                 en: en[0], arm: arm[0]
@@ -92,19 +95,19 @@ const AwesomeSlider = (props) => {
             setForm(formData);
             setImage(prevState => ([{ ...prevState, source: 'http://localhost:3100/' + image }]));
         }
-    }, [GetAwesomeSliderSuccess]);
+    }, [AwesomeSliderSuccess]);
 
     useEffect(() => {
-        if (prevGetAwesomeSliderUpdateSuccess === false && GetAwesomeSliderUpdateSuccess) {
+        if (prevAwesomeSliderUpdateSuccess === false && AwesomeSliderUpdateSuccess) {
             notify('Data Updated Success', 1000, 'SUCCESS');
         }
-    }, [GetAwesomeSliderUpdateSuccess]);
+    }, [AwesomeSliderUpdateSuccess]);
 
     useEffect(() => {
-        if (prevGetAwesomeSliderUpdateError === false && GetAwesomeSliderUpdateError) {
+        if (prevAwesomeSliderUpdateError === false && AwesomeSliderUpdateError) {
             notify('Something went wrong', 1000, 'ERROR');
         }
-    }, [GetAwesomeSliderUpdateError]);
+    }, [AwesomeSliderUpdateError]);
     const handleSubmit = e => {
         e.preventDefault();
         UpdateAwesomeSlider({ image, form });
@@ -199,13 +202,13 @@ const AwesomeSlider = (props) => {
 
     )
 };
-AwesomeSlider.propTypes = {
-    GetAwesomeSliderUpdateSuccess: PropTypes.bool.isRequired,
-    GetAwesomeSliderUpdateError: PropTypes.bool.isRequired,
+Index.propTypes = {
+    AwesomeSliderUpdateSuccess: PropTypes.bool.isRequired,
+    AwesomeSliderUpdateError: PropTypes.bool.isRequired,
     UpdateAwesomeSlider: PropTypes.func.isRequired,
     //
-    GetAwesomeSliderSuccess: PropTypes.bool.isRequired,
-    GetAwesomeSliderError: PropTypes.bool.isRequired,
+    AwesomeSliderSuccess: PropTypes.bool.isRequired,
+    AwesomeSliderError: PropTypes.bool.isRequired,
 
 };
 const usePrevious = (value) => {
@@ -216,18 +219,18 @@ const usePrevious = (value) => {
     return ref.current;
 };
 const mapStateToProps = (state) => ({
-    GetAwesomeSliderUpdateSuccess: state.AwesomeSliderData.GetAwesomeSliderUpdateSuccess,
-    GetAwesomeSliderUpdateError: state.AwesomeSliderData.GetAwesomeSliderUpdateError,
+    AwesomeSliderUpdateSuccess: state.AdminAwesomeSlider.AwesomeSliderUpdateSuccess,
+    AwesomeSliderUpdateError: state.AdminAwesomeSlider.AwesomeSliderUpdateError,
     //
-    GetAwesomeSliderSuccess: state.AwesomeSliderData.GetAwesomeSliderSuccess,
-    awesomeSliderData: state.AwesomeSliderData.awesomeSliderData,
-    GetAwesomeSliderError: state.AwesomeSliderData.GetAwesomeSliderError,
+    AwesomeSliderSuccess: state.AdminAwesomeSlider.AwesomeSliderSuccess,
+    awesomeSliderData: state.AdminAwesomeSlider.awesomeSliderData,
+    AwesomeSliderError: state.AdminAwesomeSlider.AwesomeSliderError,
 });
 const mapDispatchToProps = (dispatch) => {
     return {
         UpdateAwesomeSlider: (data) => dispatch(AwesomeSliderUpdateRequest(data)),
         //
-        getAwesomeSliderData: (data) => dispatch(GetAwesomeSliderRequest(data)),
+        GetAwesomeSliderData: (data) => dispatch(AwesomeSliderRequest(data)),
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(AwesomeSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

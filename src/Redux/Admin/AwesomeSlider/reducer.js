@@ -1,14 +1,15 @@
 import { handleActions } from 'redux-actions';
 import {
-    AwesomeSliderUpdateRequest, GetAwesomeSliderUpdateSuccess, GetAwesomeSliderUpdateError,
-    GetAwesomeSliderRequest, GetAwesomeSliderSuccess, GetAwesomeSliderError
+    AwesomeSliderUpdateRequest, AwesomeSliderUpdateSuccess,
+    AwesomeSliderUpdateError, AwesomeSliderRequest,
+    AwesomeSliderSuccess, AwesomeSliderError
 } from './actions';
 
 const initialState = {
-    GetAwesomeSliderUpdateSuccess: false,
-    GetAwesomeSliderUpdateError: false,
-    GetAwesomeSliderSuccess: false,
-    GetAwesomeSliderError: false,
+    AwesomeSliderUpdateSuccess: false,
+    AwesomeSliderUpdateError: false,
+    AwesomeSliderSuccess: false,
+    AwesomeSliderError: false,
     awesomeSliderData: {},
 };
 
@@ -16,35 +17,35 @@ const reducer = handleActions(
     {
         [AwesomeSliderUpdateRequest]: (state) => ({
            ...state,
-            GetAwesomeSliderUpdateSuccess: false,
-            GetAwesomeSliderUpdateError: false,
+            AwesomeSliderUpdateSuccess: false,
+            AwesomeSliderUpdateError: false,
         }),
-        [GetAwesomeSliderUpdateSuccess]: (state) => ({
+        [AwesomeSliderUpdateSuccess]: (state) => ({
            ...state,
-            GetAwesomeSliderUpdateSuccess: true,
-            GetAwesomeSliderUpdateError: false,
+            AwesomeSliderUpdateSuccess: true,
+            AwesomeSliderUpdateError: false,
         }),
-        [GetAwesomeSliderUpdateError]: (state) => ({
+        [AwesomeSliderUpdateError]: (state) => ({
            ...state,
-            GetAwesomeSliderUpdateSuccess: false,
-            GetAwesomeSliderUpdateError: true,
+            AwesomeSliderUpdateSuccess: false,
+            AwesomeSliderUpdateError: true,
         }),
-        [GetAwesomeSliderRequest]: (state) => ({
+        [AwesomeSliderRequest]: (state) => ({
            ...state,
-            GetAwesomeSliderSuccess: false,
-            GetAwesomeSliderError: false,
+            AwesomeSliderSuccess: false,
+            AwesomeSliderError: false,
             awesomeSliderData: {},
         }),
-        [GetAwesomeSliderSuccess]: (state, { payload }) => ({
+        [AwesomeSliderSuccess]: (state, { payload }) => ({
            ...state,
-            GetAwesomeSliderSuccess: true,
-            GetAwesomeSliderError: false,
+            AwesomeSliderSuccess: true,
+            AwesomeSliderError: false,
             awesomeSliderData: payload.data,
         }),
-        [GetAwesomeSliderError]: (state) => ({
+        [AwesomeSliderError]: (state) => ({
            ...state,
-            GetAwesomeSliderSuccess: false,
-            GetAwesomeSliderError: true,
+            AwesomeSliderSuccess: false,
+            AwesomeSliderError: true,
             awesomeSliderData: {},
         }),
     },
