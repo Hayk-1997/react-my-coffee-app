@@ -1,24 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AdminTokenVerifyRequest } from '../../Redux/Admin/VerifyAdminToken/actions';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-    const { GetAdminTokenVerifySuccess, GetAdminTokenVerifyError, AdminLoginSuccess } = {...rest};
+    const {
+        GetAdminTokenVerifySuccess, GetAdminTokenVerifyError, AdminLoginSuccess
+    } = {...rest};
     const [tokenVerify, setVerifyToken] = useState(true);
     const token = localStorage.getItem('token');
-    const usePrevious = (value) => {
-        const ref = useRef();
-        useEffect(() => {
-            ref.current = value;
-        });
-        return !!ref.current;
-    };
     const prevSuccess = usePrevious(GetAdminTokenVerifySuccess);
+
     useEffect(() => {
         const { VerifyAdminToken } = {...rest};
-        if (!prevSuccess && !GetAdminTokenVerifySuccess) {
+        if (prevSuccess === false && !GetAdminTokenVerifySuccess) {
             VerifyAdminToken(token);
             if (GetAdminTokenVerifySuccess) {
                 setVerifyToken(true);
@@ -72,6 +68,14 @@ const mapDispatchToProps = (dispatch) => {
    return {
        VerifyAdminToken: (data) => dispatch(AdminTokenVerifyRequest(data)),
    }
+};
+
+const usePrevious = (value) => {
+    const ref = useRef();
+    useEffect(() => {
+        ref.current = value;
+    });
+    return !!ref.current;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProtectedRoute);

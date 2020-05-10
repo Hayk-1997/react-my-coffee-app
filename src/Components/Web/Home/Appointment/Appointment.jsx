@@ -12,17 +12,17 @@ const Appointment = (props) => {
                 <div className="row no-gutters d-md-flex align-items-center">
                    <div className="col-md-6 d-flex align-self-stretch">
                         <div style={{ height: '100vh', width: '100%' }}>
-                            <GoogleMapReact
-                                bootstrapURLKeys={{ key: 123123123 }}
-                                defaultCenter={props.center}
-                                defaultZoom={props.zoom}
-                            >
-                                <AnyReactComponent
-                                    lat={59.955413}
-                                    lng={30.337844}
-                                    text="My Marker"
-                                />
-                            </GoogleMapReact>
+                            {/*<GoogleMapReact*/}
+                            {/*    bootstrapURLKeys={{ key: 123123123 }}*/}
+                            {/*    defaultCenter={props.center}*/}
+                            {/*    defaultZoom={props.zoom}*/}
+                            {/*>*/}
+                            {/*    <AnyReactComponent*/}
+                            {/*        lat={59.955413}*/}
+                            {/*        lng={30.337844}*/}
+                            {/*        text="My Marker"*/}
+                            {/*    />*/}
+                            {/*</GoogleMapReact>*/}
                         </div>
                     </div>
                    <div className="col-md-6">

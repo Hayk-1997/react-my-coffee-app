@@ -1,16 +1,18 @@
 import { all } from 'redux-saga/effects';
-import AdminLoginSagas from './Admin/Auth/Login/sagas';
-import AdminRegisterSagas from './Admin/Auth/Register/sagas';
-import VerifyAdminTokenSagas from './Admin/VerifyAdminToken/sagas';
-import SocialSignInSagas from './Web/Auth/SocialLogin/sagas';
-import AwesomeSliderSagas from './Admin/AwesomeSlider/sagas';
+import AdminLoginSaga from './Admin/Auth/Login/saga';
+import AdminRegisterSaga from './Admin/Auth/Register/saga';
+import VerifyAdminTokenSaga from './Admin/VerifyAdminToken/saga';
+import AdminAwesomeSliderSaga from './Admin/AwesomeSlider/saga';
+import SocialSignInSaga from './Web/Auth/SocialLogin/saga';
+import CoffeeAwesomeSliderSaga from './Web/AwesomeSlider/saga';
 
 export default function* rootSagas() {
     yield all([
-        AdminLoginSagas(),
-        AdminRegisterSagas(),
-        VerifyAdminTokenSagas(),
-        SocialSignInSagas(),
-        AwesomeSliderSagas(),
+        AdminLoginSaga(),
+        AdminRegisterSaga(),
+        VerifyAdminTokenSaga(),
+        SocialSignInSaga(),
+        AdminAwesomeSliderSaga(),
+        CoffeeAwesomeSliderSaga(),
     ]);
 };

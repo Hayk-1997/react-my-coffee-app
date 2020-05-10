@@ -5,6 +5,8 @@ import {
     AwesomeSliderUpdateRequest,
     AwesomeSliderRequest
 } from '../../../../../Redux/Admin/AwesomeSlider/actions';
+import { notify } from '../../../../../Config/Notify';
+import { ToastContainer } from 'react-toastify';
 import FroalaEditor from './FroalaEditor';
 import FilePond from './FilePond';
 import './AwesomeSlider.css';
@@ -17,8 +19,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { notify } from '../../../../../Config/Notify';
-import { ToastContainer } from 'react-toastify';
 
 const useStyles = makeStyles(theme => ({
     formContent: {
@@ -57,7 +57,7 @@ function a11yProps(index) {
     };
 }
 
-const Index = (props) => {
+const AwesomeSlider = (props) => {
     const {
         UpdateAwesomeSlider, GetAwesomeSliderData,
         AwesomeSliderSuccess, awesomeSliderData,
@@ -69,7 +69,7 @@ const Index = (props) => {
     const classes = useStyles();
     const [image, setImage] = useState([
         {
-            source: "",
+            source: '',
             options: {
                 type: 'locale'
             }
@@ -202,13 +202,14 @@ const Index = (props) => {
 
     )
 };
-Index.propTypes = {
+AwesomeSlider.propTypes = {
     AwesomeSliderUpdateSuccess: PropTypes.bool.isRequired,
     AwesomeSliderUpdateError: PropTypes.bool.isRequired,
     UpdateAwesomeSlider: PropTypes.func.isRequired,
     //
     AwesomeSliderSuccess: PropTypes.bool.isRequired,
     AwesomeSliderError: PropTypes.bool.isRequired,
+    awesomeSliderData: PropTypes.object.isRequired,
 
 };
 const usePrevious = (value) => {
@@ -226,11 +227,12 @@ const mapStateToProps = (state) => ({
     awesomeSliderData: state.AdminAwesomeSlider.awesomeSliderData,
     AwesomeSliderError: state.AdminAwesomeSlider.AwesomeSliderError,
 });
+
 const mapDispatchToProps = (dispatch) => {
     return {
         UpdateAwesomeSlider: (data) => dispatch(AwesomeSliderUpdateRequest(data)),
         //
-        GetAwesomeSliderData: (data) => dispatch(AwesomeSliderRequest(data)),
+        GetAwesomeSliderData: () => dispatch(AwesomeSliderRequest()),
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(AwesomeSlider);

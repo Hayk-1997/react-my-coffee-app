@@ -7,32 +7,15 @@ import { AdminLoginRequest } from '../../../../Redux/Admin/Auth/Login/actions';
 import '../../../Admin/Styles/styles.css';
 import { useForm } from '../../../../CustomHooks/useForm';
 import { validateForm } from '../../../../Helpers/validateForm';
+import {notify} from '../../../../Config/Notify';
 
 const Login = (props) => {
-    const { AdminLoginSuccess, AdminLoginToken } = props;
+    const { AdminLoginSuccess, AdminLoginToken, AdminLoginError } = props;
     const [form, handleFormChange] = useForm({ email: '', password: ''});
-    const [verify, setVerify] = useState({
-        emailVerify: true,
-        passwordVerify: true,
+    const [verifyFields, setVerifyFields] = useState({
+        email: true,
+        password: true,
     });
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        validateForm(form, setVerify);
-        if (verify.emailVerify && verify.passwordVerify) {
-            const { AdminLogin } = props;
-            AdminLogin(form);
-        }
-    };
-
-    const usePrevious = (value) => {
-        const ref = useRef();
-        useEffect(() => {
-            ref.current = value;
-        });
-        return ref.current;
-    };
-
     const prevState = usePrevious(AdminLoginSuccess);
 
     useEffect(() => {
@@ -46,6 +29,21 @@ const Login = (props) => {
         }
     }, [AdminLoginSuccess]);
 
+    useEffect(() => {
+        if (AdminLoginError) {
+            notify('Something went wrong', 1000, 'ERROR');
+        }
+    }, [AdminLoginError]);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        validateForm(form, verifyFields, setVerifyFields);
+        if (verifyFields.email && verifyFields.password) {
+            const { AdminLogin } = props;
+            AdminLogin(form);
+        }
+    };
+    useEffect(() => {console.log(verifyFields)});
     return (
         <div className="login-page">
             <ToastContainer />
@@ -109,12 +107,14 @@ const Login = (props) => {
 
 Login.propTypes = {
     AdminLoginSuccess: PropTypes.bool.isRequired,
+    AdminLoginError: PropTypes.bool.isRequired,
     AdminLoginToken: PropTypes.string.isRequired,
     AdminLogin: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     AdminLoginSuccess: state.AdminLogin.AdminLoginSuccess,
+    AdminLoginError: state.AdminLogin.AdminLoginError,
     AdminLoginToken: state.AdminLogin.AdminLoginToken,
 });
 
@@ -122,6 +122,14 @@ const mapDispatchToProps = (dispatch) => {
     return {
         AdminLogin: (data) => dispatch(AdminLoginRequest(data))
     }
+};
+
+const usePrevious = (value) => {
+    const ref = useRef();
+    useEffect(() => {
+        ref.current = value;
+    });
+    return ref.current;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

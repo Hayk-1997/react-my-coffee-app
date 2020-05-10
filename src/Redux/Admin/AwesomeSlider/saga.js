@@ -12,10 +12,9 @@ function* GetAwesomeSliderData () {
         if (response.status === 200) {
             yield put(AwesomeSliderSuccess(response.data));
         } else {
-            yield put(AwesomeSliderError(response.data));
+            yield put(AwesomeSliderError());
         }
     } catch (e) {
-        console.log('AwesomeSlider Error: ', e);
         yield put(AwesomeSliderError());
     }
 }

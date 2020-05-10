@@ -1,12 +1,10 @@
 import Login from "../../Components/Admin/Auth/Login/Login";
 import Dashboard from "../../Components/Admin/Dashboard/Dashboard";
 import Register from "../../Components/Admin/Auth/Register/Register";
-import {Hello} from "../../Components/Admin/Hello";
 import Home from "../../Components/Admin/Home/Home";
-import { FaBeer } from 'react-icons/fa';
-import React from "react";
-import AwesomeSlider from "../../Components/Admin/Home/Containers/AwesomeSlider";
+import AwesomeSlider from "../../Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider";
 import Intro from "../../Components/Admin/Home/Containers/Intro/Intro";
+
 const routes = [
     {
         id: 1,

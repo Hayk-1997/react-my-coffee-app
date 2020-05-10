@@ -14,7 +14,7 @@ const AdminLayout = () => {
             <Switch>
                 <Route path="/admin/login" component={Login} />
                 <Route path="/admin/register" component={Register} />
-                <ProtectedRoute exact path="/admin/*"  component={Layout} />
+                <ProtectedRoute exact path="/admin/*" component={Layout} />
                 {/*<Route path="/admin/*" component={() => "404 NOT FOUND"} />*/}
             </Switch>
         </div>

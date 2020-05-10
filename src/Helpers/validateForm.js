@@ -1,28 +1,20 @@
 import validator from 'validator';
-import {notify} from "../Config/Notify";
+import { notify } from '../Config/Notify';
 
-export const validateForm = (verify, setVerify) => {
-    if (!validator.isEmail(verify.email)) {
-        __validateEmail(verify, setVerify);
+export const validateForm = (form, verifyFields, setVerifyFields) => {
+    if (!validator.isEmail(form.email)) {
+        makeValidationMessage(setVerifyFields, verifyFields, "email", 'Incorrect Email!', 1500);
     }
-    if (!validator.isLength(verify.password, {min:8})) {
-        __validatePassword(verify, setVerify);
+    if (!validator.isLength(form.password, { min:8 })) {
+        makeValidationMessage(setVerifyFields, verifyFields, "password", 'Password Min length must be (8)', 2500);
     }
 };
 
-/// Validate Functions
-const __validateEmail = (verify, setVerify) => {
-    notify('Incorrect Email!', 1500);
-    setVerify({
-        ...verify,
-        emailVerify: false
-    });
-};
-
-const __validatePassword = (verify, setVerify) => {
-    notify('Incorrect Password!', 2500);
-    setVerify({
-        ...verify,
-        passwordVerify: false
+/// Validation Message Function
+const makeValidationMessage = (setVerifyFields, verifyFields, field,  message, timeout) => {
+    notify(message, timeout, 'ERROR');
+    setVerifyFields({
+        ...verifyFields,
+        [field]: false,
     });
 };

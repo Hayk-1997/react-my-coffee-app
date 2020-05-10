@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import img from '../../../assets/web/images/about.jpg';
 import './AwesomeSlider.css';
 import '../../../assets/web/css/demo/demo1.css';
+import { Coffee_AwesomeSliderRequest } from '../../../Redux/Web/AwesomeSlider/actions'
 
-class AwesomeCarouselSlider extends Component {
-    constructor (props) {
-        super(props);
-        this.state = {};
-    }
+const AwesomeCarouselSlider = (props) =>  {
 
-    componentDidMount () {
-
-    }
-
-    render () {
-        return (
-            <main>
-                <div id="carouselExampleIndicators">
-                    <div className="content">
-                        <div className="glitch">
-                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
-                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
-                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
-                            <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
-                            <span className="slider-header">
+    useEffect(() => {
+        props.GetAwesomeSlider();
+    }, []);
+    return (
+        <main>
+            <div id="carouselExampleIndicators">
+                <div className="content">
+                    <div className="glitch">
+                        <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                        <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                        <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                        <div className="glitch__img" style={{backgroundImage: `url(${img})`}}/>
+                        <span className="slider-header">
                                 <div className="slider-item">
                                     <div className="overlay"/>
                                     <div className="container">
@@ -43,12 +40,25 @@ class AwesomeCarouselSlider extends Component {
                                     </div>
                                   </div>
                            </span>
-                        </div>
                     </div>
                 </div>
-            </main>
-        )
-    }
-}
+            </div>
+        </main>
+    )
+};
 
-export default AwesomeCarouselSlider;
+AwesomeCarouselSlider.propTypes = {
+
+};
+
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        GetAwesomeSlider: () => dispatch(Coffee_AwesomeSliderRequest()),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AwesomeCarouselSlider);

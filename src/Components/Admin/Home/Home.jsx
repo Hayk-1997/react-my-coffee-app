@@ -1,4 +1,7 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
+import { HomeToggleContext } from '../Context/HomeToggleContext';
+import Intro from './Containers/Intro/Intro';
+import AwesomeSlider from './Containers/AwesomeSlider/AwesomeSlider'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -9,9 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import AwesomeSlider from "./Containers/AwesomeSlider";
-import {HomeToggleContext} from "../Context/HomeToggleContext";
-import Intro from "./Containers/Intro/Intro";
+
 
 
 const useStyles = makeStyles(theme => ({
