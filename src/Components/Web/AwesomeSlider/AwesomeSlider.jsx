@@ -7,31 +7,27 @@ import { Coffee_AwesomeSliderRequest } from '../../../Redux/Web/AwesomeSlider/ac
 
 const AwesomeCarouselSlider = (props) =>  {
     const { GetAwesomeSlider, Coffee_AwesomeSliderData, Coffee_AwesomeSliderSuccess } = props;
-
     useEffect(() => {
         GetAwesomeSlider();
     }, []);
 
-    return (
-        <>
-            {
-                Coffee_AwesomeSliderSuccess ? (
-                    <main>
-                        <div id="carouselExampleIndicators">
-                            <div className="content">
-                                <div className="glitch">
-                                    <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
-                                    <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
-                                    <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
-                                    <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
-                                    <span className="slider-header">
+    return  Coffee_AwesomeSliderSuccess ? (
+        <main>
+            <div id="carouselExampleIndicators">
+                <div className="content">
+                    <div className="glitch">
+                        <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
+                        <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
+                        <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
+                        <div className="glitch__img" style={{backgroundImage: `url(${Coffee_AwesomeSliderData.image})`}}/>
+                        <span className="slider-header">
                                 <div className="slider-item">
                                     <div className="overlay"/>
                                     <div className="container">
                                       <div className="row slider-text justify-content-center align-items-center">
                                         <div className="col-md-8 col-sm-12 text-center ftco-animate">
                                             <span className="subheading">
-                                                <h1>Welcome</h1>
+                                                <h1>{Coffee_AwesomeSliderData.en[0].title}</h1>
                                             </span>
                                           <h3
                                               className="mb-4"
@@ -45,14 +41,11 @@ const AwesomeCarouselSlider = (props) =>  {
                                     </div>
                                   </div>
                            </span>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                ): null
-            }
-        </>
-    )
+                    </div>
+                </div>
+            </div>
+        </main>
+    ): null
 };
 
 AwesomeCarouselSlider.propTypes = {
