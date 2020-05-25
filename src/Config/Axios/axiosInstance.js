@@ -1,10 +1,18 @@
 import axios from 'axios';
+require('dotenv').config();
 
-export const axiosInstance = axios.create({
+
+const  axiosInstance = axios.create({
     baseURL: 'http://localhost:3100/',
     timeout: 2000,
     headers: {
         'Content-Type': 'application/json',
-        'authorization': localStorage.getItem('token') || '',
     },
 });
+
+ axiosInstance.interceptors.request.use((config) => {
+     config.headers.authorization = localStorage.getItem('token');
+     return config;
+ });
+
+export { axiosInstance };

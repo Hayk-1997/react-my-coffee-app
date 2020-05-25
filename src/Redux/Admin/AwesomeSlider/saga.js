@@ -2,22 +2,23 @@ import { takeLatest, put } from 'redux-saga/effects';
 import { axiosInstance } from '../../../Config/Axios/axiosInstance';
 import {
     AwesomeSliderUpdateRequest, AwesomeSliderUpdateSuccess,
-    AwesomeSliderUpdateError, AwesomeSliderRequest,
-    AwesomeSliderSuccess, AwesomeSliderError
+    AwesomeSliderUpdateError, Admin_AwesomeSliderRequest,
+    Admin_AwesomeSliderSuccess, Admin_AwesomeSliderError
 } from './actions';
 
 function* GetAwesomeSliderData () {
     try {
         const response = yield axiosInstance.get('admin/awesome-slider');
         if (response.status === 200) {
-            yield put(AwesomeSliderSuccess(response.data));
+            yield put(Admin_AwesomeSliderSuccess(response.data));
         } else {
-            yield put(AwesomeSliderError());
+            yield put(Admin_AwesomeSliderError());
         }
     } catch (e) {
-        yield put(AwesomeSliderError());
+        yield put(Admin_AwesomeSliderError());
     }
 }
+
 function* UpdateAwesomeSlider (action) {
     const {image, form} = action.payload;
     try {
@@ -33,12 +34,11 @@ function* UpdateAwesomeSlider (action) {
             yield put(AwesomeSliderUpdateError());
         }
     } catch (e) {
-        console.log('AwesomeSlider Error: ', e);
         yield put(AwesomeSliderUpdateError());
     }
 }
 
 export default function* () {
     yield takeLatest(AwesomeSliderUpdateRequest, UpdateAwesomeSlider);
-    yield takeLatest(AwesomeSliderRequest, GetAwesomeSliderData);
+    yield takeLatest(Admin_AwesomeSliderRequest, GetAwesomeSliderData);
 }

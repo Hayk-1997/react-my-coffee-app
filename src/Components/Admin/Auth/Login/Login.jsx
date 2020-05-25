@@ -43,7 +43,7 @@ const Login = (props) => {
             AdminLogin(form);
         }
     };
-    useEffect(() => {console.log(verifyFields)});
+
     return (
         <div className="login-page">
             <ToastContainer />

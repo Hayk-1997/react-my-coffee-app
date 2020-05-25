@@ -5,7 +5,6 @@ import { axiosInstance } from "../../../../Config/Axios/axiosInstance";
 function* AdminLogin (action) {
     try {
         const response = yield axiosInstance.post('admin/login', action.payload);
-        console.log('response', response);
         if (response.status === 200) {
             yield put(GetAdminLoginSuccess(response.data));
         }
