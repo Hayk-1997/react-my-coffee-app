@@ -52,11 +52,9 @@ const Register = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         validateForm();
-        console.log(props);
         if (verify.emailVerify && verify.passwordVerify && verify.nameVerify) {
             AdminRegister(form);
         }
-        console.log(form);
     };
     useEffect(() => {
         if (AdminRegisterSuccess) {

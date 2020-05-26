@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions';
 import {
     AwesomeSliderUpdateRequest, AwesomeSliderUpdateSuccess,
-    AwesomeSliderUpdateError, AwesomeSliderRequest,
-    AwesomeSliderSuccess, AwesomeSliderError
+    AwesomeSliderUpdateError, Admin_AwesomeSliderRequest,
+    Admin_AwesomeSliderSuccess, Admin_AwesomeSliderError
 } from './actions';
 
 const initialState = {
@@ -30,19 +30,19 @@ const reducer = handleActions(
             AwesomeSliderUpdateSuccess: false,
             AwesomeSliderUpdateError: true,
         }),
-        [AwesomeSliderRequest]: (state) => ({
+        [Admin_AwesomeSliderRequest]: (state) => ({
            ...state,
             AwesomeSliderSuccess: false,
             AwesomeSliderError: false,
             awesomeSliderData: {},
         }),
-        [AwesomeSliderSuccess]: (state, { payload }) => ({
+        [Admin_AwesomeSliderSuccess]: (state, { payload }) => ({
            ...state,
             AwesomeSliderSuccess: true,
             AwesomeSliderError: false,
             awesomeSliderData: payload.data,
         }),
-        [AwesomeSliderError]: (state) => ({
+        [Admin_AwesomeSliderError]: (state) => ({
            ...state,
             AwesomeSliderSuccess: false,
             AwesomeSliderError: true,

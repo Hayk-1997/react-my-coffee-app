@@ -7,7 +7,6 @@ class AuthComponent extends Component {
     constructor (props) {
         super(props);
         this.state = {};
-        console.log('prop', props);
     }
     render () {
         const {isAuthenticated} = this.props;

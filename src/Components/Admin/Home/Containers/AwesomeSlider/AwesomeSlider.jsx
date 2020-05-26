@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
     AwesomeSliderUpdateRequest,
-    AwesomeSliderRequest
+    Admin_AwesomeSliderRequest
 } from '../../../../../Redux/Admin/AwesomeSlider/actions';
 import { notify } from '../../../../../Config/Notify';
 import { ToastContainer } from 'react-toastify';
 import FroalaEditor from './FroalaEditor';
 import FilePond from './FilePond';
+import Spinner from '../../../../Spinner';
 import './AwesomeSlider.css';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './useStyles';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SaveIcon from '@material-ui/icons/Save';
@@ -20,14 +21,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-const useStyles = makeStyles(theme => ({
-    formContent: {
-        textAlign: 'center',
-    },
-    button: {
-        margin: theme.spacing(1),
-    },
-}));
+
 // Handle TabPanel
 const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -44,18 +38,6 @@ const TabPanel = (props) => {
         </Typography>
     );
 };
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
 
 const AwesomeSlider = (props) => {
     const {
@@ -85,7 +67,6 @@ const AwesomeSlider = (props) => {
     useEffect(() => {
         GetAwesomeSliderData();
     }, []);
-
     useEffect(() => {
         if (AwesomeSliderSuccess) {
             const { en, arm, image } = awesomeSliderData;
@@ -93,16 +74,21 @@ const AwesomeSlider = (props) => {
                 en: en[0], arm: arm[0]
             };
             setForm(formData);
-            setImage(prevState => ([{ ...prevState, source: 'http://localhost:3100/' + image }]));
+            setImage([
+                {
+                    source: image,
+                    options: {
+                        type: 'locale'
+                    }
+                }
+            ]);
         }
     }, [AwesomeSliderSuccess]);
-
     useEffect(() => {
         if (prevAwesomeSliderUpdateSuccess === false && AwesomeSliderUpdateSuccess) {
             notify('Data Updated Success', 1000, 'SUCCESS');
         }
     }, [AwesomeSliderUpdateSuccess]);
-
     useEffect(() => {
         if (prevAwesomeSliderUpdateError === false && AwesomeSliderUpdateError) {
             notify('Something went wrong', 1000, 'ERROR');
@@ -112,7 +98,6 @@ const AwesomeSlider = (props) => {
         e.preventDefault();
         UpdateAwesomeSlider({ image, form });
     };
-
     const handleTabChange = (event, newValue) => {
         setTab(newValue);
     };
@@ -125,7 +110,15 @@ const AwesomeSlider = (props) => {
             }
         }));
     };
-    return (
+
+    const a11yProps = (index) => {
+        return {
+            id: `simple-tab-${index}`,
+            'aria-controls': `simple-tabpanel-${index}`,
+        };
+    };
+
+    return AwesomeSliderSuccess ? (
         <div>
             <ToastContainer />
             <form noValidate autoComplete="off" className="Awesome" onSubmit={handleSubmit}>
@@ -199,9 +192,9 @@ const AwesomeSlider = (props) => {
                 </div>
             </form>
         </div>
-
-    )
+    ): <Spinner />
 };
+
 AwesomeSlider.propTypes = {
     AwesomeSliderUpdateSuccess: PropTypes.bool.isRequired,
     AwesomeSliderUpdateError: PropTypes.bool.isRequired,
@@ -212,6 +205,13 @@ AwesomeSlider.propTypes = {
     awesomeSliderData: PropTypes.object.isRequired,
 
 };
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
+
 const usePrevious = (value) => {
     const ref = useRef();
     useEffect(() => {
@@ -219,6 +219,7 @@ const usePrevious = (value) => {
     });
     return ref.current;
 };
+
 const mapStateToProps = (state) => ({
     AwesomeSliderUpdateSuccess: state.AdminAwesomeSlider.AwesomeSliderUpdateSuccess,
     AwesomeSliderUpdateError: state.AdminAwesomeSlider.AwesomeSliderUpdateError,
@@ -232,7 +233,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         UpdateAwesomeSlider: (data) => dispatch(AwesomeSliderUpdateRequest(data)),
         //
-        GetAwesomeSliderData: () => dispatch(AwesomeSliderRequest()),
+        GetAwesomeSliderData: () => dispatch(Admin_AwesomeSliderRequest()),
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AwesomeSlider);

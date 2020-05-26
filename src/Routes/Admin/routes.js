@@ -3,7 +3,7 @@ import Dashboard from "../../Components/Admin/Dashboard/Dashboard";
 import Register from "../../Components/Admin/Auth/Register/Register";
 import Home from "../../Components/Admin/Home/Home";
 import AwesomeSlider from "../../Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider";
-import Intro from "../../Components/Admin/Home/Containers/Intro/Intro";
+import Info from '../../Components/Admin/Home/Containers/Info';
 
 const routes = [
     {
@@ -59,9 +59,9 @@ const routes = [
             {
                 id: 2,
                 parent: 'home',
-                name: 'Intro',
+                name: 'Info',
                 icon: 'fa fa-slideshare',
-                component: Intro,
+                component: Info,
             }
         ]
     },
