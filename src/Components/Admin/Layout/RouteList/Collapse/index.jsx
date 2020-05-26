@@ -17,12 +17,12 @@ export default (props) => {
             in={showRouteContent === item.parent}
             timeout="auto" unmountOnExit
            >
-            <List component="div" disablePadding>
+            <List component="div" disablePadding onClick={() => passHomeToggleContext(item.name)}>
                 <ListItem button className={classes.nested}>
                     <ListItemIcon>
                         <Icon><i className={item.icon}/></Icon>
                     </ListItemIcon>
-                    <Link to={route.path} onClick={() => passHomeToggleContext(item.name)} className={classes.link}>
+                    <Link to={route.path} className={classes.link}>
                         { item.name }
                     </Link>
                 </ListItem>

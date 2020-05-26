@@ -9,8 +9,9 @@ import { notify } from '../../../../../Config/Notify';
 import { ToastContainer } from 'react-toastify';
 import FroalaEditor from './FroalaEditor';
 import FilePond from './FilePond';
+import Spinner from '../../../../Spinner';
 import './AwesomeSlider.css';
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './useStyles';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SaveIcon from '@material-ui/icons/Save';
@@ -19,15 +20,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Spinner from '../../../../Spinner';
-const useStyles = makeStyles(theme => ({
-    formContent: {
-        textAlign: 'center',
-    },
-    button: {
-        margin: theme.spacing(1),
-    },
-}));
+
+
 // Handle TabPanel
 const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -44,13 +38,6 @@ const TabPanel = (props) => {
         </Typography>
     );
 };
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
 
 const AwesomeSlider = (props) => {
     const {
@@ -123,6 +110,14 @@ const AwesomeSlider = (props) => {
             }
         }));
     };
+
+    const a11yProps = (index) => {
+        return {
+            id: `simple-tab-${index}`,
+            'aria-controls': `simple-tabpanel-${index}`,
+        };
+    };
+
     return AwesomeSliderSuccess ? (
         <div>
             <ToastContainer />

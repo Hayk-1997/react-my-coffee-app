@@ -59,8 +59,8 @@ export default (props) => {
                     return (
                         route.auth ?
                             (
-                            <div key={index}>
-                                <ListItem button onClick={() => openRouteContent(route.name)}>
+                            <div key={index} onClick={() => openRouteContent(route.name)}>
+                                <ListItem button>
                                     <ListItemIcon>
                                         <Icon><i className={route.icon} /></Icon>
                                     </ListItemIcon>
