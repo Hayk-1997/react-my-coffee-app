@@ -1,0 +1,31 @@
+@import '../style.css';
+/*///////////////////*/
+.Info {
+  border-color: #424242;
+  padding: 8px;
+}
+.Info .title-field {
+  margin: 8px;
+}
+.Info .title-field #arm-title,
+.Info .title-field #en-title {
+  color: #fff;
+}
+.Info .title-field .MuiFilledInput-underline:after {
+  transform: scaleX(1);
+  border-bottom: 2px solid #fff;
+  pointer-events: none;
+}
+.Info .description-field,
+.Info .upload-field {
+  margin: 8px;
+}
+.Info .submit-box {
+  display: flex;
+  justify-content: end;
+}
+.Info .MuiPaper-rounded {
+  background-color: inherit !important;
+}
+
+/*# sourceMappingURL=Info.css.map */
