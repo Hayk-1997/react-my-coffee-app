@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
+import SearchIconModal from './SearchIconModal';
 import { ToastContainer } from 'react-toastify';
 import './Info.css';
 import useStyles from '../../useStyles';
@@ -10,16 +11,18 @@ import TabPanel from '../../../TypoGraphy';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import Grid from '@material-ui/core/Grid';
+
 
 const Info = (props) => {
     const classes = useStyles();
     const [tab, setTab] = useState(0);
-    const fields = { title: '', description: '' };
+    const fields = { phone: '', description: '' };
     const [form, setForm] = useState({
         en: fields,
         arm: fields
     });
-
+    const [open, setOpen] = useState(false);
     const handleInputChange = (name, key, value) => {
         setForm((prevState) => ({
             ...prevState,
@@ -42,6 +45,14 @@ const Info = (props) => {
         e.preventDefault();
 
     };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return(
         <div>
             <ToastContainer />
@@ -53,44 +64,44 @@ const Info = (props) => {
                     </Tabs>
                 </AppBar>
                 <TabPanel value={tab} index={0}>
-                    <div className="title-field">
-                        <TextField
-                            id="en-title"
-                            className="en-awesome-title"
-                            placeholder="Title"
-                            fullWidth
-                            margin="normal"
-                            multiline={true}
-                            variant="filled"
-                            value={form.en.title}
-                            onChange={(e) => handleInputChange('en','title', e.target.value)}
-                        />
-                    </div>
-                    <div className="description-field">
-                      fgjhgjghjghjghj
+                    <div className="row">
+                        <Grid container spacing={3}>
+                            <Grid item xs>
+                               <div className="phone-box">
+                                   <h3>Phone Number</h3>
+                                   <div className="phone-textField">
+                                       <TextField
+                                           id="en-phone"
+                                           className="en-awesome-phone"
+                                           placeholder="Phone"
+                                           fullWidth
+                                           margin="normal"
+                                           multiline={true}
+                                           variant="filled"
+                                           value={form.en.phone}
+                                           onChange={(e) => handleInputChange('en','phone', e.target.value)}
+                                       />
+                                   </div>
+                                   <div className="icon-search-box">
+                                       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                                           Open full-screen dialog
+                                       </Button>
+                                       <SearchIconModal
+                                           open={open}
+                                           onClose={handleClose}
+                                       />
+                                   </div>
+                               </div>
+                            </Grid>
+                            <Grid item xs>
+                                <div>sdfsdfsdfsdf</div>
+                            </Grid>
+                            <Grid item xs>
+                                <div>sdfsdfsdfsdf</div>
+                            </Grid>
+                        </Grid>
                     </div>
                 </TabPanel>
-                <TabPanel value={tab} index={1}>
-                    <div className="title-field">
-                        <TextField
-                            id="arm-title"
-                            className="arm-awesome-title"
-                            placeholder="Title"
-                            fullWidth
-                            margin="normal"
-                            multiline={true}
-                            variant="filled"
-                            value={form.arm.title}
-                            onChange={(e) => handleInputChange('arm', 'title', e.target.value)}
-                        />
-                    </div>
-                    <div className="description-field">
-                      ghjghjghj
-                    </div>
-                </TabPanel>
-                <div className="upload-field">
-                 ghkhjkhjk
-                </div>
                 <div className="submit-box">
                     <Button
                         variant="contained"

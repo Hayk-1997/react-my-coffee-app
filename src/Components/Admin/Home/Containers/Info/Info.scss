@@ -1,4 +1,5 @@
-@import '../style.css';
+@import '../style.scss';
+$titleColor: #fff;
 /*///////////////////*/
 .Info {
   border-color: #424242;
@@ -16,14 +17,15 @@
     }
   }
   .description-field,
-  .upload-field {
-    margin: 8px;
-  }
   .submit-box {
     display: flex;
     justify-content: end;
   }
   .MuiPaper-rounded {
     background-color: inherit !important;
+  }
+  .phone-box h3,
+  .MuiFilledInput-inputMultiline {
+    color: $titleColor;
   }
 }
