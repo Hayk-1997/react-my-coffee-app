@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect, useCallback }  from 'react';
 import PropTypes from 'prop-types';
 import SearchIconModal from './SearchIconModal';
 import { ToastContainer } from 'react-toastify';
@@ -17,40 +17,56 @@ import Grid from '@material-ui/core/Grid';
 const Info = (props) => {
     const classes = useStyles();
     const [tab, setTab] = useState(0);
-    const fields = { phone: '', description: '' };
+    const [lang, setLang] = useState('en');
+    const fields = {
+        phone: { number: '', description: '', icon : '' },
+        address: { title: '', description: '', icon : '' },
+        workingHours: { title: '', description: '', icon : '' },
+    };
     const [form, setForm] = useState({
-        en: fields,
-        arm: fields
+        en: {...fields},
+        arm: {...fields},
     });
     const [open, setOpen] = useState(false);
-    const handleInputChange = (name, key, value) => {
+    const [isModalShow, setisModalShow] = useState({
+        phone: false,
+        address: false,
+        workingHours: false,
+    });
+    const handleInputChange = (lang, key, name, value) => {
         setForm((prevState) => ({
             ...prevState,
-            [name]: {
-                ...prevState[name],
-                [key]: value
+            [lang]: {
+                ...prevState[lang],
+               [key]: {
+                   ...prevState[lang][key],
+                   [name]: value
+               }
             }
         }));
     };
-    const a11yProps = (index) => {
-        return {
-            id: `simple-tab-${index}`,
-            'aria-controls': `simple-tabpanel-${index}`,
-        };
-    };
-    const handleTabChange = (event, newValue) => {
-        setTab(newValue);
+    const handleTabChange = (tab, lang) => {
+        setTab(tab);
+        setLang(lang);
     };
     const handleSubmit = e => {
         e.preventDefault();
 
     };
-    const handleClickOpen = () => {
+    const handleClickOpen = (key) => {
+        setisModalShow((prevState) => ({
+            ...prevState,
+            [key]: true,
+        }));
         setOpen(true);
     };
 
     const handleClose = () => {
-        setOpen(false);
+        setisModalShow(() => ({
+            phone: false,
+            address: false,
+            workingHours: false,
+        }));
     };
 
     return(
@@ -58,50 +74,126 @@ const Info = (props) => {
             <ToastContainer />
             <form noValidate autoComplete="off" className="Info" onSubmit={handleSubmit}>
                 <AppBar position="static">
-                    <Tabs value={tab} onChange={handleTabChange} aria-label="simple tabs example">
-                        <Tab label="English Tab" {...a11yProps(0)} />
-                        <Tab label="Armenian Tab" {...a11yProps(1)} />
+                    <Tabs value={tab} aria-label="simple tabs example">
+                        <Tab label="English Tab" onClick={() => handleTabChange(0, 'en')} />
+                        <Tab label="Armenian Tab" onClick={() => handleTabChange(1, 'arm')} />
                     </Tabs>
                 </AppBar>
-                <TabPanel value={tab} index={0}>
-                    <div className="row">
-                        <Grid container spacing={3}>
-                            <Grid item xs>
-                               <div className="phone-box">
-                                   <h3>Phone Number</h3>
-                                   <div className="phone-textField">
-                                       <TextField
-                                           id="en-phone"
-                                           className="en-awesome-phone"
-                                           placeholder="Phone"
-                                           fullWidth
-                                           margin="normal"
-                                           multiline={true}
-                                           variant="filled"
-                                           value={form.en.phone}
-                                           onChange={(e) => handleInputChange('en','phone', e.target.value)}
-                                       />
-                                   </div>
-                                   <div className="icon-search-box">
-                                       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                                           Open full-screen dialog
-                                       </Button>
-                                       <SearchIconModal
-                                           open={open}
-                                           onClose={handleClose}
-                                       />
-                                   </div>
-                               </div>
-                            </Grid>
-                            <Grid item xs>
-                                <div>sdfsdfsdfsdf</div>
-                            </Grid>
-                            <Grid item xs>
-                                <div>sdfsdfsdfsdf</div>
-                            </Grid>
+                <div className="row container-box">
+                    <Grid container spacing={3}>
+                        <Grid item lg={4} md={6} xs={12}>
+                            <div className="phone-box">
+                                <span><h3>Phone Number</h3></span>
+                                <div className="phone-number">
+                                    <TextField
+                                        className="textField"
+                                        placeholder="Phone Number"
+                                        fullWidth
+                                        margin="normal"
+                                        multiline={true}
+                                        variant="filled"
+                                        value={form[lang].phone.number}
+                                        onChange={(e) => handleInputChange(lang,'phone', 'number', e.target.value)}
+                                    />
+                                </div>
+                                <div className="phone-description">
+                                    <TextField
+                                        className="textField"
+                                        placeholder="Description"
+                                        fullWidth
+                                        margin="normal"
+                                        multiline={true}
+                                        variant="filled"
+                                        value={form[lang].phone.description}
+                                        onChange={(e) => handleInputChange(lang,'phone','description', e.target.value)}
+                                    />
+                                </div>
+                                <div className="icon-search-box">
+                                    <Button variant="outlined" color="primary" onClick={() => handleClickOpen('phone')}>
+                                        Open full-screen dialog
+                                    </Button>
+                                    {
+                                        isModalShow.phone ? <SearchIconModal onClose={handleClose} title="Phone Icons" /> : null
+                                    }
+                                </div>
+                            </div>
                         </Grid>
-                    </div>
-                </TabPanel>
+                        <Grid item lg={4} md={6} xs={12}>
+                            <div className="address-box">
+                                <span><h3>Address</h3></span>
+                                <div className="address-title">
+                                    <TextField
+                                        className="textField"
+                                        placeholder="Address"
+                                        fullWidth
+                                        margin="normal"
+                                        multiline={true}
+                                        variant="filled"
+                                        value={form[lang].address.title}
+                                        onChange={(e) => handleInputChange(lang,'address', 'title', e.target.value)}
+                                    />
+                                </div>
+                                <div className="address-description">
+                                    <TextField
+                                        className="textField"
+                                        placeholder="Description"
+                                        fullWidth
+                                        margin="normal"
+                                        multiline={true}
+                                        variant="filled"
+                                        value={form[lang].address.description}
+                                        onChange={(e) => handleInputChange(lang,'address', 'description', e.target.value)}
+                                    />
+                                </div>
+                                <div className="icon-search-box">
+                                    <Button variant="outlined" color="primary" onClick={() => handleClickOpen('address')}>
+                                        Open full-screen dialog
+                                    </Button>
+                                    {
+                                        isModalShow.address ? <SearchIconModal onClose={handleClose} title="Address Icons" /> : null
+                                    }
+                                </div>
+                            </div>
+                        </Grid>
+                        <Grid item lg={4} md={6} xs={12}>
+                            <div className="workingHours-box">
+                                <span><h3>Working Hours</h3></span>
+                                <div className="workingHours-title">
+                                    <TextField
+                                        className="textField"
+                                        placeholder="198 West 21th Street"
+                                        fullWidth
+                                        margin="normal"
+                                        multiline={true}
+                                        variant="filled"
+                                        value={form[lang].workingHours.title}
+                                        onChange={(e) => handleInputChange(lang,'workingHours', 'title', e.target.value)}
+                                    />
+                                </div>
+                                <div className="workingHours-description">
+                                    <TextField
+                                        className="textField"
+                                        placeholder="Description"
+                                        fullWidth
+                                        margin="normal"
+                                        multiline={true}
+                                        variant="filled"
+                                        value={form[lang].workingHours.description}
+                                        onChange={(e) => handleInputChange(lang,'workingHours', 'description', e.target.value)}
+                                    />
+                                </div>
+                                <div className="icon-search-box">
+                                    <Button variant="outlined" color="primary" onClick={() => handleClickOpen('workingHours')}>
+                                        Open full-screen dialog
+                                    </Button>
+                                    {
+                                        isModalShow.workingHours ? <SearchIconModal onClose={handleClose} title="Working Hours Icons" /> : null
+                                    }
+                                </div>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </div>
                 <div className="submit-box">
                     <Button
                         variant="contained"

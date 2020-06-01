@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
@@ -27,19 +27,33 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default (props) => {
+const SearchIconModal = (props) => {
     const classes = useStyles();
-    const { open, onClose } = props;
-    console.log(props);
+    const { onClose, title } = props;
+
+    useEffect(() => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer CR60J0mWGfAVFU74vkYe4zIkKUFUojPexsaSICaNTPIKnILNbE76miRPpShdiLTq");
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+
+        fetch("https://api.iconfinder.com/v4/icons/search?query=arrow&count=10", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+    });
     return (
-        <Dialog fullScreen open={open} onClose={onClose} TransitionComponent={Transition}>
+        <Dialog fullScreen open onClose={onClose} TransitionComponent={Transition}>
             <AppBar className={classes.appBar}>
                 <Toolbar>
                     <IconButton edge="start" color="inherit" onClick={onClose} aria-label="close">
                         <CloseIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Sound
+                        {title}
                     </Typography>
                     <Button autoFocus color="inherit" onClick={onClose}>
                         save
@@ -57,4 +71,6 @@ export default (props) => {
             </List>
         </Dialog>
     );
-}
+};
+
+export default React.memo(SearchIconModal);

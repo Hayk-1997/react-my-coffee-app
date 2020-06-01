@@ -39,8 +39,18 @@ button.MuiButton-containedPrimary:hover {
   background-color: inherit !important;
 }
 .Info .phone-box h3,
+.Info .address-box h3,
+.Info .workingHours-box h3 {
+  color: #bfbfbf;
+}
 .Info .MuiFilledInput-inputMultiline {
   color: #fff;
+}
+.Info .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true {
+  background-color: #3232368c;
+}
+.Info .container-box {
+  padding: 24px;
 }
 
 /*# sourceMappingURL=Info.css.map */

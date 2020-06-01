@@ -83,11 +83,11 @@ const AwesomeSlider = (props) => {
     const handleTabChange = (event, newValue) => {
         setTab(newValue);
     };
-    const handleInputChange = (name, key, value) => {
+    const handleInputChange = (lang, key, value) => {
         setForm((prevState) => ({
             ...prevState,
-            [name]: {
-                ...prevState[name],
+            [lang]: {
+                ...prevState[lang],
                 [key]: value
             }
         }));

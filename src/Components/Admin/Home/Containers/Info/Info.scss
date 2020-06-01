@@ -25,7 +25,18 @@ $titleColor: #fff;
     background-color: inherit !important;
   }
   .phone-box h3,
+  .address-box h3,
+  .workingHours-box h3 {
+    color: $inputColor;
+  }
   .MuiFilledInput-inputMultiline {
     color: $titleColor;
+  }
+
+  .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true {
+    background-color: $mainColor;
+  }
+  .container-box {
+    padding: 24px;
   }
 }
