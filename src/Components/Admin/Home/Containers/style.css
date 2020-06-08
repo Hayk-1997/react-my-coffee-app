@@ -1,0 +1,16 @@
+.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic {
+  background-color: #3232368c;
+}
+
+.MuiTab-textColorInherit.Mui-selected {
+  outline: none;
+}
+
+button.MuiButton-containedPrimary {
+  background-color: #3232368c;
+}
+button.MuiButton-containedPrimary:hover {
+  background-color: #15781beb;
+}
+
+/*# sourceMappingURL=style.css.map */

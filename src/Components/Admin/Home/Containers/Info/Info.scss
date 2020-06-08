@@ -1,0 +1,42 @@
+@import '../style.scss';
+$titleColor: #fff;
+/*///////////////////*/
+.Info {
+  border-color: #424242;
+  padding: 8px;
+  .title-field {
+    margin: 8px;
+    #arm-title,
+    #en-title {
+      color: #fff;
+    }
+    .MuiFilledInput-underline:after {
+      transform: scaleX(1);
+      border-bottom: 2px solid #fff;
+      pointer-events: none;
+    }
+  }
+  .description-field,
+  .submit-box {
+    display: flex;
+    justify-content: end;
+  }
+  .MuiPaper-rounded {
+    background-color: inherit !important;
+  }
+  .phone-box h3,
+  .address-box h3,
+  .workingHours-box h3 {
+    color: $inputColor;
+  }
+  .MuiFilledInput-inputMultiline {
+    color: $titleColor;
+  }
+
+  .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true {
+    background-color: $mainColor;
+  }
+  .container-box {
+    padding: 24px;
+  }
+}

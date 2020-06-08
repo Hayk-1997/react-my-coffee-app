@@ -41,8 +41,8 @@ const Home = (props) => {
             {
 
                 passedContext === 'AwesomeSlider' ? <AwesomeSlider {...props} /> :
-                        passedContext === 'Info' ? <Info {...props} /> :
-                            gridLayout()
+                    passedContext === 'Info' ? <Info {...props} /> :
+                        gridLayout()
             }
         </div>
     );

@@ -26,6 +26,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
             setVerifyToken(false);
         }
     },[GetAdminTokenVerifyError]);
+
     return (
         <Route
             {...rest}

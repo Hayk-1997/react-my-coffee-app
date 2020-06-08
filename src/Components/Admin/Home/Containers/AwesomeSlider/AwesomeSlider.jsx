@@ -5,6 +5,7 @@ import {
     AwesomeSliderUpdateRequest,
     Admin_AwesomeSliderRequest
 } from '../../../../../Redux/Admin/AwesomeSlider/actions';
+import TabPanel from '../../../TypoGraphy';
 import { notify } from '../../../../../Config/Notify';
 import { ToastContainer } from 'react-toastify';
 import FroalaEditor from './FroalaEditor';
@@ -18,26 +19,6 @@ import SaveIcon from '@material-ui/icons/Save';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-
-
-// Handle TabPanel
-const TabPanel = (props) => {
-    const { children, value, index, ...other } = props;
-    return (
-        <Typography
-            component="div"
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && <Box p={3}>{children}</Box>}
-        </Typography>
-    );
-};
 
 const AwesomeSlider = (props) => {
     const {
@@ -94,6 +75,7 @@ const AwesomeSlider = (props) => {
             notify('Something went wrong', 1000, 'ERROR');
         }
     }, [AwesomeSliderUpdateError]);
+
     const handleSubmit = e => {
         e.preventDefault();
         UpdateAwesomeSlider({ image, form });
@@ -101,16 +83,15 @@ const AwesomeSlider = (props) => {
     const handleTabChange = (event, newValue) => {
         setTab(newValue);
     };
-    const handleInputChange = (name, key, value) => {
+    const handleInputChange = (lang, key, value) => {
         setForm((prevState) => ({
             ...prevState,
-            [name]: {
-                ...prevState[name],
+            [lang]: {
+                ...prevState[lang],
                 [key]: value
             }
         }));
     };
-
     const a11yProps = (index) => {
         return {
             id: `simple-tab-${index}`,
