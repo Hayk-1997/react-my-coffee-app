@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useCallback }  from 'react';
 import PropTypes from 'prop-types';
-import SearchIconModal from './SearchIconModal';
 import { ToastContainer } from 'react-toastify';
 import './Info.css';
 import useStyles from '../../useStyles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import TabPanel from '../../../TypoGraphy';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import Grid from '@material-ui/core/Grid';
+import SearchIconModal from './SearchIconModal';
 
 
 const Info = (props) => {
@@ -28,7 +27,7 @@ const Info = (props) => {
         arm: {...fields},
     });
     const [open, setOpen] = useState(false);
-    const [isModalShow, setisModalShow] = useState({
+    const [isModalShow, setIsModalShow] = useState({
         phone: false,
         address: false,
         workingHours: false,
@@ -54,15 +53,14 @@ const Info = (props) => {
 
     };
     const handleClickOpen = (key) => {
-        setisModalShow((prevState) => ({
+        setIsModalShow((prevState) => ({
             ...prevState,
             [key]: true,
         }));
         setOpen(true);
     };
-
     const handleClose = () => {
-        setisModalShow(() => ({
+        setIsModalShow(() => ({
             phone: false,
             address: false,
             workingHours: false,
@@ -113,7 +111,13 @@ const Info = (props) => {
                                         Open full-screen dialog
                                     </Button>
                                     {
-                                        isModalShow.phone ? <SearchIconModal onClose={handleClose} title="Phone Icons" /> : null
+                                        isModalShow.phone ? (
+                                            <SearchIconModal
+                                                onClose={handleClose}
+                                                title="Phone Icons"
+                                                query="phone"
+                                            />
+                                        ) : null
                                     }
                                 </div>
                             </div>
@@ -150,7 +154,13 @@ const Info = (props) => {
                                         Open full-screen dialog
                                     </Button>
                                     {
-                                        isModalShow.address ? <SearchIconModal onClose={handleClose} title="Address Icons" /> : null
+                                        isModalShow.address ? (
+                                            <SearchIconModal
+                                                onClose={handleClose}
+                                                title="Phone Icons"
+                                                query="address"
+                                            />
+                                        ) : null
                                     }
                                 </div>
                             </div>
@@ -187,7 +197,13 @@ const Info = (props) => {
                                         Open full-screen dialog
                                     </Button>
                                     {
-                                        isModalShow.workingHours ? <SearchIconModal onClose={handleClose} title="Working Hours Icons" /> : null
+                                        isModalShow.workingHours ? (
+                                            <SearchIconModal
+                                                onClose={handleClose}
+                                                title="Phone Icons"
+                                                query="hours"
+                                            />
+                                        ) : null
                                     }
                                 </div>
                             </div>
