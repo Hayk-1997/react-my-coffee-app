@@ -1,7 +1,5 @@
 import React, { useState }  from 'react';
-import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
-import './Info.css';
 import useStyles from '../../useStyles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -11,9 +9,9 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import Grid from '@material-ui/core/Grid';
 import SearchIconModal from './SearchIconModal';
+import './Info.css';
 
-
-const Info = (props) => {
+const Info = () => {
     const classes = useStyles();
     const [tab, setTab] = useState(0);
     const [lang, setLang] = useState('en');
@@ -26,7 +24,6 @@ const Info = (props) => {
         en: {...fields},
         arm: {...fields},
     });
-    // const [open, setOpen] = useState(false);
     const [isModalShow, setIsModalShow] = useState({
         phone: false,
         address: false,
@@ -228,10 +225,5 @@ const Info = (props) => {
         </div>
     )
 };
-
-Info.propTypes = {
-
-};
-
 
 export default Info;
