@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
-import routes from "../../../Routes/Admin/routes";
-import { Route } from "react-router-dom";
+import routes from '../../../Routes/Admin/routes';
+import { Route } from 'react-router-dom';
 import RouteList from './RouteList';
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import clsx from "clsx";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Typography from "@material-ui/core/Typography";
-import MailIcon from "@material-ui/icons/Mail";
-import { useTheme } from "@material-ui/core/styles";
-import Badge from "@material-ui/core/Badge";
-import { AccountCircle } from "@material-ui/icons";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import clsx from 'clsx';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Typography from '@material-ui/core/Typography';
+import MailIcon from '@material-ui/icons/Mail';
+import Badge from '@material-ui/core/Badge';
+import { AccountCircle } from '@material-ui/icons';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
-import RenderMenu from "./RenderMenu/RenderMenu";
-import RenderMobileMenu from "./RenderMobileMenu/RenderMobileMenu";
-import useStyles from "../useStyles/useStyle";
-
-//
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+import RenderMenu from './RenderMenu/RenderMenu';
+import RenderMobileMenu from './RenderMobileMenu/RenderMobileMenu';
+import useStyles from '../useStyles/useStyle';
 import { HomeToggleContext } from '../Context/HomeToggleContext';
 
 const Layout = (props) => {

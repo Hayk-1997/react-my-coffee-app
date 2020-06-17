@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback }  from 'react';
+import React, { useState }  from 'react';
 import PropTypes from 'prop-types';
 import { ToastContainer } from 'react-toastify';
 import './Info.css';
@@ -18,15 +18,15 @@ const Info = (props) => {
     const [tab, setTab] = useState(0);
     const [lang, setLang] = useState('en');
     const fields = {
-        phone: { number: '', description: '', icon : '' },
-        address: { title: '', description: '', icon : '' },
-        workingHours: { title: '', description: '', icon : '' },
+        phone: { number: '', description: '', icon : {} },
+        address: { title: '', description: '', icon : {} },
+        workingHours: { title: '', description: '', icon : {} },
     };
     const [form, setForm] = useState({
         en: {...fields},
         arm: {...fields},
     });
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const [isModalShow, setIsModalShow] = useState({
         phone: false,
         address: false,
@@ -57,7 +57,6 @@ const Info = (props) => {
             ...prevState,
             [key]: true,
         }));
-        setOpen(true);
     };
     const handleClose = () => {
         setIsModalShow(() => ({
@@ -116,6 +115,7 @@ const Info = (props) => {
                                                 onClose={handleClose}
                                                 title="Phone Icons"
                                                 query="phone"
+                                                language={lang}
                                             />
                                         ) : null
                                     }
@@ -159,6 +159,7 @@ const Info = (props) => {
                                                 onClose={handleClose}
                                                 title="Phone Icons"
                                                 query="address"
+                                                language={lang}
                                             />
                                         ) : null
                                     }
@@ -202,6 +203,7 @@ const Info = (props) => {
                                                 onClose={handleClose}
                                                 title="Phone Icons"
                                                 query="hours"
+                                                language={lang}
                                             />
                                         ) : null
                                     }

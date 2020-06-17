@@ -1,3 +1,3 @@
 import { axiosInstance } from '../../Config/Axios/axiosInstance';
 
-export default action => axiosInstance.post('admin/upload-icon', action);
+export default (icon, field, language) => axiosInstance.put('admin/info/upload-icon', {icon, field, language});
