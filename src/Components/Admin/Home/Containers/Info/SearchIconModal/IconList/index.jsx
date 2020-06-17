@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 
 const IconList = (props) => {
-    const { formatIcons, classes, handleSelectIcon } = props;
+    const { formatIcons, classes, uploadIcon, query, language } = props;
     return (
         <List>
             {
@@ -14,7 +14,7 @@ const IconList = (props) => {
                         <ListItem
                             button
                             key={index}
-                            onClick={() => handleSelectIcon(icon)}
+                            onClick={() => uploadIcon(icon, query, language)}
                         >
                             <ListItemText
                                 primary={icon.tags.join(' ')}
@@ -34,7 +34,9 @@ const IconList = (props) => {
 IconList.propTypes = {
     formatIcons: PropTypes.array.isRequired,
     classes: PropTypes.object.isRequired,
-    handleSelectIcon: PropTypes.func.isRequired,
+    uploadIcon: PropTypes.func.isRequired,
+    query: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
 };
 
 export default IconList;

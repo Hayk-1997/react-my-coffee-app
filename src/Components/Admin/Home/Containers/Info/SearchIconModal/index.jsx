@@ -15,7 +15,7 @@ import IconList from './IconList';
 
 const SearchIconModal = (props) => {
     const classes = useStyles();
-    const { onClose, title, query } = props;
+    const { onClose, title, query, language } = props;
     const [searchIcon, setSearchIcon] = useState('');
     const [selectedIcon, setSelectedIcon] = useState({});
     const [icons, setIcon] = useState([]);
@@ -50,9 +50,10 @@ const SearchIconModal = (props) => {
         Icons.getIcons(queryParam).then(response => setIcon(response.data.icons));
     };
 
-    const handleSelectIcon = icon => {
+    const uploadIcon = (icon, query, language) => {
+        const field= query;
         setSelectedIcon(icon);
-        Icons.UploadIcon(icon).then(response => console.log(response));
+        Icons.UploadIcon(icon, field, language).then(response => console.log(response));
     };
 
     return (
@@ -78,7 +79,9 @@ const SearchIconModal = (props) => {
                     <IconList
                         formatIcons={formatIcons}
                         classes={classes}
-                        handleSelectIcon={handleSelectIcon}
+                        uploadIcon={uploadIcon}
+                        query={query}
+                        language={language}
                     />
                 ) : <Spinner />
             }
@@ -89,7 +92,8 @@ const SearchIconModal = (props) => {
 SearchIconModal.propTypes = {
     onClose: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
-    query: PropTypes.string.isRequired
+    query: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
 };
 
 export default SearchIconModal;
