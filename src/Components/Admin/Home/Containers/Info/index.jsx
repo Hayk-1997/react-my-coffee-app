@@ -1,5 +1,8 @@
-import React, { useState }  from 'react';
+import React, {useEffect, useState} from 'react';
 import { ToastContainer } from 'react-toastify';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Admin_InfoRequest } from '../../../../../Redux/Admin/Info/actions';
 import useStyles from '../../useStyles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -9,10 +12,14 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import Grid from '@material-ui/core/Grid';
 import SearchIconModal from './SearchIconModal';
+import Spinner from '../../../../Spinner';
+import Avatar from '@material-ui/core/Avatar';
 import './Info.css';
 
-const Info = () => {
+const Info = (props) => {
+    const { GetAdminInfoData, InfoSuccess, InfoData } = props;
     const classes = useStyles();
+    const [loading, setLoading] = useState(true);
     const [tab, setTab] = useState(0);
     const [lang, setLang] = useState('en');
     const fields = {
@@ -29,6 +36,16 @@ const Info = () => {
         address: false,
         workingHours: false,
     });
+    useEffect(() => {
+        GetAdminInfoData();
+    }, []);
+    useEffect(() => {
+        if (InfoSuccess) {
+            setForm(InfoData);
+            setLoading(false);
+        }
+    }, [InfoSuccess]);
+
     const handleInputChange = (lang, key, name, value) => {
         setForm((prevState) => ({
             ...prevState,
@@ -63,7 +80,7 @@ const Info = () => {
         }));
     };
 
-    return(
+    return !loading ? (
         <div>
             <ToastContainer />
             <form noValidate autoComplete="off" className="Info" onSubmit={handleSubmit}>
@@ -101,6 +118,12 @@ const Info = () => {
                                         value={form[lang].phone.description}
                                         onChange={(e) => handleInputChange(lang,'phone','description', e.target.value)}
                                     />
+                                </div>
+                                <div className={classes.avatarField}>
+                                    <div className={classes.avatarLarge}>
+                                        <Avatar
+                                            src={form[lang].phone.icon.item.preview_url} />
+                                    </div>
                                 </div>
                                 <div className="icon-search-box">
                                     <Button variant="outlined" color="primary" onClick={() => handleClickOpen('phone')}>
@@ -146,6 +169,12 @@ const Info = () => {
                                         onChange={(e) => handleInputChange(lang,'address', 'description', e.target.value)}
                                     />
                                 </div>
+                                <div className={classes.avatarField}>
+                                    <div className={classes.avatarLarge}>
+                                        <Avatar
+                                            src={form[lang].address.icon.item.preview_url} />
+                                    </div>
+                                </div>
                                 <div className="icon-search-box">
                                     <Button variant="outlined" color="primary" onClick={() => handleClickOpen('address')}>
                                         Open full-screen dialog
@@ -190,6 +219,12 @@ const Info = () => {
                                         onChange={(e) => handleInputChange(lang,'workingHours', 'description', e.target.value)}
                                     />
                                 </div>
+                                <div className={classes.avatarField}>
+                                    <div className={classes.avatarLarge}>
+                                        <Avatar
+                                            src={form[lang].workingHours.icon.item.preview_url} />
+                                    </div>
+                                </div>
                                 <div className="icon-search-box">
                                     <Button variant="outlined" color="primary" onClick={() => handleClickOpen('workingHours')}>
                                         Open full-screen dialog
@@ -199,7 +234,7 @@ const Info = () => {
                                             <SearchIconModal
                                                 onClose={handleClose}
                                                 title="Phone Icons"
-                                                query="hours"
+                                                query="workingHours"
                                                 language={lang}
                                             />
                                         ) : null
@@ -223,7 +258,24 @@ const Info = () => {
                 </div>
             </form>
         </div>
-    )
+    ): <Spinner />;
 };
 
-export default Info;
+Info.propTypes = {
+    GetAdminInfoData: PropTypes.func.isRequired,
+    InfoSuccess: PropTypes.bool.isRequired,
+    InfoError: PropTypes.bool.isRequired,
+    InfoData: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+    InfoSuccess: state.AdminInfoData.InfoSuccess,
+    InfoError: state.AdminInfoData.InfoError,
+    InfoData: state.AdminInfoData.InfoData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    GetAdminInfoData: () => dispatch(Admin_InfoRequest()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Info);
