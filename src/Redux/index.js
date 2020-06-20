@@ -6,7 +6,7 @@ import AdminRegister from './Admin/Auth/Register/reducer';
 import VerifyAdminToken from './Admin/VerifyAdminToken/reducer';
 import SocialSignIn from './Web/Auth/SocialLogin/reducer';
 import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
-
+import AdminInfoData from './Admin/Info/reducer';
 // COFFEE
 import CoffeeAwesomeSlider from './Web/AwesomeSlider/reducer';
 
@@ -17,7 +17,8 @@ const AppReducer = combineReducers({
     VerifyAdminToken,
     SocialSignIn,
     AdminAwesomeSlider,
-    CoffeeAwesomeSlider
+    CoffeeAwesomeSlider,
+    AdminInfoData
 });
 
 const rootReducer = (state, action) => {

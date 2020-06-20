@@ -17,5 +17,12 @@ export default makeStyles(theme => ({
     },
     cardContent: {
         background: '#424242',
-    }
+    },
+    avatarField: {
+        borderBottom: '1px solid #f50057',
+    },
+    avatarLarge: {
+        width: theme.spacing(7),
+        height: theme.spacing(7),
+    },
 }));
