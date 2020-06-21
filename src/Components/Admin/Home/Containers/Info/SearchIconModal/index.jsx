@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 // @TODO upgrade import Icons
-import Icons  from '../../../../../../Services/Icons';
+import Icons from '../../../../../../Services/Icons';
 import Spinner from '../../../../../Spinner';
 import Transition from './Transition';
 import useStyles from './useStyles';
@@ -12,34 +12,35 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import IconList from './IconList';
+import { ToastContainer } from 'react-toastify';
+import { notify } from '../../../../../../Config/Notify';
 
 const SearchIconModal = (props) => {
     const classes = useStyles();
-    const { onClose, title, query, language } = props;
+    const { onClose, title, query, language, updateIconField } = props;
     const [searchIcon, setSearchIcon] = useState('');
-    const [selectedIcon, setSelectedIcon] = useState({});
+    const [loading, setLoading] = useState(true);
     const [icons, setIcon] = useState([]);
     const [formatIcons, setFormatIcons] = useState([]);
-
-    useEffect(() => {
-        console.log('selectedIcon', selectedIcon);
-    }, [selectedIcon]);
 
     useEffect(() => {
         Icons.getIcons(query).then(response => setIcon(response.data.icons));
     }, []);
     useEffect(() => {
-        const filteredIcons = icons.map((icon) => {
-            return icon.raster_sizes.map((item) => {
-                return {
-                    item: item.formats[0],
-                    tags: icon.tags,
-                    size: item.size,
-                };
-            })
-        });
-        const formats = filteredIcons.flat();
-        setFormatIcons(formats);
+        if (icons.length) {
+            const filteredIcons = icons.map((icon) => {
+                return icon.raster_sizes.map((item) => {
+                    return {
+                        item: item.formats[0],
+                        tags: icon.tags,
+                        size: item.size,
+                    };
+                });
+            });
+            const formats = filteredIcons.flat();
+            setFormatIcons(formats);
+            setLoading(false);
+        }
     }, [icons]);
 
     const handleSearchIcons = searchIcon => {
@@ -51,13 +52,21 @@ const SearchIconModal = (props) => {
     };
 
     const uploadIcon = (icon, query, language) => {
-        const field= query;
-        setSelectedIcon(icon);
-        Icons.UploadIcon(icon, field, language).then(response => console.log(response));
+        setLoading(true);
+        Icons.UploadIcon(icon, query, language)
+            .then(() => {
+                setLoading(false);
+                onClose();
+                updateIconField(query, language, icon);
+                notify('Icon upload Successful', 1000, 'SUCCESS');
+            })
+            .catch(() => notify('Something went wrong', 1000, 'ERROR'));
     };
 
     return (
-        <Dialog className="searchIconDialog" fullScreen open onClose={onClose} TransitionComponent={Transition}>
+        <>
+            <ToastContainer />
+            <Dialog className="searchIconDialog" fullScreen open onClose={onClose} TransitionComponent={Transition}>
             <AppBar className={classes.appBar}>
                 <Toolbar>
                     <IconButton edge="start" color="inherit" onClick={onClose} aria-label="close">
@@ -70,12 +79,14 @@ const SearchIconModal = (props) => {
                         label={title}
                         fullWidth
                         value={searchIcon}
+                        className={classes.searchInput}
                         onChange={(e) => handleSearchIcons(e.target.value)}
                     />
                 </Toolbar>
             </AppBar>
             {
-                icons.length ? (
+                loading ?
+                    <Spinner /> : (
                     <IconList
                         formatIcons={formatIcons}
                         classes={classes}
@@ -83,9 +94,10 @@ const SearchIconModal = (props) => {
                         query={query}
                         language={language}
                     />
-                ) : <Spinner />
+                )
             }
         </Dialog>
+        </>
     );
 };
 
@@ -94,6 +106,7 @@ SearchIconModal.propTypes = {
     title: PropTypes.string.isRequired,
     query: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
+    updateIconField: PropTypes.func.isRequired,
 };
 
 export default SearchIconModal;

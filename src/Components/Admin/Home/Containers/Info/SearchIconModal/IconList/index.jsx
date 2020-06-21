@@ -18,13 +18,13 @@ const IconList = (props) => {
                         >
                             <ListItemText
                                 primary={icon.tags.join(' ')}
-                                secondary={"Format: " + icon.item.format + " Size: " + icon.size}
+                                secondary={'Format: ' + icon.item.format + ' Size: ' + icon.size}
                             />
                             <div>
                                 <img className={classes.icons} src={icon.item.preview_url} alt="" />
                             </div>
                         </ListItem>
-                    )
+                    );
                 })
             }
         </List>

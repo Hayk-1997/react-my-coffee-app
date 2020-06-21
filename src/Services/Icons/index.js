@@ -4,4 +4,4 @@ import UploadIcon from './uploadIcon';
 export default {
     getIcons,
     UploadIcon
-}
+};

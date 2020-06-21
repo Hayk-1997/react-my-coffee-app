@@ -1,10 +1,16 @@
 import { handleActions } from 'redux-actions';
-import { Admin_InfoRequest, Admin_InfoSuccess, Admin_InfoError } from './actions';
+import {
+    Admin_InfoRequest, Admin_InfoSuccess,
+    Admin_InfoError, Admin_UpdateInfoRequest,
+    Admin_UpdateInfoSuccess, Admin_UpdateInfoError,
+} from './actions';
 
 const initialState = {
     InfoSuccess: false,
     InfoError: false,
     InfoData: {},
+    UpdateInfoSuccess: false,
+    UpdateInfoError: false,
 };
 
 const reducer = handleActions(
@@ -26,6 +32,21 @@ const reducer = handleActions(
             InfoSuccess: false,
             InfoError: true,
             InfoData: {},
+        }),
+        [Admin_UpdateInfoRequest]: (state) => ({
+          ...state,
+          UpdateInfoSuccess: false,
+          UpdateInfoError: false,
+        }),
+        [Admin_UpdateInfoSuccess]: (state) => ({
+          ...state,
+          UpdateInfoSuccess: true,
+          UpdateInfoError: false,
+        }),
+        [Admin_UpdateInfoError]: (state) => ({
+          ...state,
+          UpdateInfoSuccess: false,
+          UpdateInfoError: false,
         }),
     },
     initialState
