@@ -52,5 +52,8 @@ button.MuiButton-containedPrimary:hover {
 .Info .container-box {
   padding: 24px;
 }
+.Info .icon-search-box {
+  margin-top: 15px;
+}
 
 /*# sourceMappingURL=Info.css.map */
