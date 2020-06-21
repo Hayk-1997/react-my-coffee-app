@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Admin_InfoRequest } from '../../../../../Redux/Admin/Info/actions';
+import { Admin_InfoRequest, Admin_UpdateInfoRequest } from '../../../../../Redux/Admin/Info/actions';
 import useStyles from '../../useStyles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -14,10 +14,15 @@ import Grid from '@material-ui/core/Grid';
 import SearchIconModal from './SearchIconModal';
 import Spinner from '../../../../Spinner';
 import Avatar from '@material-ui/core/Avatar';
+import { notify } from '../../../../../Config/Notify';
 import './Info.css';
 
 const Info = (props) => {
-    const { GetAdminInfoData, InfoSuccess, InfoData } = props;
+    const {
+        GetAdminInfoData, InfoSuccess,
+        InfoData, UpdateInfo,
+        UpdateInfoSuccess, UpdateInfoError
+    } = props;
     const classes = useStyles();
     const [loading, setLoading] = useState(true);
     const [tab, setTab] = useState(0);
@@ -28,8 +33,8 @@ const Info = (props) => {
         workingHours: { title: '', description: '', icon : {} },
     };
     const [form, setForm] = useState({
-        en: {...fields},
-        arm: {...fields},
+        en: { ...fields },
+        arm: { ...fields },
     });
     const [isModalShow, setIsModalShow] = useState({
         phone: false,
@@ -45,6 +50,16 @@ const Info = (props) => {
             setLoading(false);
         }
     }, [InfoSuccess]);
+    useEffect(() => {
+        if (UpdateInfoSuccess) {
+            notify('Data Updated Success', 1000, 'SUCCESS');
+        }
+    },[UpdateInfoSuccess]);
+    useEffect(() => {
+        if (UpdateInfoError) {
+            notify('Something went wrong', 1000, 'ERROR');
+        }
+    },[UpdateInfoError]);
 
     const handleInputChange = (lang, key, name, value) => {
         setForm((prevState) => ({
@@ -64,7 +79,7 @@ const Info = (props) => {
     };
     const handleSubmit = e => {
         e.preventDefault();
-
+        UpdateInfo(form);
     };
     const handleClickOpen = (key) => {
         setIsModalShow((prevState) => ({
@@ -77,6 +92,18 @@ const Info = (props) => {
             phone: false,
             address: false,
             workingHours: false,
+        }));
+    };
+    const updateIconField = (field, lang, icon) => {
+        setForm((prevState) => ({
+            ...prevState,
+            [lang]: {
+                ...prevState[lang],
+                [field]: {
+                    ...prevState[lang][field],
+                    icon
+                }
+            }
         }));
     };
 
@@ -136,6 +163,7 @@ const Info = (props) => {
                                                 title="Phone Icons"
                                                 query="phone"
                                                 language={lang}
+                                                updateIconField={updateIconField}
                                             />
                                         ) : null
                                     }
@@ -186,6 +214,7 @@ const Info = (props) => {
                                                 title="Phone Icons"
                                                 query="address"
                                                 language={lang}
+                                                updateIconField={updateIconField}
                                             />
                                         ) : null
                                     }
@@ -236,6 +265,7 @@ const Info = (props) => {
                                                 title="Phone Icons"
                                                 query="workingHours"
                                                 language={lang}
+                                                updateIconField={updateIconField}
                                             />
                                         ) : null
                                     }
@@ -266,16 +296,22 @@ Info.propTypes = {
     InfoSuccess: PropTypes.bool.isRequired,
     InfoError: PropTypes.bool.isRequired,
     InfoData: PropTypes.object.isRequired,
+    UpdateInfo: PropTypes.func.isRequired,
+    UpdateInfoSuccess: PropTypes.bool.isRequired,
+    UpdateInfoError: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
     InfoSuccess: state.AdminInfoData.InfoSuccess,
     InfoError: state.AdminInfoData.InfoError,
     InfoData: state.AdminInfoData.InfoData,
+    UpdateInfoSuccess: state.AdminInfoData.UpdateInfoSuccess,
+    UpdateInfoError: state.AdminInfoData.UpdateInfoError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     GetAdminInfoData: () => dispatch(Admin_InfoRequest()),
+    UpdateInfo: (data) => dispatch(Admin_UpdateInfoRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Info);
