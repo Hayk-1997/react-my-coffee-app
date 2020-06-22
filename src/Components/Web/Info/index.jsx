@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Info = () => {
+const Info = (props) => {
+    const { localization } = props;
+
     return (
         <div className="info">
             <div className="row no-gutters">
@@ -27,6 +30,11 @@ const Info = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 };
+
+Info.propTypes = {
+    localization: PropTypes.object.isRequired,
+};
+
 export default Info;

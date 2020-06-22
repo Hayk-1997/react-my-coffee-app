@@ -178,6 +178,6 @@ const Layout = (props) => {
                 </HomeToggleContext.Provider>
             </main>
         </div>
-    )
+    );
 };
 export default Layout;

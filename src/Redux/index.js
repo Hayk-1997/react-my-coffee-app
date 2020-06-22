@@ -7,6 +7,8 @@ import VerifyAdminToken from './Admin/VerifyAdminToken/reducer';
 import SocialSignIn from './Web/Auth/SocialLogin/reducer';
 import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
 import AdminInfoData from './Admin/Info/reducer';
+
+import IP from './IP/reducer';
 // COFFEE
 import CoffeeAwesomeSlider from './Web/AwesomeSlider/reducer';
 
@@ -18,7 +20,8 @@ const AppReducer = combineReducers({
     SocialSignIn,
     AdminAwesomeSlider,
     CoffeeAwesomeSlider,
-    AdminInfoData
+    AdminInfoData,
+    IP
 });
 
 const rootReducer = (state, action) => {
