@@ -6,6 +6,7 @@ import AdminAwesomeSliderSaga from './Admin/AwesomeSlider/saga';
 import AdminInfoDataSaga from './Admin/Info/saga';
 import SocialSignInSaga from './Web/Auth/SocialLogin/saga';
 import CoffeeAwesomeSliderSaga from './Web/AwesomeSlider/saga';
+import IPSaga from './IP/saga';
 
 export default function* rootSagas() {
     yield all([
@@ -16,5 +17,6 @@ export default function* rootSagas() {
         AdminAwesomeSliderSaga(),
         CoffeeAwesomeSliderSaga(),
         AdminInfoDataSaga(),
+        IPSaga(),
     ]);
 }

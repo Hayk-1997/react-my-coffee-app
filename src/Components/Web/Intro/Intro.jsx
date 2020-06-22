@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import 'antd/dist/antd.css';
-import Info from "../Info/Info";
-import Booking from "../Booking/Booking";
+import Info from '../Info';
+import Booking from '../Booking/Booking';
+import { Localization } from '../Context/LocalizationContext';
 
-export default () => {
+const Intro = () => {
+    const localization = useContext(Localization);
+
     return (
         <section className="ftco-intro">
             <div className="container-wrap">
                 <div className="wrap d-md-flex align-items-xl-end">
-                    <Info />
+                    <Info
+                        localization={localization}
+                    />
                     <Booking />
                 </div>
             </div>
         </section>
-    )
+    );
 };
+
+export default Intro;
