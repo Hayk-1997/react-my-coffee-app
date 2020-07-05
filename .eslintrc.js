@@ -23,6 +23,13 @@ module.exports = {
     ],
     "rules": {
         "semi": ["error", "always"],
-        "quotes": ["error", "single"]
+        "quotes": ["error", "single"],
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
+            }
+        ],
+        "indent": ["error", 2],
     }
 };

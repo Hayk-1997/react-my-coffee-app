@@ -9,14 +9,14 @@ import CoffeeAwesomeSliderSaga from './Web/AwesomeSlider/saga';
 import IPSaga from './IP/saga';
 
 export default function* rootSagas() {
-    yield all([
-        AdminLoginSaga(),
-        AdminRegisterSaga(),
-        VerifyAdminTokenSaga(),
-        SocialSignInSaga(),
-        AdminAwesomeSliderSaga(),
-        CoffeeAwesomeSliderSaga(),
-        AdminInfoDataSaga(),
-        IPSaga(),
-    ]);
+  yield all([
+    AdminLoginSaga(),
+    AdminRegisterSaga(),
+    VerifyAdminTokenSaga(),
+    SocialSignInSaga(),
+    AdminAwesomeSliderSaga(),
+    CoffeeAwesomeSliderSaga(),
+    AdminInfoDataSaga(),
+    IPSaga(),
+  ]);
 }

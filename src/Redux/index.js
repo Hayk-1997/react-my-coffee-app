@@ -13,31 +13,31 @@ import IP from './IP/reducer';
 import CoffeeAwesomeSlider from './Web/AwesomeSlider/reducer';
 
 const AppReducer = combineReducers({
-    // toastr: toastrReducer,
-    AdminLogin,
-    AdminRegister,
-    VerifyAdminToken,
-    SocialSignIn,
-    AdminAwesomeSlider,
-    CoffeeAwesomeSlider,
-    AdminInfoData,
-    IP
+  // toastr: toastrReducer,
+  AdminLogin,
+  AdminRegister,
+  VerifyAdminToken,
+  SocialSignIn,
+  AdminAwesomeSlider,
+  CoffeeAwesomeSlider,
+  AdminInfoData,
+  IP
 });
 
 const rootReducer = (state, action) => {
-    let newState;
-    if (action.type === 'RESET') {
-        if (state && state.app) {
-            const { app } = state;
-            newState = { app };
-        } else {
-            newState = undefined;
-        }
+  let newState;
+  if (action.type === 'RESET') {
+    if (state && state.app) {
+      const { app } = state;
+      newState = { app };
     } else {
-        newState = state;
+      newState = undefined;
     }
+  } else {
+    newState = state;
+  }
 
-    return AppReducer(newState, action);
+  return AppReducer(newState, action);
 };
 
 export default rootReducer;
