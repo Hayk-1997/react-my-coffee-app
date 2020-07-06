@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { AdminLoginRequest } from '../../../../Redux/Admin/Auth/Login/actions';
 import { useForm } from '../../../../CustomHooks/useForm';
-import { validateForm } from '../../../../Helpers/validateForm';
+import { validateLoginForm } from '../../../../Helpers/validateForm';
 import { notify } from '../../../../Config/Notify';
 import '../../../Admin/Styles/styles.css';
 
@@ -16,8 +16,8 @@ const Login = (props) => {
   } = props;
   const [form, handleFormChange] = useForm({ email: '', password: ''});
   const [verifyFields, setVerifyFields] = useState({
-    email: false,
     password: false,
+    email: false,
   });
   const prevState = usePrevious(AdminLoginSuccess);
 
@@ -40,13 +40,12 @@ const Login = (props) => {
 
   useEffect(() => {
     if (verifyFields.email && verifyFields.password) {
-      // AdminLogin(form);
+      AdminLogin(form);
     }
   }, [verifyFields]);
   const handleSubmit = event => {
     event.preventDefault();
-    // validateForm(form, verifyFields, setVerifyFields);
-    AdminLogin(form);
+    validateLoginForm(form, verifyFields, setVerifyFields);
   };
 
   return (
@@ -124,11 +123,9 @@ const mapStateToProps = (state) => ({
   AdminLoginToken: state.AdminLogin.AdminLoginToken,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    AdminLogin: (data) => dispatch(AdminLoginRequest(data))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  AdminLogin: (data) => dispatch(AdminLoginRequest(data)),
+});
 
 const usePrevious = (value) => {
   const ref = useRef();

@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux';
 import { SocialLoginRequest } from "../../../../Redux/Web/Auth/SocialLogin/actions";
 import { useForm } from "../../../../CustomHooks/useForm";
-import { validateForm } from "../../../../Helpers/validateForm";
+import { validateLoginForm } from '../../../../Helpers/validateForm';
 
 
 const Login = (props) => {
@@ -16,7 +16,7 @@ const Login = (props) => {
     });
     const handleSubmit = event => {
         event.preventDefault();
-        validateForm(form, setVerify);
+        validateLoginForm(form, setVerify);
     };
 
     const handleSocialLogin = (user, err) => {
