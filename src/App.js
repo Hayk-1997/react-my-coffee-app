@@ -22,8 +22,8 @@ function App () {
         <Router history={hist}>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/coffee" component={WebLayout}/>
-              <Route path="/admin" component={AdminLayout}/>
+              <Route exact path="/coffee" component={WebLayout} />
+              <Route path="/admin" component={AdminLayout} />
             </Switch>
           </BrowserRouter>
         </Router>
