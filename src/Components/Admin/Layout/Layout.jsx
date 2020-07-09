@@ -20,8 +20,7 @@ import RenderMobileMenu from './RenderMobileMenu/RenderMobileMenu';
 import useStyles from '../useStyles/useStyle';
 import { HomeToggleContext } from '../Context/HomeToggleContext';
 
-const Layout = (props) => {
-
+const Layout = () => {
   const getRoutes = () => {
     return routes.map((route) => {
       if (route.auth) {
