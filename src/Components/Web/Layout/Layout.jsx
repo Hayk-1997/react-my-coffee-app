@@ -6,8 +6,7 @@ import SideBar from '../SideBar/SideBar';
 import Footer from '../Footer/Footer';
 import routes from '../../../Routes/Web/routes';
 
-const Layout = (props) => {
-
+const Layout = () => {
   const getRoutes = () => {
     return routes.map((route) => {
       if (route) {
