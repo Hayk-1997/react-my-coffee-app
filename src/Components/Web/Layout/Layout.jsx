@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import AwesomeCarouselSlider from '../AwesomeSlider/AwesomeSlider';
 import Intro  from '../Intro/Intro';
-import SideBar from '../SideBar/SideBar';
+import SideBar from '../SideBar';
 import Footer from '../Footer/Footer';
 import routes from '../../../Routes/Web/routes';
+import { IPRequest } from '../../../Redux/IP/actions';
 
-const Layout = () => {
+const Layout = (props) => {
+  const { GetIPLocalization } = props;
+
+  useEffect(() => {
+    GetIPLocalization();
+  }, []);
+
   const getRoutes = () => {
     return routes.map((route) => {
       if (route) {
@@ -37,4 +46,21 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+Layout.propTypes = {
+  GetIPLocalization: PropTypes.func.isRequired,
+  IP: PropTypes.object.isRequired,
+  IPSuccess: PropTypes.bool.isRequired,
+  IPError: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  IPSuccess: state.IP.IPSuccess,
+  IPError: state.IP.IPError,
+  IP: state.IP.IP,
+});
+
+const mapsDispatchToProps = (dispatch) => ({
+  GetIPLocalization: () => dispatch(IPRequest()),
+});
+
+export default connect(mapStateToProps,mapsDispatchToProps)(Layout);
