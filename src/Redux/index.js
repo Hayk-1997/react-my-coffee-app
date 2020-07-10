@@ -8,9 +8,10 @@ import SocialSignIn from './Web/Auth/SocialLogin/reducer';
 import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
 import AdminInfoData from './Admin/Info/reducer';
 
-import IP from './IP/reducer';
+
 // COFFEE
 import CoffeeAwesomeSlider from './Web/AwesomeSlider/reducer';
+import IP from './IP/reducer';
 
 const AppReducer = combineReducers({
   // toastr: toastrReducer,

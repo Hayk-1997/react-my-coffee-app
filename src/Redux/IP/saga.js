@@ -2,7 +2,7 @@ import { takeLatest, put } from 'redux-saga/effects';
 import { IPRequest, IPSuccess, IPError } from './actions';
 import { axiosInstance } from '../../Config/Axios/axiosInstance';
 
-function* getIPLocalization () {
+function* GetIPLocalization () {
   try {
     const response = yield axiosInstance.get('https://api.myip.com');
     if (response.status === 200) {
@@ -16,5 +16,5 @@ function* getIPLocalization () {
 }
 
 export default function* () {
-  yield takeLatest(IPRequest, getIPLocalization);
+  yield takeLatest(IPRequest, GetIPLocalization);
 }
