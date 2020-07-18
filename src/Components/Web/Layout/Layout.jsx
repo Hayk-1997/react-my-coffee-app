@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import AwesomeCarouselSlider from '../AwesomeSlider/AwesomeSlider';
 import Intro  from '../Intro/Intro';
 import SideBar from '../SideBar';
 import Footer from '../Footer/Footer';
 import routes from '../../../Routes/Web/routes';
 import { IPRequest } from '../../../Redux/IP/actions';
+import AwesomeSlider from '../AwesomeSlider';
 
 const Layout = (props) => {
   const { GetIPLocalization } = props;
@@ -38,7 +38,7 @@ const Layout = (props) => {
   return (
     <>
       <SideBar />
-      <AwesomeCarouselSlider />
+      <AwesomeSlider />
       <Intro />
       {getRoutes()}
       <Footer />

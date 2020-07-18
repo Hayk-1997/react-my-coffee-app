@@ -1,4 +1,4 @@
-import Home from '../../Components/Web/Home/Home';
+import Home from '../../Components/Web/Home/';
 import Login from '../../Components/Web/Auth/Login/Login';
 
 const routes = [
