@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import '../Components/Web/Styles/style.css';
 import Login from '../Components/Web/Auth/Login/Login';
-import Layout from '../Components/Web/Layout/Layout';
+import Layout from '../Components/Web/Layout/';
 import Register from '../Components/Web/Auth/Register/Register';
 
 function WebLayout () {

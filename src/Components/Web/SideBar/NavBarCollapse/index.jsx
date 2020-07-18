@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { LanguageContext } from '../../Context/LanguageContext';
 import './styles.scss';
 
-const NavBarCollapse = () => {
+const NavBarCollapse = (props) => {
+  const { changeLanguage, language } = useContext(LanguageContext);
   return (
     <div className="collapse navbar-collapse" id="ftco-nav">
       <ul className="navbar-nav ml-auto">
@@ -37,14 +39,14 @@ const NavBarCollapse = () => {
         <li className="nav-item dropdown lang-dropdown">
           <a className="nav-link dropdown-toggle" href="#" id="lang-dropdown"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src={require('../../../../assets/web/flags/am-flag.png')} width="25" alt="" />
+            <img src={require(`../../../../assets/web/flags/${language}-flag.png`)} width="25" alt="" />
           </a>
           <div className="lang-dropdown-menu dropdown-menu" aria-labelledby="lang-dropdown">
-            <a className="dropdown-item" href="#">
+            <a className="dropdown-item" onClick={() => changeLanguage('am')}>
               <img src={require('../../../../assets/web/flags/am-flag.png')} width="25" alt="" />
             </a>
-            <a className="dropdown-item" href="#">
-              <img src={require('../../../../assets/web/flags/en-flag.jpg')} width="25" alt="" />
+            <a className="dropdown-item" onClick={() => changeLanguage('en')}>
+              <img src={require('../../../../assets/web/flags/en-flag.png')} width="25" alt="" />
             </a>
           </div>
         </li>

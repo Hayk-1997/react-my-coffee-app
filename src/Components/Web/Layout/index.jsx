@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -8,25 +8,37 @@ import Footer from '../Footer/Footer';
 import routes from '../../../Routes/Web/routes';
 import { IPRequest } from '../../../Redux/IP/actions';
 import AwesomeSlider from '../AwesomeSlider';
+import { LanguageContext } from '../Context/LanguageContext';
+import Spinner from '../../Spinner';
 
 const Layout = (props) => {
-  const { GetIPLocalization } = props;
-
+  const {
+    GetIPLocalization, IP,
+    IPSuccess, IPError,
+  } = props;
+  const [language, setLanguage] = useState(localStorage.getItem('language'));
   useEffect(() => {
     GetIPLocalization();
   }, []);
 
+  useEffect(() => {
+    if (IPSuccess) {
+      !language ? setLanguage(IP.cc.toLowerCase()) : localStorage.setItem('language', language);
+    } else if (IPError) {
+      !language ? setLanguage('en') : localStorage.setItem('language', language);
+    }
+  }, [IPSuccess, IPError]);
   const getRoutes = () => {
     return routes.map((route) => {
       if (route) {
-        const RouteVal = route.component;
+        const Component = route.component;
         return (
           <Route
             key={route.id}
             path={route.path}
             render={(props) => {
               return (
-                <RouteVal {...props} />
+                <Component {...props} />
               );
             }}
           />
@@ -34,16 +46,26 @@ const Layout = (props) => {
       }
     });
   };
+  const changeLanguage = (language) => {
+    localStorage.setItem('language', language);
+    window.location.reload();
+  };
 
-  return (
+  return language ? (
     <>
-      <SideBar />
-      <AwesomeSlider />
-      <Intro />
-      {getRoutes()}
-      <Footer />
+      <LanguageContext.Provider
+        value={{
+          language, changeLanguage,
+        }}
+      >
+        <SideBar />
+        <AwesomeSlider {...props} />
+        <Intro />
+        {getRoutes()}
+        <Footer />
+      </LanguageContext.Provider>
     </>
-  );
+  ) : <Spinner />;
 };
 
 Layout.propTypes = {
