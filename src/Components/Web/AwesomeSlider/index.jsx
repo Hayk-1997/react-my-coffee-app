@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { LanguageContext } from '../Context/LanguageContext';
 import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/react-hooks';
 import Spinner from '../../Spinner';
 import './style.css';
 import '../../../assets/web/css/demo/demo1.css';
-const lang = 'arm';
-
 
 const AwesomeSlider = () => {
+  const { language } = useContext(LanguageContext);
+
+  console.log('localization', language);
   const SLIDER = gql`
     query {
       AwesomeSlider {
         _id
         image
-        ${lang} {
-          title
-          description
+        ${language} {
+           title
+           description
+          }
         }
-      }
     }
   `;
   const { loading, error, data } = useQuery(SLIDER);
@@ -38,11 +40,11 @@ const AwesomeSlider = () => {
                   <div className="row slider-text justify-content-center align-items-center">
                     <div className="col-md-8 col-sm-12 text-center ftco-animate">
                       <span className="subheading">
-                        <h1>{data.AwesomeSlider[lang][0].title}</h1>
+                        <h1>{data.AwesomeSlider[language][0].title}</h1>
                       </span>
                       <h3
                         className="mb-4"
-                        dangerouslySetInnerHTML={{__html: data.AwesomeSlider[lang][0].description}}/>
+                        dangerouslySetInnerHTML={{__html: data.AwesomeSlider[language][0].description}}/>
                       <div className="button-box">
                         <button href="#" className="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</button>
                         <a href="#" className="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
@@ -58,5 +60,6 @@ const AwesomeSlider = () => {
     </main>
   );
 };
+
 
 export default AwesomeSlider;
