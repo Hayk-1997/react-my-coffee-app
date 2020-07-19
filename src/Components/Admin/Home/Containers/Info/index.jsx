@@ -34,7 +34,7 @@ const Info = (props) => {
   };
   const [form, setForm] = useState({
     en: { ...fields },
-    arm: { ...fields },
+    am: { ...fields },
   });
   const [isModalShow, setIsModalShow] = useState({
     phone: false,
@@ -114,7 +114,7 @@ const Info = (props) => {
         <AppBar position="static">
           <Tabs value={tab} aria-label="simple tabs example">
             <Tab label="English Tab" onClick={() => handleTabChange(0, 'en')} />
-            <Tab label="Armenian Tab" onClick={() => handleTabChange(1, 'arm')} />
+            <Tab label="Armenian Tab" onClick={() => handleTabChange(1, 'am')} />
           </Tabs>
         </AppBar>
         <div className="row container-box">

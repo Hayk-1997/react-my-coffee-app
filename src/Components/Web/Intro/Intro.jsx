@@ -5,16 +5,16 @@ import Info from '../Info';
 import Booking from '../Booking/Booking';
 
 const Intro = () => {
-    return (
-        <section className="ftco-intro">
-            <div className="container-wrap">
-                <div className="wrap d-md-flex align-items-xl-end">
-                    <Info />
-                    <Booking />
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className="ftco-intro">
+      <div className="container-wrap">
+        <div className="wrap d-md-flex align-items-xl-end">
+          <Info />
+          <Booking />
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Intro;
