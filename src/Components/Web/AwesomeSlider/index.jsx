@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { LanguageContext } from '../Context/LanguageContext';
 import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/react-hooks';
@@ -8,9 +8,7 @@ import '../../../assets/web/css/demo/demo1.css';
 
 const AwesomeSlider = () => {
   const { language } = useContext(LanguageContext);
-
-  console.log('localization', language);
-  const SLIDER = gql`
+  const GET_SLIDER = gql`
     query {
       AwesomeSlider {
         _id
@@ -22,7 +20,7 @@ const AwesomeSlider = () => {
         }
     }
   `;
-  const { loading, error, data } = useQuery(SLIDER);
+  const { loading, error, data } = useQuery(GET_SLIDER);
 
   return loading || error ? <Spinner /> : (
     <main>

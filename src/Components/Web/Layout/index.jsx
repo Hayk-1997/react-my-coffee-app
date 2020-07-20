@@ -59,7 +59,7 @@ const Layout = (props) => {
         }}
       >
         <SideBar />
-        <AwesomeSlider {...props} />
+        <AwesomeSlider />
         <Intro />
         {getRoutes()}
         <Footer />
