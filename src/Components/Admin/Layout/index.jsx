@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
-import routes from '../../../Routes/Admin/routes';
 import { Route } from 'react-router-dom';
 import RouteList from './RouteList';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import routes from '../../../Routes/Admin/routes';
+import PropTypes from 'prop-types';
+import { RouteToggleContext } from '../Context/RouteToggleContext';
+import RenderMenu from './RenderMenu/RenderMenu';
+import RenderMobileMenu from './RenderMobileMenu/RenderMobileMenu';
 import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import MailIcon from '@material-ui/icons/Mail';
-import Badge from '@material-ui/core/Badge';
 import { AccountCircle } from '@material-ui/icons';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import RenderMenu from './RenderMenu/RenderMenu';
-import RenderMobileMenu from './RenderMobileMenu/RenderMobileMenu';
+import Badge from '@material-ui/core/Badge';
 import useStyles from '../useStyles/useStyle';
-import { HomeToggleContext } from '../Context/HomeToggleContext';
 
-const Layout = () => {
+const Layout = (props) => {
+  const { history } = props;
   const getRoutes = () => {
     return routes.map((route) => {
       if (route.auth) {
@@ -169,14 +171,21 @@ const Layout = () => {
         open={open}
         handleDrawerClose={handleDrawerClose}
         handleUseHomeToggleContext={handleUseHomeToggleContext}
+        handleDrawerOpen={handleDrawerOpen}
+        history={history}
       />
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <HomeToggleContext.Provider value={{context, handleUseHomeToggleContext}}>
+        <RouteToggleContext.Provider value={{ context, handleUseHomeToggleContext }}>
           { getRoutes() }
-        </HomeToggleContext.Provider>
+        </RouteToggleContext.Provider>
       </main>
     </div>
   );
 };
+
+Layout.propTytpes = {
+  history: PropTypes.object.isRequired,
+};
+
 export default Layout;

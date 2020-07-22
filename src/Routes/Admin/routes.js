@@ -2,7 +2,7 @@ import Login from '../../Components/Admin/Auth/Login/Login';
 import Dashboard from '../../Components/Admin/Dashboard/Dashboard';
 import Register from '../../Components/Admin/Auth/Register/Register';
 import Home from '../../Components/Admin/Home/Home';
-import AwesomeSlider from '../../Components/Admin/Home/Containers/AwesomeSlider/AwesomeSlider';
+import AwesomeSlider from '../../Components/Admin/Home/Containers/AwesomeSlider';
 import Info from '../../Components/Admin/Home/Containers/Info';
 
 const routes = [
@@ -25,7 +25,7 @@ const routes = [
   {
     id: 3,
     path: '/admin/dashboard',
-    name: 'dashboard',
+    name: 'Dashboard',
     component: Dashboard,
     icon: 'fa fa-columns',
     layout: 'admin',
@@ -33,7 +33,7 @@ const routes = [
     child : [
       {
         id: 1,
-        parent: 'dashboard',
+        parent: 'Dashboard',
         name: 'Metrica',
         path: '/admin/dashboard/metrica',
         icon : 'fa fa-globe-americas'
@@ -43,7 +43,7 @@ const routes = [
   {
     id: 4,
     path: '/admin/home',
-    name: 'home',
+    name: 'Home',
     component: Home,
     icon: 'fa fa-home',
     layout: 'admin',
@@ -51,14 +51,14 @@ const routes = [
     child: [
       {
         id: 1,
-        parent: 'home',
+        parent: 'Home',
         name: 'AwesomeSlider',
         icon: 'fa fa-slideshare',
         component: AwesomeSlider,
       },
       {
         id: 2,
-        parent: 'home',
+        parent: 'Home',
         name: 'Info',
         icon: 'fa fa-slideshare',
         component: Info,

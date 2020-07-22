@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Route, Redirect,  } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AdminTokenVerifyRequest } from '../../Redux/Admin/VerifyAdminToken/actions';
+import usePrevious from '../../CustomHooks/usePrevious';
 import Spinner from '../Spinner';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const {
     GetAdminTokenVerifySuccess, GetAdminTokenVerifyError, AdminLoginSuccess,
     history, VerifyAdminToken
-  } = {...rest};
+  } = { ...rest };
   const [tokenVerify, setVerifyToken] = useState(true);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem('token');
@@ -31,14 +32,11 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     if (GetAdminTokenVerifySuccess) {
       setLoading(false);
       setVerifyToken(true);
-    }
-  }, [GetAdminTokenVerifySuccess]);
-  useEffect(() => {
-    if (GetAdminTokenVerifyError) {
+    } else if (GetAdminTokenVerifyError) {
       setVerifyToken(false);
       history.push('/admin/login');
     }
-  },[GetAdminTokenVerifyError]);
+  }, [GetAdminTokenVerifySuccess, GetAdminTokenVerifyError]);
 
   return !loading ? (
     <Route
@@ -84,13 +82,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   VerifyAdminToken: (data) => dispatch(AdminTokenVerifyRequest(data)),
 });
-
-const usePrevious = (value) => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return !!ref.current;
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProtectedRoute);

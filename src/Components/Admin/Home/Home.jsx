@@ -1,27 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { HomeToggleContext } from '../Context/HomeToggleContext';
+import { RouteToggleContext } from '../Context/RouteToggleContext';
 import AwesomeSliderCard from './CardMedia/AweseomSliderCard';
 import InfoCard from './CardMedia/Info';
-import AwesomeSlider from './Containers/AwesomeSlider/AwesomeSlider';
+import AwesomeSlider from './Containers/AwesomeSlider';
 import Info from './Containers/Info';
-import useStyles from './useStyles';
 import Grid from '@material-ui/core/Grid';
+import useStyles from './useStyles';
 
 
 const Home = (props) => {
-  const homeToggleContext = useContext(HomeToggleContext);
+  const { context, handleUseHomeToggleContext } = useContext(RouteToggleContext);
   const [passedContext, setPassedContext] = useState();
 
   useEffect(() => {
-    if (homeToggleContext) {
-      setPassedContext(homeToggleContext.context);
+    if (context) {
+      setPassedContext(context);
     }
-  }, [homeToggleContext]);
+  }, [context]);
 
   const classes = useStyles();
   const renderComponent = (component) => {
-    homeToggleContext.handleUseHomeToggleContext(component);
+    handleUseHomeToggleContext(component);
   };
 
   const gridLayout = () => {
