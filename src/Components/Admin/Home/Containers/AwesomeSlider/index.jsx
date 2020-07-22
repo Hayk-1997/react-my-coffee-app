@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
@@ -17,8 +17,9 @@ import SaveIcon from '@material-ui/icons/Save';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import './AwesomeSlider.css';
+import usePrevious from '../../../../../CustomHooks/usePrevious';
 import useStyles from './useStyles';
+import './style.css';
 
 const AwesomeSlider = (props) => {
   const {
@@ -42,7 +43,7 @@ const AwesomeSlider = (props) => {
   const fields = { title: '', description: '' };
   const [form, setForm] = useState({
     en: fields,
-    arm: fields
+    am: fields
   });
   const [tab, setTab] = useState(0);
 
@@ -52,9 +53,9 @@ const AwesomeSlider = (props) => {
 
   useEffect(() => {
     if (AwesomeSliderSuccess) {
-      const { en, arm, image } = awesomeSliderData;
+      const { en, am, image } = awesomeSliderData;
       const formData = {
-        en: en[0], arm: arm[0]
+        en: en[0], am: am[0]
       };
       setForm(formData);
       setImage([
@@ -71,14 +72,10 @@ const AwesomeSlider = (props) => {
   useEffect(() => {
     if (!prevAwesomeSliderUpdateSuccess && AwesomeSliderUpdateSuccess) {
       notify('Data Updated Success', 1000, 'SUCCESS');
-    }
-  }, [AwesomeSliderUpdateSuccess]);
-
-  useEffect(() => {
-    if (!prevAwesomeSliderUpdateError && AwesomeSliderUpdateError) {
+    } else if (!prevAwesomeSliderUpdateError && AwesomeSliderUpdateError) {
       notify('Something went wrong', 1000, 'ERROR');
     }
-  }, [AwesomeSliderUpdateError]);
+  }, [AwesomeSliderUpdateSuccess, AwesomeSliderUpdateError]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -105,7 +102,7 @@ const AwesomeSlider = (props) => {
         <AppBar position="static">
           <Tabs value={tab} aria-label="simple tabs example">
             <Tab label="English Tab" onClick={() => handleTabChange(0, 'en')} />
-            <Tab label="Armenian Tab" onClick={() => handleTabChange(1, 'arm')} />
+            <Tab label="Armenian Tab" onClick={() => handleTabChange(1, 'am')} />
           </Tabs>
         </AppBar>
         <div className="title-field">
@@ -160,21 +157,12 @@ AwesomeSlider.propTypes = {
   AwesomeSliderSuccess: PropTypes.bool.isRequired,
   AwesomeSliderError: PropTypes.bool.isRequired,
   awesomeSliderData: PropTypes.object.isRequired,
-
 };
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
-};
-
-const usePrevious = (value) => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return !!ref.current;
 };
 
 const mapStateToProps = (state) => ({
@@ -187,7 +175,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    UpdateAwesomeSlider: (data) => dispatch(AwesomeSliderUpdateRequest(data)),
-    GetAwesomeSliderData: () => dispatch(Admin_AwesomeSliderRequest()),
+  UpdateAwesomeSlider: (data) => dispatch(AwesomeSliderUpdateRequest(data)),
+  GetAwesomeSliderData: () => dispatch(Admin_AwesomeSliderRequest()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AwesomeSlider);
