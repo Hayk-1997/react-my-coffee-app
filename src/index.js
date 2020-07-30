@@ -1,12 +1,60 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
+const theme = createMuiTheme({
+  props: {
+    MuiTextField: {
+      variant: 'outlined',
+    },
+    MuiSelect: {
+      variant: 'outlined',
+    },
+  },
+  palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#bfbfbf',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      // light: will be calculated from palette.secondary.main,
+      main: '#ff1b1b',
+      // dark: will be calculated from palette.secondary.main,
+      // contrastText: will be calculated to contrast with palette.secondary.main
+    },
+    borderColor: {
+      main: '#bfbfbf',
+    }
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Roboto',
+      '"Segoe UI"',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+  shape: {
+    borderRadius: 5,
+  },
+});
+
+render(
+  <MuiThemeProvider theme={theme}>
+    <App />
+  </MuiThemeProvider>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

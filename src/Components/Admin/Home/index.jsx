@@ -3,13 +3,14 @@ import { withRouter } from 'react-router-dom';
 import { RouteToggleContext } from '../Context/RouteToggleContext';
 import AwesomeSliderCard from './CardMedia/AweseomSliderCard';
 import InfoCard from './CardMedia/Info';
+import OurHistoryCard from './CardMedia/OurHistory';
 import AwesomeSlider from './Containers/AwesomeSlider';
 import Info from './Containers/Info';
 import Grid from '@material-ui/core/Grid';
 import useStyles from './useStyles';
 
 
-const Home = (props) => {
+const Index = (props) => {
   const { context, handleUseHomeToggleContext } = useContext(RouteToggleContext);
   const [passedContext, setPassedContext] = useState();
 
@@ -35,6 +36,10 @@ const Home = (props) => {
           classes={classes}
           renderComponent={renderComponent}
         />
+        <OurHistoryCard
+          classes={classes}
+          renderComponent={renderComponent}
+        />
       </Grid>
     );
   };
@@ -49,4 +54,4 @@ const Home = (props) => {
   );
 };
 
-export default withRouter(Home);
+export default withRouter(Index);

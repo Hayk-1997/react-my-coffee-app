@@ -1,7 +1,7 @@
 import Login from '../../Components/Admin/Auth/Login/Login';
 import Dashboard from '../../Components/Admin/Dashboard/Dashboard';
 import Register from '../../Components/Admin/Auth/Register/Register';
-import Home from '../../Components/Admin/Home/Home';
+import Home from '../../Components/Admin/Home';
 import AwesomeSlider from '../../Components/Admin/Home/Containers/AwesomeSlider';
 import Info from '../../Components/Admin/Home/Containers/Info';
 
