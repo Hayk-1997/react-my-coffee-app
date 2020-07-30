@@ -41,6 +41,7 @@
     "react-froala-wysiwyg": "^3.2.0",
     "react-icons": "^3.10.0",
     "react-load-script": "0.0.6",
+    "react-material-ui-form-validator": "^2.0.10",
     "react-redux": "^7.2.0",
     "react-redux-toastr": "^7.6.5",
     "react-router-dom": "^5.2.0",
