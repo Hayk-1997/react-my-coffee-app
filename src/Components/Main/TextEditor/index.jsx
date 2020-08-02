@@ -13,12 +13,12 @@ import 'froala-editor/css/froala_editor.pkgd.min.css';
 import FroalaEditor from 'react-froala-wysiwyg';
 
 const TextEditor = (props) => {
-  const { handleInputChange, lang, form } = props;
+  const { handleInputChange, lang, form, setForm } = props;
   return (
     <FroalaEditor
       tag='textarea'
       model={form[lang].description}
-      onModelChange={e => handleInputChange(lang, 'description', e)}
+      onModelChange={e => handleInputChange(lang, 'description', e, setForm)}
       config={{
         placeholder: 'Edit Me',
       }}
@@ -28,6 +28,7 @@ const TextEditor = (props) => {
 
 TextEditor.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
+  setForm: PropTypes.func.isRequired,
   lang: PropTypes.string.isRequired,
   form: PropTypes.object.isRequired
 };

@@ -6,11 +6,9 @@ import AdminRegister from './Admin/Auth/Register/reducer';
 import VerifyAdminToken from './Admin/VerifyAdminToken/reducer';
 import SocialSignIn from './Web/Auth/SocialLogin/reducer';
 import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
-import AdminInfoData from './Admin/Info/reducer';
-
-
+import Info from './Admin/Info/reducer';
+import OurHistory from './Admin/OurHistory/reducer';
 // COFFEE
-import CoffeeAwesomeSlider from './Web/AwesomeSlider/reducer';
 import IP from './IP/reducer';
 
 const AppReducer = combineReducers({
@@ -20,8 +18,8 @@ const AppReducer = combineReducers({
   VerifyAdminToken,
   SocialSignIn,
   AdminAwesomeSlider,
-  CoffeeAwesomeSlider,
-  AdminInfoData,
+  Info,
+  OurHistory,
   IP
 });
 

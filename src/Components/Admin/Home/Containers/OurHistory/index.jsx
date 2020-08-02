@@ -1,38 +1,48 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { OurHistoryRequest, UpdateOurHistoryRequest } from '../../../../../Redux/Admin/OurHistory/actions';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ToastContainer } from 'react-toastify';
 import TabsAppBar from '../../../Main/TabsAppBar';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import TextEditor from '../../../../Main/TextEditor';
 import FilePondEditor from '../../../../Main/FilePondEditor';
+import Grid from '@material-ui/core/Grid';
+import handleAdminInputChange from '../../../../../CustomHooks/handleAdminInputChange';
+import useStyles from '../../../Layout/useStyles';
 
-const OurHistory = () => {
-  const fields = { title: '', description: '' };
-  const [form, setForm] = useState({
-    en: fields,
-    am: fields
-  });
+
+const OurHistory = (props) => {
+  const {
+    GetOurHistory, OurHistorySuccess, OurHistoryData,
+    UpdateOurHistory, UpdateOurHistorySuccess, UpdateOurHistoryError
+  } = props;
+  const classes = useStyles();
+  const fields = { title: '', subTitle: '', description: '' };
+  const [form, setForm] = useState({ en: fields, am: fields });
   const [tab, setTab] = useState(0);
   const [lang, setLang] = useState('en');
+  const ref = useRef();
   const [image, setImage] = useState([
     {
-      source: '',
+      source: 'https://images.unsplash.com/photo-1591624912712-87c8acef8dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80',
       options: {
         type: 'locale'
       }
     }
   ]);
-  const handleInputChange = (lang, key, value) => {
-    setForm((prevState) => ({
-      ...prevState,
-      [lang]: {
-        ...prevState[lang],
-        [key]: value
-      }
-    }));
-  };
+
+  useEffect(() => {
+    GetOurHistory();
+  }, []);
+
+  useEffect(() => {
+    if (OurHistorySuccess) {
+      setForm(OurHistoryData);
+    }
+  }, [OurHistorySuccess]);
 
   const handleTabChange = useCallback((tab, lang) => {
     setTab(tab);
@@ -41,51 +51,103 @@ const OurHistory = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    UpdateOurHistory({ image, form });
   };
 
   return (
-    <div>
+    <div className={classes.body}>
       <ToastContainer />
-      <form noValidate autoComplete="off" className="Awesome" onSubmit={handleSubmit}>
-        <TabsAppBar
-          handleTabChange={handleTabChange}
-          tab={tab}
-        />
-        <div className="title-field">
-          <TextField
-            id={`${lang}-title`}
-            className={`${lang}awesome-title`}
-            placeholder="Title"
-            fullWidth
-            margin="normal"
-            multiline={true}
-            variant="filled"
-            value={form[lang].title}
-            onChange={(e) => handleInputChange(lang,'title', e.target.value)}
-          />
-        </div>
-        <div className="upload-field">
-          <FilePondEditor
-            image={image}
-            setImage={setImage}
-          />
-        </div>
-        <div className="submit-box">
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            className={classes.button}
-            type="submit"
-            startIcon={<SaveIcon/>}
+      <TabsAppBar
+        handleTabChange={handleTabChange}
+        tab={tab}
+      />
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <ValidatorForm
+            ref={ref}
+            onSubmit={handleSubmit}
+            className={classes.validatorForm}
           >
-              Update
-          </Button>
-        </div>
-      </form>
+            <Grid item xs={12}>
+              <TextValidator
+                label="Title"
+                margin="normal"
+                className={classes.textArea}
+                variant="outlined"
+                value={form[lang].title}
+                validators={['required']}
+                errorMessages={['Field s required']}
+                onChange={(e) => handleAdminInputChange(lang,'title', e.target.value, setForm)}
+                name="title"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextValidator
+                label="SubTitle"
+                margin="normal"
+                className={classes.textArea}
+                variant="outlined"
+                value={form[lang].subTitle}
+                validators={['required']}
+                errorMessages={['SubTitle s required']}
+                onChange={(e) => handleAdminInputChange(lang,'subTitle', e.target.value, setForm)}
+                name="subTitle"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextEditor
+                handleInputChange={handleAdminInputChange}
+                setForm={setForm}
+                lang={lang}
+                form={form}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FilePondEditor
+                image={image}
+                setImage={setImage}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                className={classes.button}
+                type="submit"
+                startIcon={<SaveIcon/>}
+              >
+                Update
+              </Button>
+            </Grid>
+          </ValidatorForm>
+        </Grid>
+      </div>
     </div>
   );
 };
 
-export default OurHistory;
+OurHistory.propTypes = {
+  GetOurHistory: PropTypes.func.isRequired,
+  OurHistorySuccess: PropTypes.bool.isRequired,
+  OurHistoryError: PropTypes.bool.isRequired,
+  OurHistoryData: PropTypes.object.isRequired,
+  UpdateOurHistory: PropTypes.func.isRequired,
+  UpdateOurHistorySuccess: PropTypes.bool.isRequired,
+  UpdateOurHistoryError: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  OurHistorySuccess: state.OurHistory.OurHistorySuccess,
+  OurHistoryError: state.OurHistory.OurHistoryError,
+  OurHistoryData: state.OurHistory.OurHistoryData,
+  UpdateOurHistorySuccess: state.OurHistory.UpdateOurHistorySuccess,
+  UpdateOurHistoryError: state.OurHistory.UpdateOurHistoryError,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  GetOurHistory: () => dispatch(OurHistoryRequest()),
+  UpdateOurHistory: (data) => dispatch(UpdateOurHistoryRequest(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OurHistory);
