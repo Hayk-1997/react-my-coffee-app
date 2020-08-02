@@ -5,5 +5,5 @@ export default value => {
   useEffect(() => {
     ref.current = value;
   });
-  return !!ref.current;
+  return ref.current;
 };

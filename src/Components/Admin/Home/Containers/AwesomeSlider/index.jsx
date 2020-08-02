@@ -68,10 +68,10 @@ const AwesomeSlider = (props) => {
   }, [AwesomeSliderSuccess]);
 
   useEffect(() => {
-    if (!prevAwesomeSliderUpdateSuccess && AwesomeSliderUpdateSuccess) {
+    if (prevAwesomeSliderUpdateSuccess === false && AwesomeSliderUpdateSuccess) {
       notify('Data Updated Success', 1000, 'SUCCESS');
       setLoading(false);
-    } else if (!prevAwesomeSliderUpdateError && AwesomeSliderUpdateError) {
+    } else if (prevAwesomeSliderUpdateError === false && AwesomeSliderUpdateError) {
       notify('Something went wrong', 1000, 'ERROR');
     }
   }, [AwesomeSliderUpdateSuccess, AwesomeSliderUpdateError]);
