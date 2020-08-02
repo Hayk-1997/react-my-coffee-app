@@ -23,7 +23,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   }, []);
 
   useEffect(() => {
-    if (prevSuccess === false && !GetAdminTokenVerifySuccess && token) {
+    if (!prevSuccess && !GetAdminTokenVerifySuccess && token) {
       VerifyAdminToken(token);
     }
   }, [AdminLoginSuccess]);

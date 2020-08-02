@@ -12,6 +12,8 @@ import FilePondEditor from '../../../../Main/FilePondEditor';
 import Grid from '@material-ui/core/Grid';
 import handleAdminInputChange from '../../../../../CustomHooks/handleAdminInputChange';
 import useStyles from '../../../Layout/useStyles';
+import Spinner from '../../../../Spinner';
+import {notify} from '../../../../../Config/Notify';
 
 
 const OurHistory = (props) => {
@@ -20,6 +22,7 @@ const OurHistory = (props) => {
     UpdateOurHistory, UpdateOurHistorySuccess, UpdateOurHistoryError
   } = props;
   const classes = useStyles();
+  const [loading, setLoading] = useState(true);
   const fields = { title: '', subTitle: '', description: '' };
   const [form, setForm] = useState({ en: fields, am: fields });
   const [tab, setTab] = useState(0);
@@ -27,7 +30,7 @@ const OurHistory = (props) => {
   const ref = useRef();
   const [image, setImage] = useState([
     {
-      source: 'https://images.unsplash.com/photo-1591624912712-87c8acef8dcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80',
+      source: '',
       options: {
         type: 'locale'
       }
@@ -41,8 +44,26 @@ const OurHistory = (props) => {
   useEffect(() => {
     if (OurHistorySuccess) {
       setForm(OurHistoryData);
+      setImage([
+        {
+          source: OurHistoryData.image,
+          options: {
+            type: 'locale'
+          }
+        }
+      ]);
+      setLoading(false);
     }
   }, [OurHistorySuccess]);
+
+  useEffect(() => {
+    if (UpdateOurHistorySuccess) {
+      setLoading(false);
+      notify('Data Updated Success', 1000, 'SUCCESS');
+    } else if (UpdateOurHistoryError) {
+      notify('Something went wrong', 1000, 'ERROR');
+    }
+  }, [UpdateOurHistorySuccess, UpdateOurHistoryError]);
 
   const handleTabChange = useCallback((tab, lang) => {
     setTab(tab);
@@ -52,9 +73,10 @@ const OurHistory = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     UpdateOurHistory({ image, form });
+    setLoading(true);
   };
 
-  return (
+  return !loading ? (
     <div className={classes.body}>
       <ToastContainer />
       <TabsAppBar
@@ -124,7 +146,7 @@ const OurHistory = (props) => {
         </Grid>
       </div>
     </div>
-  );
+  ) : <Spinner />;
 };
 
 OurHistory.propTypes = {

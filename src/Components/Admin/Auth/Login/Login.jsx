@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import { AdminLoginRequest } from '../../../../Redux/Admin/Auth/Login/actions';
 import { useForm } from '../../../../CustomHooks/useForm';
 import { validateLoginForm } from '../../../../Helpers/validateForm';
 import { notify } from '../../../../Config/Notify';
+import usePrevious from '../../../../CustomHooks/usePrevious';
 import '../../../Admin/Styles/styles.css';
 
 const Login = (props) => {
@@ -19,14 +20,14 @@ const Login = (props) => {
     password: false,
     email: false,
   });
-  const prevState = usePrevious(AdminLoginSuccess);
+  const previousAdminLoginSuccess = usePrevious(AdminLoginSuccess);
 
   useEffect(() => {
     localStorage.clear();
   }, []);
 
   useEffect(() => {
-    if (AdminLoginSuccess && prevState === false) {
+    if (AdminLoginSuccess && previousAdminLoginSuccess === false) {
       localStorage.setItem('token', AdminLoginToken );
       props.history.push('/admin/dashboard');
     }
@@ -127,13 +128,6 @@ const mapDispatchToProps = (dispatch) => ({
   AdminLogin: (data) => dispatch(AdminLoginRequest(data)),
 });
 
-const usePrevious = (value) => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
