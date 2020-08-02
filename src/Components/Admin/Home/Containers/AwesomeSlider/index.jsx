@@ -16,6 +16,7 @@ import TabsAppBar from '../../../Main/TabsAppBar';
 import TextEditor from '../../../../Main/TextEditor';
 import Grid from '@material-ui/core/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import handleAdminInputChange from '../../../../../CustomHooks/handleAdminInputChange';
 import useStyles from '../../../Layout/useStyles';
 
 const AwesomeSlider = (props) => {
@@ -39,10 +40,7 @@ const AwesomeSlider = (props) => {
   ]);
   const [loading, setLoading] = useState(false);
   const fields = { title: '', description: '' };
-  const [form, setForm] = useState({
-    en: fields,
-    am: fields
-  });
+  const [form, setForm] = useState({ en: fields, am: fields });
   const [tab, setTab] = useState(0);
   const ref = useRef();
 
@@ -80,7 +78,6 @@ const AwesomeSlider = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(12313);
     UpdateAwesomeSlider({ image, form });
     setLoading(true);
   };
@@ -89,16 +86,6 @@ const AwesomeSlider = (props) => {
     setTab(tab);
     setLang(lang);
   }, [lang, tab]);
-
-  const handleInputChange = (lang, key, value) => {
-    setForm((prevState) => ({
-      ...prevState,
-      [lang]: {
-        ...prevState[lang],
-        [key]: value
-      }
-    }));
-  };
 
   return !loading ? (
     <div className={classes.body}>
@@ -116,20 +103,21 @@ const AwesomeSlider = (props) => {
           >
             <Grid item xs={12}>
               <TextValidator
-                label={lang === 'en' ? 'English Title' : 'Armenian Title'}
+                label="Title"
                 margin="normal"
                 className={classes.textArea}
                 variant="outlined"
                 value={form[lang].title}
                 validators={['required']}
                 errorMessages={['Field s required']}
-                onChange={(e) => handleInputChange(lang,'title', e.target.value)}
+                onChange={(e) => handleAdminInputChange(lang,'title', e.target.value, setForm)} //handleInputChange(lang,'title', e.target.value)}
                 name="title"
               />
             </Grid>
             <Grid item xs={12}>
               <TextEditor
-                handleInputChange={handleInputChange}
+                handleInputChange={handleAdminInputChange}
+                setForm={setForm}
                 lang={lang}
                 form={form}
               />

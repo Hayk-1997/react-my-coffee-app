@@ -8,6 +8,7 @@ import AwesomeSlider from './Containers/AwesomeSlider';
 import Info from './Containers/Info';
 import Grid from '@material-ui/core/Grid';
 import useStyles from './useStyles';
+import OurHistory from './Containers/OurHistory';
 
 
 const Index = (props) => {
@@ -48,7 +49,8 @@ const Index = (props) => {
       {
         passedContext === 'AwesomeSlider' ? <AwesomeSlider {...props} /> :
           passedContext === 'Info' ? <Info {...props} /> :
-            gridLayout()
+            passedContext === 'OurHistory' ? <OurHistory {...props} /> :
+              gridLayout()
       }
     </div>
   );

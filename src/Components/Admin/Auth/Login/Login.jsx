@@ -14,7 +14,7 @@ const Login = (props) => {
     AdminLogin, AdminLoginSuccess, AdminLoginToken,
     AdminLoginError,
   } = props;
-  const [form, handleFormChange] = useForm({ email: '', password: ''});
+  const [form, handleFormChange] = useForm({ email: '', password: '' });
   const [verifyFields, setVerifyFields] = useState({
     password: false,
     email: false,

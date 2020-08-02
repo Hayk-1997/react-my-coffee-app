@@ -307,11 +307,11 @@ Info.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  InfoSuccess: state.AdminInfoData.InfoSuccess,
-  InfoError: state.AdminInfoData.InfoError,
-  InfoData: state.AdminInfoData.InfoData,
-  UpdateInfoSuccess: state.AdminInfoData.UpdateInfoSuccess,
-  UpdateInfoError: state.AdminInfoData.UpdateInfoError,
+  InfoSuccess: state.Info.InfoSuccess,
+  InfoError: state.Info.InfoError,
+  InfoData: state.Info.InfoData,
+  UpdateInfoSuccess: state.Info.UpdateInfoSuccess,
+  UpdateInfoError: state.Info.UpdateInfoError,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -4,6 +4,7 @@ import Register from '../../Components/Admin/Auth/Register/Register';
 import Home from '../../Components/Admin/Home';
 import AwesomeSlider from '../../Components/Admin/Home/Containers/AwesomeSlider';
 import Info from '../../Components/Admin/Home/Containers/Info';
+import OurHistory from '../../Components/Admin/Home/Containers/OurHistory';
 
 const routes = [
   {
@@ -62,7 +63,14 @@ const routes = [
         name: 'Info',
         icon: 'fa fa-slideshare',
         component: Info,
-      }
+      },
+      {
+        id: 3,
+        parent: 'Home',
+        name: 'OurHistory',
+        icon: 'fa fa-slideshare',
+        component: OurHistory,
+      },
     ]
   },
   // {
