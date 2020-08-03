@@ -7,9 +7,11 @@ import { Provider } from 'react-redux';
 import rootStore from './Redux/store';
 import { ApolloProvider } from 'react-apollo';
 import client from './graphQL/client';
+import './App.css';
+
 const hist = createBrowserHistory();
 
-const App  = () => (
+const App = () => (
   <ApolloProvider client={client}>
     <Provider store={rootStore.store}>
       <Router history={hist}>

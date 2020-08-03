@@ -27,10 +27,10 @@ const AwesomeSlider = () => {
       <div id="carouselExampleIndicators">
         <div className="content">
           <div className="glitch">
-            <div className="glitch__img" style={{backgroundImage: `url(${data.AwesomeSlider.image})`}}/>
-            <div className="glitch__img" style={{backgroundImage: `url(${data.AwesomeSlider.image})`}}/>
-            <div className="glitch__img" style={{backgroundImage: `url(${data.AwesomeSlider.image})`}}/>
-            <div className="glitch__img" style={{backgroundImage: `url(${data.AwesomeSlider.image})`}}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSlider.image})` }}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSlider.image})` }}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSlider.image})` }}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSlider.image})` }}/>
             <span className="slider-header">
               <div className="slider-item">
                 <div className="overlay"/>
@@ -42,7 +42,7 @@ const AwesomeSlider = () => {
                       </span>
                       <h3
                         className="mb-4"
-                        dangerouslySetInnerHTML={{__html: data.AwesomeSlider[language][0].description}}/>
+                        dangerouslySetInnerHTML={{ __html: data.AwesomeSlider[language][0].description }}/>
                       <div className="button-box">
                         <button href="#" className="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</button>
                         <a href="#" className="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
