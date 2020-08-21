@@ -6,7 +6,7 @@ import { Admin_InfoRequest, Admin_UpdateInfoRequest } from '../../../../../Redux
 import TabsAppBar from '../../../Main/TabsAppBar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import SearchIconModal from './SearchIconModal';
+import SearchIconModal from '../../../Main/SearchIconModal';
 import Spinner from '../../../../Spinner';
 import Avatar from '@material-ui/core/Avatar';
 import { notify } from '../../../../../Config/Notify';
@@ -25,6 +25,7 @@ const Info = (props) => {
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState(0);
   const [lang, setLang] = useState('en');
+  const ref = useRef();
   const fields = {
     phone: { number: '', description: '', icon : {} },
     address: { title: '', description: '', icon : {} },
@@ -39,21 +40,24 @@ const Info = (props) => {
     address: false,
     workingHours: false,
   });
-  const ref = useRef();
+
   useEffect(() => {
     GetAdminInfoData();
   }, []);
+
   useEffect(() => {
     if (InfoSuccess) {
       setForm(InfoData);
       setLoading(false);
     }
   }, [InfoSuccess]);
+
   useEffect(() => {
     if (UpdateInfoSuccess) {
       notify('Data Updated Success', 1000, 'SUCCESS');
     }
   },[UpdateInfoSuccess]);
+
   useEffect(() => {
     if (UpdateInfoError) {
       notify('Something went wrong', 1000, 'ERROR');

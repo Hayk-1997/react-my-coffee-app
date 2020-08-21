@@ -4,11 +4,13 @@ import { RouteToggleContext } from '../Context/RouteToggleContext';
 import AwesomeSliderCard from './CardMedia/AweseomSliderCard';
 import InfoCard from './CardMedia/Info';
 import OurHistoryCard from './CardMedia/OurHistory';
+import ServicesCard from './CardMedia/Services';
 import AwesomeSlider from './Containers/AwesomeSlider';
 import Info from './Containers/Info';
 import Grid from '@material-ui/core/Grid';
-import useStyles from './useStyles';
 import OurHistory from './Containers/OurHistory';
+import Services from './Containers/Services';
+import useStyles from './useStyles';
 
 
 const Index = (props) => {
@@ -22,9 +24,8 @@ const Index = (props) => {
   }, [context]);
 
   const classes = useStyles();
-  const renderComponent = (component) => {
-    handleUseHomeToggleContext(component);
-  };
+  const renderComponent = component => handleUseHomeToggleContext(component);
+
 
   const gridLayout = () => {
     return (
@@ -41,6 +42,10 @@ const Index = (props) => {
           classes={classes}
           renderComponent={renderComponent}
         />
+        <ServicesCard
+          classes={classes}
+          renderComponent={renderComponent}
+        />
       </Grid>
     );
   };
@@ -50,7 +55,8 @@ const Index = (props) => {
         passedContext === 'AwesomeSlider' ? <AwesomeSlider {...props} /> :
           passedContext === 'Info' ? <Info {...props} /> :
             passedContext === 'OurHistory' ? <OurHistory {...props} /> :
-              gridLayout()
+              passedContext === 'Services' ? <Services {...props} /> :
+                gridLayout()
       }
     </div>
   );
