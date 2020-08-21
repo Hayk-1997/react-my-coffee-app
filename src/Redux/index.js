@@ -8,6 +8,7 @@ import SocialSignIn from './Web/Auth/SocialLogin/reducer';
 import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
 import Info from './Admin/Info/reducer';
 import OurHistory from './Admin/OurHistory/reducer';
+import Services from './Admin/Services/reducer';
 // COFFEE
 import IP from './IP/reducer';
 
@@ -20,6 +21,7 @@ const AppReducer = combineReducers({
   AdminAwesomeSlider,
   Info,
   OurHistory,
+  Services,
   IP
 });
 

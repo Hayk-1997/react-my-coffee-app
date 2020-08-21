@@ -5,6 +5,7 @@ import Home from '../../Components/Admin/Home';
 import AwesomeSlider from '../../Components/Admin/Home/Containers/AwesomeSlider';
 import Info from '../../Components/Admin/Home/Containers/Info';
 import OurHistory from '../../Components/Admin/Home/Containers/OurHistory';
+import Services from '../../Components/Admin/Home/Containers/Services';
 
 const routes = [
   {
@@ -70,6 +71,13 @@ const routes = [
         name: 'OurHistory',
         icon: 'fa fa-slideshare',
         component: OurHistory,
+      },
+      {
+        id: 3,
+        parent: 'Home',
+        name: 'Services',
+        icon: 'fa fa-slideshare',
+        component: Services,
       },
     ]
   },
