@@ -20,9 +20,21 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import useStyles from '../useStyles/useStyle';
+import Grid from '@material-ui/core/Grid';
 
 const Layout = (props) => {
   const { history } = props;
+
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [context, setContext] = useState();
+  const menuId = 'primary-search-account-menu';
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+
   const getRoutes = () => {
     return routes.map((route) => {
       if (route.auth) {
@@ -41,43 +53,28 @@ const Layout = (props) => {
       }
     });
   };
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const [context, setContext] = useState();
-  const menuId = 'primary-search-account-menu';
-  const mobileMenuId = 'primary-search-account-menu-mobile';
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-  const handleProfileMenuOpen = event => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+  const handleDrawerOpen = () => setOpen(true);
+
+  const handleDrawerClose = () => setOpen(false);
+
+  const handleProfileMenuOpen = event => setAnchorEl(event.currentTarget);
+
+  const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
+
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-  const handleMobileMenuOpen = event => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-  const handleUseHomeToggleContext = context => {
-    setContext(context);
-  };
+
+  const handleMobileMenuOpen = event => setMobileMoreAnchorEl(event.currentTarget);
+
+  const handleUseHomeToggleContext = context => setContext(context);
 
   return (
-    <div className={classes.root}>
+    <Grid className={classes.root}>
       <CssBaseline />
-      <div className={classes.grow}>
+      <Grid className={classes.grow}>
         <AppBar
           position="fixed"
           className={clsx(classes.appBar, {
@@ -97,10 +94,10 @@ const Layout = (props) => {
             <Typography className={classes.title} variant="h6" noWrap>
                             Material-UI
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
+            <Grid className={classes.search}>
+              <Grid className={classes.searchIcon}>
                 <SearchIcon />
-              </div>
+              </Grid>
               <InputBase
                 placeholder="Search…"
                 classes={{
@@ -109,9 +106,9 @@ const Layout = (props) => {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </div>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
+            </Grid>
+            <Grid className={classes.grow} />
+            <Grid className={classes.sectionDesktop}>
               <IconButton aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
@@ -132,8 +129,8 @@ const Layout = (props) => {
               >
                 <AccountCircle />
               </IconButton>
-            </div>
-            <div className={classes.sectionMobile}>
+            </Grid>
+            <Grid className={classes.sectionMobile}>
               <IconButton
                 aria-label="show more"
                 aria-controls={mobileMenuId}
@@ -142,7 +139,7 @@ const Layout = (props) => {
                 color="inherit"
               >
               </IconButton>
-            </div>
+            </Grid>
           </Toolbar>
         </AppBar>
         <RenderMobileMenu
@@ -165,7 +162,7 @@ const Layout = (props) => {
           onClose={handleMenuClose}
           handleMenuClose={handleMenuClose}
         />
-      </div>
+      </Grid>
       <RouteList
         classes={classes}
         open={open}
@@ -175,12 +172,12 @@ const Layout = (props) => {
         history={history}
       />
       <main className={classes.content}>
-        <div className={classes.toolbar} />
+        <Grid className={classes.toolbar} />
         <RouteToggleContext.Provider value={{ context, handleUseHomeToggleContext }}>
           { getRoutes() }
         </RouteToggleContext.Provider>
       </main>
-    </div>
+    </Grid>
   );
 };
 

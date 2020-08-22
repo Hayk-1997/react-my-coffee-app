@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Icons from '../../../../Services/Icons';
 import Spinner from '../../../Spinner';
 import Transition from './Transition';
-import useStyles from './useStyles';
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,10 +13,10 @@ import TextField from '@material-ui/core/TextField';
 import IconList from './IconList';
 import { ToastContainer } from 'react-toastify';
 import { notify } from '../../../../Config/Notify';
+import useStyles from './useStyles';
 
 const SearchIconModal = (props) => {
   const { onClose, title, query, language, updateIconField, page } = props;
-  console.log(props);
   const classes = useStyles();
   const [searchIcon, setSearchIcon] = useState('');
   const [loading, setLoading] = useState(false);

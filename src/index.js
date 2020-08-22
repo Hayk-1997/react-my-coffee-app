@@ -16,7 +16,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#bfbfbf',
+      main: '#673ab7',
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
     },
     borderColor: {
       main: '#bfbfbf',
-    }
+    },
   },
   typography: {
     fontFamily: [
