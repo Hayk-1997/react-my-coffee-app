@@ -1,3 +1,3 @@
 import { axiosInstance } from '../../Config/Axios/axiosInstance';
 
-export default (icon, query, language) => axiosInstance.put('admin/info/upload-icon', { icon, field: query, language });
+export default (icon, query, language, page) => axiosInstance.put(`admin/${page}/upload-icon`, { icon, field: query, language });
