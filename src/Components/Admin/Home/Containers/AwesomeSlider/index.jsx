@@ -18,6 +18,7 @@ import Grid from '@material-ui/core/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import handleAdminInputChange from '../../../../../CustomHooks/handleAdminInputChange';
 import useStyles from '../../../Layout/useStyles';
+import SubmitButton from '../../../../Main/SubmitButton';
 
 const AwesomeSlider = (props) => {
   const {
@@ -25,7 +26,7 @@ const AwesomeSlider = (props) => {
     AwesomeSliderSuccess, awesomeSliderData,
     AwesomeSliderUpdateSuccess, AwesomeSliderUpdateError
   } = props;
-    // State
+
   const prevAwesomeSliderUpdateSuccess = usePrevious(AwesomeSliderUpdateSuccess);
   const prevAwesomeSliderUpdateError = usePrevious(AwesomeSliderUpdateError);
   const classes = useStyles();
@@ -88,13 +89,13 @@ const AwesomeSlider = (props) => {
   }, [lang, tab]);
 
   return !loading ? (
-    <div className={classes.body}>
+    <Grid className={classes.body}>
       <ToastContainer />
       <TabsAppBar
         handleTabChange={handleTabChange}
         tab={tab}
       />
-      <div className={classes.root}>
+      <Grid className={classes.root}>
         <Grid container spacing={3}>
           <ValidatorForm
             ref={ref}
@@ -128,22 +129,11 @@ const AwesomeSlider = (props) => {
                 setImage={setImage}
               />
             </Grid>
-            <Grid item xs={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                className={classes.button}
-                type="submit"
-                startIcon={<SaveIcon/>}
-              >
-                Update
-              </Button>
-            </Grid>
+            <SubmitButton name="Update" />
           </ValidatorForm>
         </Grid>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   ): <Spinner />;
 };
 

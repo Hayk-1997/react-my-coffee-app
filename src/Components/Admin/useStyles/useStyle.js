@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    background: '#2E3B55'
+    background: theme.palette.primary.main
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    background: '#2E3B55',
+    background: theme.palette.primary.main,
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
     },
-    background: '#2E3B55'
+    background: theme.palette.primary.main
   },
   toolbar: {
     display: 'flex',

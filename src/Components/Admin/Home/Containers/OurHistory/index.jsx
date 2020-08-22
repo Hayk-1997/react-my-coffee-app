@@ -5,15 +5,14 @@ import { OurHistoryRequest, UpdateOurHistoryRequest } from '../../../../../Redux
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ToastContainer } from 'react-toastify';
 import TabsAppBar from '../../../Main/TabsAppBar';
-import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
 import TextEditor from '../../../../Main/TextEditor';
 import FilePondEditor from '../../../../Main/FilePondEditor';
 import Grid from '@material-ui/core/Grid';
 import handleAdminInputChange from '../../../../../CustomHooks/handleAdminInputChange';
-import useStyles from '../../../Layout/useStyles';
 import Spinner from '../../../../Spinner';
-import {notify} from '../../../../../Config/Notify';
+import { notify } from '../../../../../Config/Notify';
+import SubmitButton from '../../../../Main/SubmitButton';
+import useStyles from '../../../Layout/useStyles';
 
 
 const OurHistory = (props) => {
@@ -21,6 +20,7 @@ const OurHistory = (props) => {
     GetOurHistory, OurHistorySuccess, OurHistoryData,
     UpdateOurHistory, UpdateOurHistorySuccess, UpdateOurHistoryError
   } = props;
+
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const fields = { title: '', subTitle: '', description: '' };
@@ -130,18 +130,7 @@ const OurHistory = (props) => {
                 setImage={setImage}
               />
             </Grid>
-            <Grid item xs={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                className={classes.button}
-                type="submit"
-                startIcon={<SaveIcon/>}
-              >
-                Update
-              </Button>
-            </Grid>
+            <SubmitButton name="Update" />
           </ValidatorForm>
         </Grid>
       </div>

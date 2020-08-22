@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Collapse from './Collapse';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -13,6 +13,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
 import Icon from '@material-ui/core/Icon';
+import Grid from '@material-ui/core/Grid';
 import useStyles from '../../useStyles/useStyle';
 
 
@@ -21,6 +22,7 @@ const RouteList = (props) => {
     open, handleDrawerClose, history,
     handleUseHomeToggleContext, handleDrawerOpen
   } = props;
+
   const classes = useStyles();
   const [showRouteContent, setShowRouteContent] = useState('');
 
@@ -33,9 +35,7 @@ const RouteList = (props) => {
     history.push(path);
   };
 
-  const passHomeToggleContext = item => {
-    handleUseHomeToggleContext(item);
-  };
+  const passHomeToggleContext = item => handleUseHomeToggleContext(item);
 
   return (
     <Drawer
@@ -51,18 +51,18 @@ const RouteList = (props) => {
         }),
       }}
     >
-      <div className={classes.toolbar}>
+      <Grid className={classes.toolbar}>
         <IconButton onClick={handleDrawerClose}>
-          <ChevronRightIcon />
+          <ChevronLeftIcon />
         </IconButton>
-      </div>
+      </Grid>
       <Divider/>
       <List>
         {routes.map((route, index) => {
           return (
             route.auth ?
               (
-                <div key={index} onClick={() => openRouteContent(route.name, route.path)}>
+                <Grid key={index} onClick={() => openRouteContent(route.name, route.path)}>
                   <ListItem button>
                     <ListItemIcon>
                       <Icon><i className={route.icon} /></Icon>
@@ -88,7 +88,7 @@ const RouteList = (props) => {
                         })
                       ) : null
                   }
-                </div>
+                </Grid>
               ) : null
           );
         })}
@@ -101,5 +101,9 @@ const RouteList = (props) => {
 RouteList.propTypes = {
   open: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
+  handleDrawerClose: PropTypes.func.isRequired,
+  handleUseHomeToggleContext: PropTypes.func.isRequired,
+  handleDrawerOpen: PropTypes.func.isRequired,
 };
+
 export default RouteList;

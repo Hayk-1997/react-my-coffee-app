@@ -107,162 +107,164 @@ const Services = (props) => {
         tab={tab}
       />
       <Grid className={classes.root}>
-        <ValidatorForm
-          ref={ref}
-          onSubmit={handleSubmit}
-          className={classes.validatorForm}
-        >
-          <Grid container>
-            <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
-              <Grid>
-                <TextValidator
-                  label="Title"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  value={form[lang].box1.title}
-                  validators={['required']}
-                  errorMessages={['Title s required']}
-                  onChange={(e) => handleInputChange(lang,'box1', 'title', e.target.value)}
-                  name="box1-title"
-                />
-              </Grid>
-              <Grid>
-                <TextValidator
-                  label="Description"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  value={form[lang].box1.description}
-                  validators={['required']}
-                  errorMessages={['Description s required']}
-                  onChange={(e) => handleInputChange(lang,'box1', 'description', e.target.value)}
-                  name="box1-description"
-                />
-              </Grid>
-              <Grid className={classes.avatarField}>
-                <Grid className={classes.avatarLarge}>
-                  <Avatar src={form[lang].box1.icon.item.preview_url} />
+        <Grid container spacing={3}>
+          <ValidatorForm
+            ref={ref}
+            onSubmit={handleSubmit}
+            className={classes.validatorForm}
+          >
+            <Grid container>
+              <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
+                <Grid>
+                  <TextValidator
+                    label="Title"
+                    margin="normal"
+                    className={classes.textArea}
+                    variant="outlined"
+                    value={form[lang].box1.title}
+                    validators={['required']}
+                    errorMessages={['Title s required']}
+                    onChange={(e) => handleInputChange(lang,'box1', 'title', e.target.value)}
+                    name="box1-title"
+                  />
                 </Grid>
-              </Grid>
-              <Grid className={classes.iconSearchBox}>
-                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box2', setIsModalShow)}>
+                <Grid>
+                  <TextValidator
+                    label="Description"
+                    margin="normal"
+                    className={classes.textArea}
+                    variant="outlined"
+                    value={form[lang].box1.description}
+                    validators={['required']}
+                    errorMessages={['Description s required']}
+                    onChange={(e) => handleInputChange(lang,'box1', 'description', e.target.value)}
+                    name="box1-description"
+                  />
+                </Grid>
+                <Grid className={classes.avatarField}>
+                  <Grid className={classes.avatarLarge}>
+                    <Avatar src={form[lang].box1.icon.item.preview_url} />
+                  </Grid>
+                </Grid>
+                <Grid className={classes.iconSearchBox}>
+                  <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box2', setIsModalShow)}>
                     Open full-screen dialog
-                </Button>
-                {
-                  isModalShow.box1 ? (
-                    <SearchIconModal
-                      onClose={handleClose}
-                      query="box1"
-                      language={lang}
-                      page='services'
-                      updateIconField={updateIconField}
-                    />
-                  ) : null
-                }
-              </Grid>
-            </Grid>
-            <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
-              <Grid>
-                <TextValidator
-                  label="Title"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  value={form[lang].box2.title}
-                  validators={['required']}
-                  errorMessages={['Title s required']}
-                  onChange={(e) => handleInputChange(lang,'box2', 'title', e.target.value)}
-                  name="box2-title"
-                />
-              </Grid>
-              <Grid>
-                <TextValidator
-                  label="Description"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  value={form[lang].box2.description}
-                  validators={['required']}
-                  errorMessages={['Description s required']}
-                  onChange={(e) => handleInputChange(lang,'box2', 'description', e.target.value)}
-                  name="box2-description"
-                />
-              </Grid>
-              <Grid className={classes.avatarField}>
-                <Grid className={classes.avatarLarge}>
-                  <Avatar src={form[lang].box2.icon.item.preview_url} />
+                  </Button>
+                  {
+                    isModalShow.box1 ? (
+                      <SearchIconModal
+                        onClose={handleClose}
+                        query="box1"
+                        language={lang}
+                        page='services'
+                        updateIconField={updateIconField}
+                      />
+                    ) : null
+                  }
                 </Grid>
               </Grid>
-              <Grid className={classes.iconSearchBox}>
-                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box2', setIsModalShow)}>
+              <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
+                <Grid>
+                  <TextValidator
+                    label="Title"
+                    margin="normal"
+                    className={classes.textArea}
+                    variant="outlined"
+                    value={form[lang].box2.title}
+                    validators={['required']}
+                    errorMessages={['Title s required']}
+                    onChange={(e) => handleInputChange(lang,'box2', 'title', e.target.value)}
+                    name="box2-title"
+                  />
+                </Grid>
+                <Grid>
+                  <TextValidator
+                    label="Description"
+                    margin="normal"
+                    className={classes.textArea}
+                    variant="outlined"
+                    value={form[lang].box2.description}
+                    validators={['required']}
+                    errorMessages={['Description s required']}
+                    onChange={(e) => handleInputChange(lang,'box2', 'description', e.target.value)}
+                    name="box2-description"
+                  />
+                </Grid>
+                <Grid className={classes.avatarField}>
+                  <Grid className={classes.avatarLarge}>
+                    <Avatar src={form[lang].box2.icon.item.preview_url} />
+                  </Grid>
+                </Grid>
+                <Grid className={classes.iconSearchBox}>
+                  <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box2', setIsModalShow)}>
                   Open full-screen dialog
-                </Button>
-                {
-                  isModalShow.box2 ? (
-                    <SearchIconModal
-                      onClose={handleClose}
-                      query="box2"
-                      language={lang}
-                      page='services'
-                      updateIconField={updateIconField}
-                    />
-                  ) : null
-                }
-              </Grid>
-            </Grid>
-            <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
-              <Grid>
-                <TextValidator
-                  label="Title"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  value={form[lang].box3.title}
-                  validators={['required']}
-                  errorMessages={['Title s required']}
-                  onChange={(e) => handleInputChange(lang,'box3', 'title', e.target.value)}
-                  name="box3-title"
-                />
-              </Grid>
-              <Grid>
-                <TextValidator
-                  label="Description"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  value={form[lang].box3.description}
-                  validators={['required']}
-                  errorMessages={['Description s required']}
-                  onChange={(e) => handleInputChange(lang,'box3', 'description', e.target.value)}
-                  name="box3-description"
-                />
-              </Grid>
-              <Grid className={classes.avatarField}>
-                <Grid className={classes.avatarLarge}>
-                  <Avatar src={form[lang].box3.icon.item.preview_url} />
+                  </Button>
+                  {
+                    isModalShow.box2 ? (
+                      <SearchIconModal
+                        onClose={handleClose}
+                        query="box2"
+                        language={lang}
+                        page='services'
+                        updateIconField={updateIconField}
+                      />
+                    ) : null
+                  }
                 </Grid>
               </Grid>
-              <Grid className={classes.iconSearchBox}>
-                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box3', setIsModalShow)}>
+              <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
+                <Grid>
+                  <TextValidator
+                    label="Title"
+                    margin="normal"
+                    className={classes.textArea}
+                    variant="outlined"
+                    value={form[lang].box3.title}
+                    validators={['required']}
+                    errorMessages={['Title s required']}
+                    onChange={(e) => handleInputChange(lang,'box3', 'title', e.target.value)}
+                    name="box3-title"
+                  />
+                </Grid>
+                <Grid>
+                  <TextValidator
+                    label="Description"
+                    margin="normal"
+                    className={classes.textArea}
+                    variant="outlined"
+                    value={form[lang].box3.description}
+                    validators={['required']}
+                    errorMessages={['Description s required']}
+                    onChange={(e) => handleInputChange(lang,'box3', 'description', e.target.value)}
+                    name="box3-description"
+                  />
+                </Grid>
+                <Grid className={classes.avatarField}>
+                  <Grid className={classes.avatarLarge}>
+                    <Avatar src={form[lang].box3.icon.item.preview_url} />
+                  </Grid>
+                </Grid>
+                <Grid className={classes.iconSearchBox}>
+                  <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box3', setIsModalShow)}>
                   Open full-screen dialog
-                </Button>
-                {
-                  isModalShow.box3 ? (
-                    <SearchIconModal
-                      onClose={handleClose}
-                      query="box3"
-                      language={lang}
-                      page='services'
-                      updateIconField={updateIconField}
-                    />
-                  ) : null
-                }
+                  </Button>
+                  {
+                    isModalShow.box3 ? (
+                      <SearchIconModal
+                        onClose={handleClose}
+                        query="box3"
+                        language={lang}
+                        page='services'
+                        updateIconField={updateIconField}
+                      />
+                    ) : null
+                  }
+                </Grid>
               </Grid>
+              <SubmitButton name="Update" />
             </Grid>
-            <SubmitButton name="Update" />
-          </Grid>
-        </ValidatorForm>
+          </ValidatorForm>
+        </Grid>
       </Grid>
     </Grid>
   ) : <Spinner />;
