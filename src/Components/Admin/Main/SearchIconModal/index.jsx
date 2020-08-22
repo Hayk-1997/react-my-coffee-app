@@ -16,8 +16,9 @@ import { ToastContainer } from 'react-toastify';
 import { notify } from '../../../../Config/Notify';
 
 const SearchIconModal = (props) => {
+  const { onClose, title, query, language, updateIconField, page } = props;
+  console.log(props);
   const classes = useStyles();
-  const { onClose, title, query, language, updateIconField } = props;
   const [searchIcon, setSearchIcon] = useState('');
   const [loading, setLoading] = useState(false);
   const [icons, setIcon] = useState([]);
@@ -28,7 +29,6 @@ const SearchIconModal = (props) => {
       Icons.getIcons(query).then(response => setIcon(response.data.icons));
       setLoading(true);
     }
-
   }, []);
 
   useEffect(() => {
@@ -58,20 +58,22 @@ const SearchIconModal = (props) => {
 
   const uploadIcon = (icon, query, language) => {
     setLoading(true);
-    Icons.UploadIcon(icon, query, language)
-      .then(() => {
-        setLoading(false);
-        onClose();
-        updateIconField(query, language, icon);
-        notify('Icon upload Successful', 1000, 'SUCCESS');
+    Icons.UploadIcon(icon, query, language, page)
+      .then((response) => {
+        if (response.status === 200) {
+          setLoading(false);
+          onClose();
+          updateIconField(query, language, icon);
+          notify(response.data.message, 1000, 'SUCCESS');
+        }
       })
-      .catch(() => notify('Something went wrong', 1000, 'ERROR'));
+      .catch((e) => notify(e.response.data.message, 1000, 'ERROR'));
   };
 
   return (
     <>
       <ToastContainer />
-      <Dialog className="searchIconDialog" fullScreen open onClose={onClose} TransitionComponent={Transition}>
+      <Dialog className="searchIconDialog" fullScreen open={true} onClose={onClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={onClose} aria-label="close">
@@ -110,6 +112,7 @@ SearchIconModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string,
   query: PropTypes.string,
+  page: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
   updateIconField: PropTypes.func.isRequired,
 };

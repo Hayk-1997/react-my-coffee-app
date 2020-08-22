@@ -9,7 +9,7 @@ const initialState = {
   ServicesData: {},
   ServicesError: false,
   UpdateServicesSuccess: false,
-  UpdateServiceSuccessMessage: '',
+  UpdateServicesSuccessMessage: '',
   UpdateServicesError: false,
   UpdateServicesErrorMessage: '',
 };
@@ -36,21 +36,21 @@ const reducer = handleActions({
   [UpdateServicesRequest]: (state) => ({
     ...state,
     UpdateServicesSuccess: false,
-    UpdateServiceSuccessMessage: '',
+    UpdateServicesSuccessMessage: '',
     UpdateServicesError: false,
     UpdateServicesErrorMessage: '',
   }),
   [UpdateServicesSuccess]: (state, { payload }) => ({
     ...state,
     UpdateServicesSuccess: true,
-    UpdateServiceSuccessMessage: payload.message,
+    UpdateServicesSuccessMessage: payload.message,
     UpdateServicesError: false,
     UpdateServicesErrorMessage: '',
   }),
   [UpdateServicesError]: (state, { payload }) => ({
     ...state,
     UpdateServicesSuccess: false,
-    UpdateServiceSuccessMessage: '',
+    UpdateServicesSuccessMessage: '',
     UpdateServicesError: true,
     UpdateServicesErrorMessage: payload.message,
   }),

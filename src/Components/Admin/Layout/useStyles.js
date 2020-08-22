@@ -5,9 +5,6 @@ export default makeStyles(theme => ({
     formContent: {
       textAlign: 'center',
     },
-    button: {
-      margin: theme.spacing(1),
-    },
   },
   root: {
     flexGrow: 1,

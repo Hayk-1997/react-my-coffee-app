@@ -11,9 +11,10 @@ import Spinner from '../../../../Spinner';
 import Avatar from '@material-ui/core/Avatar';
 import { notify } from '../../../../../Config/Notify';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import useStyles from '../../../Layout/useStyles';
 import Typography from '@material-ui/core/Typography';
-import SaveIcon from '@material-ui/icons/Save';
+import updateIcon from '../../../../../Helpers/updateIcon';
+import SubmitButton from '../../../../Main/SubmitButton';
+import useStyles from '../../../Layout/useStyles';
 
 const Info = (props) => {
   const {
@@ -21,6 +22,7 @@ const Info = (props) => {
     InfoData, UpdateInfo,
     UpdateInfoSuccess, UpdateInfoError
   } = props;
+
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState(0);
@@ -55,14 +57,11 @@ const Info = (props) => {
   useEffect(() => {
     if (UpdateInfoSuccess) {
       notify('Data Updated Success', 1000, 'SUCCESS');
-    }
-  },[UpdateInfoSuccess]);
-
-  useEffect(() => {
-    if (UpdateInfoError) {
+    } else if (UpdateInfoError) {
       notify('Something went wrong', 1000, 'ERROR');
     }
-  },[UpdateInfoError]);
+  },[UpdateInfoSuccess, UpdateInfoError]);
+
 
   const handleInputChange = (lang, key, name, value) => {
     setForm((prevState) => ({
@@ -101,27 +100,17 @@ const Info = (props) => {
       workingHours: false,
     }));
   };
-  const updateIconField = (field, lang, icon) => {
-    setForm((prevState) => ({
-      ...prevState,
-      [lang]: {
-        ...prevState[lang],
-        [field]: {
-          ...prevState[lang][field],
-          icon
-        }
-      }
-    }));
-  };
+
+  const updateIconField = (field, lang, icon) => updateIcon(field, lang, icon, setForm);
 
   return !loading ? (
-    <div className={classes.body}>
+    <Grid className={classes.body}>
       <ToastContainer />
       <TabsAppBar
         handleTabChange={handleTabChange}
         tab={tab}
       />
-      <div className={classes.root}>
+      <Grid className={classes.root}>
         <ValidatorForm
           ref={ref}
           onSubmit={handleSubmit}
@@ -157,12 +146,12 @@ const Info = (props) => {
                 />
               </Grid>
               <Grid className={classes.avatarField}>
-                <div className={classes.avatarLarge}>
+                <Grid className={classes.avatarLarge}>
                   <Avatar
                     src={form[lang].phone.icon.item.preview_url} />
-                </div>
+                </Grid>
               </Grid>
-              <div className={classes.iconSearchBox}>
+              <Grid className={classes.iconSearchBox}>
                 <Button variant="outlined" color="primary" onClick={() => handleClickOpen('phone')}>
                 Open full-screen dialog
                 </Button>
@@ -173,11 +162,12 @@ const Info = (props) => {
                       title="Phone Icons"
                       query="phone"
                       language={lang}
+                      page="info"
                       updateIconField={updateIconField}
                     />
                   ) : null
                 }
-              </div>
+              </Grid>
             </Grid>
             <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
               <Typography variant="h4" component="h4" color="primary">Address</Typography>
@@ -208,12 +198,12 @@ const Info = (props) => {
                 />
               </Grid>
               <Grid className={classes.avatarField}>
-                <div className={classes.avatarLarge}>
+                <Grid className={classes.avatarLarge}>
                   <Avatar
                     src={form[lang].address.icon.item.preview_url} />
-                </div>
+                </Grid>
               </Grid>
-              <div className={classes.iconSearchBox}>
+              <Grid className={classes.iconSearchBox}>
                 <Button variant="outlined" color="primary" onClick={() => handleClickOpen('address')}>
                 Open full-screen dialog
                 </Button>
@@ -224,11 +214,12 @@ const Info = (props) => {
                       title="Address Icons"
                       query="address"
                       language={lang}
+                      page="info"
                       updateIconField={updateIconField}
                     />
                   ) : null
                 }
-              </div>
+              </Grid>
             </Grid>
             <Grid item lg={4} md={12} sm={12} xs={12} className={classes.box}>
               <Typography variant="h4" component="h4" color="primary">Working Hours</Typography>
@@ -259,12 +250,12 @@ const Info = (props) => {
                 />
               </Grid>
               <Grid className={classes.avatarField}>
-                <div className={classes.avatarLarge}>
+                <Grid className={classes.avatarLarge}>
                   <Avatar
                     src={form[lang].workingHours.icon.item.preview_url} />
-                </div>
+                </Grid>
               </Grid>
-              <div className={classes.iconSearchBox}>
+              <Grid className={classes.iconSearchBox}>
                 <Button variant="outlined" color="primary" onClick={() => handleClickOpen('workingHours')}>
                   Open full-screen dialog
                 </Button>
@@ -275,28 +266,18 @@ const Info = (props) => {
                       title="Phone Icons"
                       query="workingHours"
                       language={lang}
+                      page="info"
                       updateIconField={updateIconField}
                     />
                   ) : null
                 }
-              </div>
+              </Grid>
             </Grid>
-            <Grid item xs={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                className={classes.button}
-                type="submit"
-                startIcon={<SaveIcon/>}
-              >
-                Update
-              </Button>
-            </Grid>
+            <SubmitButton name="Update" />
           </Grid>
         </ValidatorForm>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   ): <Spinner />;
 };
 

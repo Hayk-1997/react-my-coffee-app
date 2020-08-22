@@ -1,25 +1,30 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { OurHistoryRequest, UpdateOurHistoryRequest } from '../../../../../Redux/Admin/OurHistory/actions';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ToastContainer } from 'react-toastify';
+import { notify } from '../../../../../Config/Notify';
 import TabsAppBar from '../../../Main/TabsAppBar';
 import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
 import Grid from '@material-ui/core/Grid';
 import Spinner from '../../../../Spinner';
-import { notify } from '../../../../../Config/Notify';
 import Avatar from '@material-ui/core/Avatar';
 import SearchIconModal from '../../../Main/SearchIconModal';
 import handleOpenSearchIconModal from '../../../../../CustomHooks/handleOpenSearchIconModal';
-import { ServicesRequest } from '../../../../../Redux/Admin/Services/actions';
+import { ServicesRequest, UpdateServicesRequest } from '../../../../../Redux/Admin/Services/actions';
 import usePrevious from '../../../../../CustomHooks/usePrevious';
+import SubmitButton from '../../../../Main/SubmitButton';
+import updateIcon from '../../../../../Helpers/updateIcon';
 import useStyles from '../../../Layout/useStyles';
 
 
 const Services = (props) => {
-  const { GetServices, ServicesSuccess, ServicesData } = props;
+  const {
+    GetServices, ServicesSuccess, ServicesData,
+    UpdateServices, UpdateServicesSuccess, UpdateServicesSuccessMessage,
+    UpdateServicesError, UpdateServicesErrorMessage
+  } = props;
+
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const fields = {
@@ -37,6 +42,8 @@ const Services = (props) => {
   });
   const ref = useRef();
   const previousServicesSuccess = usePrevious(ServicesSuccess);
+  const previousUpdateServicesSuccess = usePrevious(UpdateServicesSuccess);
+  const previousUpdateServicesError = usePrevious(UpdateServicesError);
 
   useEffect(() => {
     GetServices();
@@ -48,6 +55,15 @@ const Services = (props) => {
       setLoading(false);
     }
   }, [ServicesSuccess]);
+
+  useEffect(() => {
+    if (UpdateServicesSuccess && previousUpdateServicesSuccess === false) {
+      notify(UpdateServicesSuccessMessage, 1000, 'SUCCESS');
+      setLoading(false);
+    } else if (UpdateServicesError && previousUpdateServicesError === false) {
+      notify(UpdateServicesErrorMessage, 1000, 'ERROR');
+    }
+  }, [UpdateServicesSuccess, UpdateServicesError]);
 
   const handleTabChange = useCallback((tab, lang) => {
     setTab(tab);
@@ -62,18 +78,7 @@ const Services = (props) => {
     }));
   };
 
-  const updateIconField = (field, lang, icon) => {
-    setForm((prevState) => ({
-      ...prevState,
-      [lang]: {
-        ...prevState[lang],
-        [field]: {
-          ...prevState[lang][field],
-          icon
-        }
-      }
-    }));
-  };
+  const updateIconField = (field, lang, icon) => updateIcon(field, lang, icon, setForm);
 
   const handleInputChange = (lang, key, name, value) => {
     setForm((prevState) => ({
@@ -91,6 +96,7 @@ const Services = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     setLoading(true);
+    UpdateServices(form);
   };
 
   return !loading ? (
@@ -118,7 +124,7 @@ const Services = (props) => {
                   validators={['required']}
                   errorMessages={['Title s required']}
                   onChange={(e) => handleInputChange(lang,'box1', 'title', e.target.value)}
-                  name="title"
+                  name="box1-title"
                 />
               </Grid>
               <Grid>
@@ -131,25 +137,25 @@ const Services = (props) => {
                   validators={['required']}
                   errorMessages={['Description s required']}
                   onChange={(e) => handleInputChange(lang,'box1', 'description', e.target.value)}
-                  name="description"
+                  name="box1-description"
                 />
               </Grid>
               <Grid className={classes.avatarField}>
                 <Grid className={classes.avatarLarge}>
-                  {/*<Avatar*/}
-                  {/*  src={form[lang].icon.item.preview_url} />*/}
+                  <Avatar src={form[lang].box1.icon.item.preview_url} />
                 </Grid>
               </Grid>
               <Grid className={classes.iconSearchBox}>
-                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box1', setIsModalShow)}>
+                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box2', setIsModalShow)}>
                     Open full-screen dialog
                 </Button>
                 {
                   isModalShow.box1 ? (
                     <SearchIconModal
                       onClose={handleClose}
-                      query=""
+                      query="box1"
                       language={lang}
+                      page='services'
                       updateIconField={updateIconField}
                     />
                   ) : null
@@ -167,7 +173,7 @@ const Services = (props) => {
                   validators={['required']}
                   errorMessages={['Title s required']}
                   onChange={(e) => handleInputChange(lang,'box2', 'title', e.target.value)}
-                  name="title"
+                  name="box2-title"
                 />
               </Grid>
               <Grid>
@@ -180,25 +186,25 @@ const Services = (props) => {
                   validators={['required']}
                   errorMessages={['Description s required']}
                   onChange={(e) => handleInputChange(lang,'box2', 'description', e.target.value)}
-                  name="description"
+                  name="box2-description"
                 />
               </Grid>
               <Grid className={classes.avatarField}>
                 <Grid className={classes.avatarLarge}>
-                  {/*<Avatar*/}
-                  {/*  src={form[lang].icon.item.preview_url} />*/}
+                  <Avatar src={form[lang].box2.icon.item.preview_url} />
                 </Grid>
               </Grid>
               <Grid className={classes.iconSearchBox}>
-                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box1', setIsModalShow)}>
+                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box2', setIsModalShow)}>
                   Open full-screen dialog
                 </Button>
                 {
                   isModalShow.box2 ? (
                     <SearchIconModal
                       onClose={handleClose}
-                      query=""
+                      query="box2"
                       language={lang}
+                      page='services'
                       updateIconField={updateIconField}
                     />
                   ) : null
@@ -216,7 +222,7 @@ const Services = (props) => {
                   validators={['required']}
                   errorMessages={['Title s required']}
                   onChange={(e) => handleInputChange(lang,'box3', 'title', e.target.value)}
-                  name="title"
+                  name="box3-title"
                 />
               </Grid>
               <Grid>
@@ -229,43 +235,32 @@ const Services = (props) => {
                   validators={['required']}
                   errorMessages={['Description s required']}
                   onChange={(e) => handleInputChange(lang,'box3', 'description', e.target.value)}
-                  name="description"
+                  name="box3-description"
                 />
               </Grid>
               <Grid className={classes.avatarField}>
                 <Grid className={classes.avatarLarge}>
-                  {/*<Avatar*/}
-                  {/*  src={form[lang].icon.item.preview_url} />*/}
+                  <Avatar src={form[lang].box3.icon.item.preview_url} />
                 </Grid>
               </Grid>
               <Grid className={classes.iconSearchBox}>
-                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box1', setIsModalShow)}>
+                <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box3', setIsModalShow)}>
                   Open full-screen dialog
                 </Button>
                 {
                   isModalShow.box3 ? (
                     <SearchIconModal
                       onClose={handleClose}
-                      query=""
+                      query="box3"
                       language={lang}
+                      page='services'
                       updateIconField={updateIconField}
                     />
                   ) : null
                 }
               </Grid>
             </Grid>
-            <Grid item xs={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                className={classes.button}
-                type="submit"
-                startIcon={<SaveIcon/>}
-              >
-                Update
-              </Button>
-            </Grid>
+            <SubmitButton name="Update" />
           </Grid>
         </ValidatorForm>
       </Grid>
@@ -278,16 +273,26 @@ Services.propTypes = {
   ServicesData: PropTypes.object.isRequired,
   ServicesSuccess: PropTypes.bool.isRequired,
   ServicesError: PropTypes.bool.isRequired,
+  UpdateServices: PropTypes.func.isRequired,
+  UpdateServicesSuccess: PropTypes.bool.isRequired,
+  UpdateServicesSuccessMessage: PropTypes.string.isRequired,
+  UpdateServicesError: PropTypes.bool.isRequired,
+  UpdateServicesErrorMessage: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   ServicesSuccess: state.Services.ServicesSuccess,
   ServicesData: state.Services.ServicesData,
   ServicesError: state.Services.ServicesError,
+  UpdateServicesSuccess: state.Services.UpdateServicesSuccess,
+  UpdateServicesSuccessMessage: state.Services.UpdateServicesSuccessMessage,
+  UpdateServicesError: state.Services.UpdateServicesError,
+  UpdateServicesErrorMessage: state.Services.UpdateServicesErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   GetServices: () => dispatch(ServicesRequest()),
+  UpdateServices: (data) => dispatch(UpdateServicesRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Services);
