@@ -147,7 +147,7 @@ const Services = (props) => {
                   </Grid>
                 </Grid>
                 <Grid className={classes.iconSearchBox}>
-                  <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box2', setIsModalShow)}>
+                  <Button variant="outlined" color="primary" onClick={() => handleOpenSearchIconModal('box1', setIsModalShow)}>
                     Open full-screen dialog
                   </Button>
                   {

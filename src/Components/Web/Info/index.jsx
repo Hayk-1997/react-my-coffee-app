@@ -50,7 +50,7 @@ const Info = () => {
       <div className="row no-gutters">
         <div className="col-md-4 d-flex ftco-animate">
           <div className="icon">
-            <div className="icon-box" style={{backgroundImage: `url(${data.Info[language].phone.icon.item.preview_url})`}} />
+            <div className="icon-box" style={{ backgroundImage: `url(${data.Info[language].phone.icon.item.preview_url})` }} />
           </div>
           <div className="text">
             <h3>{data.Info[language].phone.number}</h3>
@@ -59,7 +59,7 @@ const Info = () => {
         </div>
         <div className="col-md-4 d-flex ftco-animate">
           <div className="icon">
-            <div className="icon-box" style={{backgroundImage: `url(${data.Info[language].address.icon.item.preview_url})`}} />
+            <div className="icon-box" style={{ backgroundImage: `url(${data.Info[language].address.icon.item.preview_url})` }} />
           </div>
           <div className="text">
             <h3>{data.Info[language].address.title}</h3>
@@ -68,7 +68,7 @@ const Info = () => {
         </div>
         <div className="col-md-4 d-flex ftco-animate">
           <div className="icon">
-            <div className="icon-box" style={{backgroundImage: `url(${data.Info[language].workingHours.icon.item.preview_url})`}} />
+            <div className="icon-box" style={{ backgroundImage: `url(${data.Info[language].workingHours.icon.item.preview_url})` }} />
           </div>
           <div className="text">
             <h3>{data.Info[language].workingHours.title}</h3>
