@@ -16,6 +16,6 @@ export default makeStyles(theme => ({
     height: 140,
   },
   cardContent: {
-    background: '#424242',
+    background: '#473ab7e3',
   },
 }));

@@ -19,9 +19,6 @@ const TextEditor = (props) => {
       tag='textarea'
       model={form[lang].description}
       onModelChange={e => handleInputChange(lang, 'description', e, setForm)}
-      config={{
-        placeholder: 'Edit Me',
-      }}
     />
   );
 };

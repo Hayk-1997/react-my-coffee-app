@@ -9,6 +9,7 @@ import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
 import Info from './Admin/Info/reducer';
 import OurHistory from './Admin/OurHistory/reducer';
 import Services from './Admin/Services/reducer';
+import OurMenu from './Admin/OurMenu/reducer';
 // COFFEE
 import IP from './IP/reducer';
 
@@ -22,6 +23,7 @@ const AppReducer = combineReducers({
   Info,
   OurHistory,
   Services,
+  OurMenu,
   IP
 });
 

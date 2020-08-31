@@ -10,11 +10,14 @@ import Info from './Containers/Info';
 import Grid from '@material-ui/core/Grid';
 import OurHistory from './Containers/OurHistory';
 import Services from './Containers/Services';
+import OurMenuCard from './CardMedia/OurMenu';
+import OurMenu from './Containers/OurMenu';
 import useStyles from './useStyles';
 
 
 const Index = (props) => {
   const { context, handleUseHomeToggleContext } = useContext(RouteToggleContext);
+  const classes = useStyles();
   const [passedContext, setPassedContext] = useState();
 
   useEffect(() => {
@@ -23,7 +26,6 @@ const Index = (props) => {
     }
   }, [context]);
 
-  const classes = useStyles();
   const renderComponent = component => handleUseHomeToggleContext(component);
 
 
@@ -46,6 +48,10 @@ const Index = (props) => {
           classes={classes}
           renderComponent={renderComponent}
         />
+        <OurMenuCard
+          classes={classes}
+          renderComponent={renderComponent}
+        />
       </Grid>
     );
   };
@@ -56,7 +62,8 @@ const Index = (props) => {
           passedContext === 'Info' ? <Info {...props} /> :
             passedContext === 'OurHistory' ? <OurHistory {...props} /> :
               passedContext === 'Services' ? <Services {...props} /> :
-                gridLayout()
+                passedContext === 'OurMenu' ? <OurMenu {...props} /> :
+                  gridLayout()
       }
     </div>
   );

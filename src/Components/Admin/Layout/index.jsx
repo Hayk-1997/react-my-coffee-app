@@ -19,8 +19,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-import useStyles from '../useStyles/useStyle';
 import Grid from '@material-ui/core/Grid';
+import useStyles from '../useStyles/useStyle';
 
 const Layout = (props) => {
   const { history } = props;
@@ -34,6 +34,7 @@ const Layout = (props) => {
   const [context, setContext] = useState();
   const menuId = 'primary-search-account-menu';
   const mobileMenuId = 'primary-search-account-menu-mobile';
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const getRoutes = () => {
     return routes.map((route) => {
@@ -45,7 +46,10 @@ const Layout = (props) => {
             path={route.path}
             render={(props) => {
               return (
-                <Component{...props} />
+                <Component
+                  API_URL={API_URL}
+                  {...props}
+                />
               );
             }}
           />
@@ -181,7 +185,7 @@ const Layout = (props) => {
   );
 };
 
-Layout.propTytpes = {
+Layout.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
