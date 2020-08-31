@@ -10,13 +10,13 @@ import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 
-const Info = (props) => {
+const OurMenu = (props) => {
   const { renderComponent, classes } = props;
 
   return (
     <Grid item lg={4} md={6} xs={12}>
       <Paper>
-        <Card className={classes.cardContent} onClick={() => renderComponent('Info')}>
+        <Card className={classes.cardContent} onClick={() => renderComponent('OurMenu')}>
           <CardActionArea>
             <CardMedia
               className={classes.media}
@@ -25,21 +25,20 @@ const Info = (props) => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                                Info
+                OurMenu
               </Typography>
               <Typography variant="body2" component="p">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000 species,
-                                ranging
-                                across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                across all continents except Antarctica
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
             <Button size="small" color="primary">
-                            Share
+              Share
             </Button>
             <Button size="small" color="primary">
-                            Learn More
+              Learn More
             </Button>
           </CardActions>
         </Card>
@@ -48,9 +47,9 @@ const Info = (props) => {
   );
 };
 
-Info.propTypes = {
+OurMenu.propTypes = {
   renderComponent: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default Info;
+export default OurMenu;

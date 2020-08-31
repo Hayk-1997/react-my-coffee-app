@@ -18,12 +18,12 @@ function* GetOurHistory () {
   }
 }
 
-function* UpdateOurHistory (action) {
-  const { image, form } = action.payload;
+function* UpdateOurHistory ({ payload }) {
+  const { image, form } = payload;
   try {
     const formData = new FormData();
     formData.append('form', JSON.stringify(form));
-    if (image && image.length) {
+    if (image.length) {
       formData.append('image', image[0]);
     }
     const response = yield axiosInstance.put('admin/our-history', formData);
@@ -37,7 +37,7 @@ function* UpdateOurHistory (action) {
   }
 }
 
-export default function*() {
+export default function* () {
   yield takeLatest(OurHistoryRequest, GetOurHistory);
   yield takeLatest(UpdateOurHistoryRequest, UpdateOurHistory);
 }

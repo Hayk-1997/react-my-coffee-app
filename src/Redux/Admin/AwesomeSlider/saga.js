@@ -19,8 +19,8 @@ function* GetAwesomeSliderData () {
   }
 }
 
-function* UpdateAwesomeSlider (action) {
-  const { image, form } = action.payload;
+function* UpdateAwesomeSlider ({ payload }) {
+  const { image, form } = payload;
   try {
     const formData = new FormData();
     formData.append('form', JSON.stringify(form));

@@ -6,7 +6,7 @@ import {
 } from './actions';
 import { axiosInstance } from '../../../Config/Axios/axiosInstance';
 
-function* GetAdminInfoData() {
+function* GetAdminInfoData () {
   try {
     const response = yield axiosInstance.get('admin/info');
     if (response.status === 200) {
@@ -19,9 +19,9 @@ function* GetAdminInfoData() {
   }
 }
 
-function* UpdateInfo(action) {
+function* UpdateInfo ({ payload }) {
   try {
-    const response = yield axiosInstance.put('admin/info-update', action.payload);
+    const response = yield axiosInstance.put('admin/info-update', payload);
     if (response.status === 200) {
       yield put(Admin_UpdateInfoSuccess(response.data));
     } else {

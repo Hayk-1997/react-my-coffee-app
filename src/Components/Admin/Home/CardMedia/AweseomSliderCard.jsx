@@ -11,45 +11,45 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 const AwesomeSliderCard = (props) => {
-    const { renderComponent, classes } = props;
-    return (
-        <Grid item lg={4} md={6} xs={12}>
-            <Paper>
-                <Card className={classes.cardContent} onClick={() => renderComponent('AwesomeSlider')}>
-                    <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image="https://images.unsplash.com/photo-1558710183-63bf74dae824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
+  const { renderComponent, classes } = props;
+  return (
+    <Grid item lg={4} md={6} xs={12}>
+      <Paper>
+        <Card className={classes.cardContent} onClick={() => renderComponent('AwesomeSlider')}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image="https://images.unsplash.com/photo-1558710183-63bf74dae824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
                                 AweSome Slider
-                            </Typography>
-                            <Typography variant="body2" component="p">
+              </Typography>
+              <Typography variant="body2" component="p">
                                 Lizards are a widespread group of squamate reptiles, with over 6,000 species,
                                 ranging
                                 across all continents except Antarctica
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary">
                             Share
-                        </Button>
-                        <Button size="small" color="primary">
+            </Button>
+            <Button size="small" color="primary">
                             Learn More
-                        </Button>
-                    </CardActions>
-                </Card>
-            </Paper>
-        </Grid>
-    );
+            </Button>
+          </CardActions>
+        </Card>
+      </Paper>
+    </Grid>
+  );
 };
 
 AwesomeSliderCard.propTypes = {
-    renderComponent: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
+  renderComponent: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default AwesomeSliderCard;

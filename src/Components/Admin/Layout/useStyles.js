@@ -42,6 +42,7 @@ export default makeStyles(theme => ({
     marginTop: 15,
   },
   avatarField: {
+    padding: 5,
     borderBottom: `1px solid ${theme.palette.secondary.main}`,
   },
   box: {
@@ -50,5 +51,14 @@ export default makeStyles(theme => ({
   avatarLarge: {
     width: theme.spacing(7),
     height: theme.spacing(7),
+  },
+  cardImage: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+    margin: 5,
+    '& .MuiAvatar-square' : {
+      width: '100%',
+      height: '100%',
+    }
   },
 }));
