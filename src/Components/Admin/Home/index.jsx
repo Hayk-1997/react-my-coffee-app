@@ -3,12 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { RouteToggleContext } from '../Context/RouteToggleContext';
 import AwesomeSliderCard from './CardMedia/AweseomSliderCard';
 import InfoCard from './CardMedia/Info';
-import OurHistoryCard from './CardMedia/OurHistory';
+import OurStoryCard from './CardMedia/OurStoryCard';
 import ServicesCard from './CardMedia/Services';
 import AwesomeSlider from './Containers/AwesomeSlider';
 import Info from './Containers/Info';
 import Grid from '@material-ui/core/Grid';
-import OurHistory from './Containers/OurHistory';
+import OurStory from './Containers/OurStory';
 import Services from './Containers/Services';
 import OurMenuCard from './CardMedia/OurMenu';
 import OurMenu from './Containers/OurMenu';
@@ -39,7 +39,7 @@ const Index = (props) => {
           classes={classes}
           renderComponent={renderComponent}
         />
-        <OurHistoryCard
+        <OurStoryCard
           classes={classes}
           renderComponent={renderComponent}
         />
@@ -54,12 +54,13 @@ const Index = (props) => {
       </Grid>
     );
   };
+
   return (
     <div className={classes.root}>
       {
         passedContext === 'AwesomeSlider' ? <AwesomeSlider {...props} /> :
           passedContext === 'Info' ? <Info {...props} /> :
-            passedContext === 'OurHistory' ? <OurHistory {...props} /> :
+            passedContext === 'OurStory' ? <OurStory {...props} /> :
               passedContext === 'Services' ? <Services {...props} /> :
                 passedContext === 'OurMenu' ? <OurMenu {...props} /> :
                   gridLayout()

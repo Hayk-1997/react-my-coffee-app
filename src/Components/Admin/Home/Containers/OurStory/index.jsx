@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { OurHistoryRequest, UpdateOurHistoryRequest } from '../../../../../Redux/Admin/OurHistory/actions';
+import { OurStoryRequest, UpdateOurStoryRequest } from '../../../../../Redux/Admin/OurStory/actions';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ToastContainer } from 'react-toastify';
 import TabsAppBar from '../../../Main/TabsAppBar';
@@ -15,10 +15,12 @@ import SubmitButton from '../../../../Main/SubmitButton';
 import useStyles from '../../../Layout/useStyles';
 
 
-const OurHistory = (props) => {
+const OurStory = (props) => {
   const {
-    GetOurHistory, OurHistorySuccess, OurHistoryData,
-    UpdateOurHistory, UpdateOurHistorySuccess, UpdateOurHistoryError
+    GetOurStory, OurStorySuccess, OurStoryData,
+    UpdateOurStory, UpdateOurStorySuccess,
+    UpdateOurStorySuccessMessage, UpdateOurStoryError,
+    UpdateOurStoryErrorMessage
   } = props;
 
   const classes = useStyles();
@@ -38,15 +40,15 @@ const OurHistory = (props) => {
   ]);
 
   useEffect(() => {
-    GetOurHistory();
+    GetOurStory();
   }, []);
 
   useEffect(() => {
-    if (OurHistorySuccess) {
-      setForm(OurHistoryData);
+    if (OurStorySuccess) {
+      setForm(OurStoryData);
       setImage([
         {
-          source: OurHistoryData.image,
+          source: OurStoryData.image,
           options: {
             type: 'locale'
           }
@@ -54,16 +56,16 @@ const OurHistory = (props) => {
       ]);
       setLoading(false);
     }
-  }, [OurHistorySuccess]);
+  }, [OurStorySuccess]);
 
   useEffect(() => {
-    if (UpdateOurHistorySuccess) {
+    if (UpdateOurStorySuccess) {
       setLoading(false);
-      notify('Data Updated Success', 1000, 'SUCCESS');
-    } else if (UpdateOurHistoryError) {
-      notify('Something went wrong', 1000, 'ERROR');
+      notify(UpdateOurStorySuccessMessage, 1000, 'SUCCESS');
+    } else if (UpdateOurStoryError) {
+      notify(UpdateOurStoryErrorMessage, 1000, 'ERROR');
     }
-  }, [UpdateOurHistorySuccess, UpdateOurHistoryError]);
+  }, [UpdateOurStorySuccess, UpdateOurStoryError]);
 
   const handleTabChange = useCallback((tab, lang) => {
     setTab(tab);
@@ -72,7 +74,7 @@ const OurHistory = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    UpdateOurHistory({ image, form });
+    UpdateOurStory({ image, form });
     setLoading(true);
   };
 
@@ -138,27 +140,31 @@ const OurHistory = (props) => {
   ) : <Spinner />;
 };
 
-OurHistory.propTypes = {
-  GetOurHistory: PropTypes.func.isRequired,
-  OurHistorySuccess: PropTypes.bool.isRequired,
-  OurHistoryError: PropTypes.bool.isRequired,
-  OurHistoryData: PropTypes.object.isRequired,
-  UpdateOurHistory: PropTypes.func.isRequired,
-  UpdateOurHistorySuccess: PropTypes.bool.isRequired,
-  UpdateOurHistoryError: PropTypes.bool.isRequired,
+OurStory.propTypes = {
+  GetOurStory: PropTypes.func.isRequired,
+  OurStorySuccess: PropTypes.bool.isRequired,
+  OurStoryError: PropTypes.bool.isRequired,
+  OurStoryData: PropTypes.object.isRequired,
+  UpdateOurStory: PropTypes.func.isRequired,
+  UpdateOurStorySuccess: PropTypes.bool.isRequired,
+  UpdateOurStorySuccessMessage: PropTypes.string.isRequired,
+  UpdateOurStoryError: PropTypes.bool.isRequired,
+  UpdateOurStoryErrorMessage: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  OurHistorySuccess: state.OurHistory.OurHistorySuccess,
-  OurHistoryError: state.OurHistory.OurHistoryError,
-  OurHistoryData: state.OurHistory.OurHistoryData,
-  UpdateOurHistorySuccess: state.OurHistory.UpdateOurHistorySuccess,
-  UpdateOurHistoryError: state.OurHistory.UpdateOurHistoryError,
+  OurStorySuccess: state.OurStory.OurStorySuccess,
+  OurStoryError: state.OurStory.OurStoryError,
+  OurStoryData: state.OurStory.OurStoryData,
+  UpdateOurStorySuccess: state.OurStory.UpdateOurStorySuccess,
+  UpdateOurStorySuccessMessage: state.OurStory.UpdateOurStorySuccessMessage,
+  UpdateOurStoryError: state.OurStory.UpdateOurStoryError,
+  UpdateOurStoryErrorMessage: state.OurStory.UpdateOurStoryErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  GetOurHistory: () => dispatch(OurHistoryRequest()),
-  UpdateOurHistory: (data) => dispatch(UpdateOurHistoryRequest(data)),
+  GetOurStory: () => dispatch(OurStoryRequest()),
+  UpdateOurStory: (data) => dispatch(UpdateOurStoryRequest(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(OurHistory);
+export default connect(mapStateToProps, mapDispatchToProps)(OurStory);
