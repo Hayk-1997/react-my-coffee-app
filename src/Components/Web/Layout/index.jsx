@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Intro  from '../Intro/Intro';
+import Index from '../Intro';
 import SideBar from '../SideBar';
 import Footer from '../Footer/Footer';
 import routes from '../../../Routes/Web/routes';
@@ -16,7 +16,10 @@ const Layout = (props) => {
     GetIPLocalization, IP,
     IPSuccess, IPError,
   } = props;
+
+  const API_URL = process.env.REACT_APP_API_URL;
   const [language, setLanguage] = useState(localStorage.getItem('language'));
+
   useEffect(() => {
     GetIPLocalization();
   }, []);
@@ -28,6 +31,7 @@ const Layout = (props) => {
       !language ? setLanguage('en') : localStorage.setItem('language', language);
     }
   }, [IPSuccess, IPError]);
+
   const getRoutes = () => {
     return routes.map((route) => {
       if (route) {
@@ -38,7 +42,10 @@ const Layout = (props) => {
             path={route.path}
             render={(props) => {
               return (
-                <Component {...props} />
+                <Component
+                  API_URL={API_URL}
+                  {...props}
+                />
               );
             }}
           />
@@ -46,6 +53,7 @@ const Layout = (props) => {
       }
     });
   };
+
   const changeLanguage = (language) => {
     localStorage.setItem('language', language);
     window.location.reload();
@@ -60,7 +68,7 @@ const Layout = (props) => {
       >
         <SideBar />
         <AwesomeSlider />
-        <Intro />
+        <Index />
         {getRoutes()}
         <Footer />
       </LanguageContext.Provider>
