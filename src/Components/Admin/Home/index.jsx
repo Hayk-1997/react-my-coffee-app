@@ -21,9 +21,8 @@ const Index = (props) => {
   const [passedContext, setPassedContext] = useState();
 
   useEffect(() => {
-    if (context) {
+    if (context)
       setPassedContext(context);
-    }
   }, [context]);
 
   const renderComponent = component => handleUseHomeToggleContext(component);

@@ -9,8 +9,8 @@ function WebLayout () {
   return (
     <>
       <Switch>
-        <Route path="/coffee/login" component={Login}/>
-        <Route path="/coffee/register" component={Register}/>
+        <Route path="/coffee/login" component={Login} />
+        <Route path="/coffee/register" component={Register} />
         <Route exact path="/coffee/*" component={Layout} />
       </Switch>
     </>
