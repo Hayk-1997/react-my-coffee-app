@@ -1,5 +1,5 @@
 import React from 'react';
-import OurHistory from './OurHistory/OurHistory';
+import OurStory from './OurStory';
 import Services from './Services/Services';
 import OurMenu from './OurMenu';
 import Branches from './Branches/Branches';
@@ -13,7 +13,7 @@ const Home = (props) => {
 
   return (
     <div>
-      <OurHistory/>
+      <OurStory/>
       <Services/>
       <OurMenu {...props} />
       <Branches/>

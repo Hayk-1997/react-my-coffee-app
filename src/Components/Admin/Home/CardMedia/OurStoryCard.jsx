@@ -10,12 +10,12 @@ import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 
-const OurHistory = (props) => {
+const OurStory = (props) => {
   const { renderComponent, classes } = props;
   return (
     <Grid item lg={4} md={6} xs={12}>
       <Paper>
-        <Card className={classes.cardContent} onClick={() => renderComponent('OurHistory')}>
+        <Card className={classes.cardContent} onClick={() => renderComponent('OurStory')}>
           <CardActionArea>
             <CardMedia
               className={classes.media}
@@ -24,7 +24,7 @@ const OurHistory = (props) => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                  Our History
+                  Our Story
               </Typography>
               <Typography variant="body2" component="p">
                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -46,9 +46,9 @@ const OurHistory = (props) => {
   );
 };
 
-OurHistory.propTypes = {
+OurStory.propTypes = {
   renderComponent: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default OurHistory;
+export default OurStory;

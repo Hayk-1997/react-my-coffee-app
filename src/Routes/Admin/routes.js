@@ -4,7 +4,7 @@ import Register from '../../Components/Admin/Auth/Register/Register';
 import Home from '../../Components/Admin/Home';
 import AwesomeSlider from '../../Components/Admin/Home/Containers/AwesomeSlider';
 import Info from '../../Components/Admin/Home/Containers/Info';
-import OurHistory from '../../Components/Admin/Home/Containers/OurHistory';
+import OurStory from '../../Components/Admin/Home/Containers/OurStory';
 import Services from '../../Components/Admin/Home/Containers/Services';
 import OurMenu from '../../Components/Admin/Home/CardMedia/OurMenu';
 
@@ -69,9 +69,9 @@ const routes = [
       {
         id: 3,
         parent: 'Home',
-        name: 'OurHistory',
+        name: 'OurStory',
         icon: 'fa fa-slideshare',
-        component: OurHistory,
+        component: OurStory,
       },
       {
         id: 3,
