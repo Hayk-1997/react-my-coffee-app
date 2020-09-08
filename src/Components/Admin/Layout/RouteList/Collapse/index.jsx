@@ -9,23 +9,21 @@ import Collapse from '@material-ui/core/Collapse';
 import useStyles from '../../../useStyles/useStyle';
 
 const CollapseRoute = (props) => {
+  const { showRouteContent, item } = props;
+
   const classes = useStyles();
 
-  const {
-    showRouteContent, item, passHomeToggleContext,
-    route
-  } = props;
   return (
     <Collapse
       in={showRouteContent === item.parent}
       timeout="auto" unmountOnExit
     >
-      <List component="div" disablePadding onClick={() => passHomeToggleContext(item.name)}>
+      <List component="div" disablePadding>
         <ListItem button className={classes.nested}>
           <ListItemIcon>
             <Icon><i className={item.icon}/></Icon>
           </ListItemIcon>
-          <Link to={route.path} className={classes.link}>
+          <Link to={item.path} className={classes.link}>
             { item.name }
           </Link>
         </ListItem>
@@ -37,8 +35,6 @@ const CollapseRoute = (props) => {
 CollapseRoute.propTypes = {
   showRouteContent: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
-  passHomeToggleContext: PropTypes.func.isRequired,
-  route: PropTypes.object.isRequired,
 };
 
 export default CollapseRoute;

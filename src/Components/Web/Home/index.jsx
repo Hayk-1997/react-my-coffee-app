@@ -2,7 +2,7 @@ import React from 'react';
 import OurStory from './OurStory';
 import Services from './Services/Services';
 import OurMenu from './OurMenu';
-import Branches from './Branches/Branches';
+import Counter from './Counter';
 import CoffeeSellers from './CoffeeSellers/CoffeeSellers';
 import Gallery from './Gallery/Gallery';
 import Customers from './Customers/Customers';
@@ -16,7 +16,7 @@ const Home = (props) => {
       <OurStory/>
       <Services/>
       <OurMenu {...props} />
-      <Branches/>
+      <Counter/>
       <CoffeeSellers />
       <Gallery />
       <Customers />
