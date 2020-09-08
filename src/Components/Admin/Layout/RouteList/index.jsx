@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import routes from '../../../../Routes/Admin/routes';
-import { Link } from 'react-router-dom';
 import Collapse from './Collapse';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,26 +15,21 @@ import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
 import useStyles from '../../useStyles/useStyle';
 
-
 const RouteList = (props) => {
   const {
-    open, handleDrawerClose, history,
-    handleUseHomeToggleContext, handleDrawerOpen
+    open, handleDrawerClose, handleDrawerOpen
   } = props;
 
   const classes = useStyles();
   const [showRouteContent, setShowRouteContent] = useState('');
 
-  const openRouteContent = (name, path) => {
+  const openRouteContent = (name) => {
     if (name === showRouteContent) {
       name = '';
     }
     handleDrawerOpen();
     setShowRouteContent(name);
-    history.push(path);
   };
-
-  const passHomeToggleContext = item => handleUseHomeToggleContext(item);
 
   return (
     <Drawer
@@ -60,36 +54,32 @@ const RouteList = (props) => {
       <List>
         {routes.map((route, index) => {
           return (
-            route.auth ?
+            route.auth &&
               (
                 <Grid key={index} onClick={() => openRouteContent(route.name, route.path)}>
                   <ListItem button>
                     <ListItemIcon>
                       <Icon><i className={route.icon} /></Icon>
                     </ListItemIcon>
-                    <Link className={classes.link} to={route.path} onClick={() => passHomeToggleContext(null)}>
+                    <List className={classes.link}>
                       {route.name}
-                    </Link>
+                    </List>
                     { showRouteContent === route.name ? <ExpandLess /> : <ExpandMore /> }
                   </ListItem>
                   {
-                    route.child ?
+                    route.child &&
                       (
-                        route.child.map((item) => {
-                          return (
-                            <Collapse
-                              key={item.name}
-                              showRouteContent={showRouteContent}
-                              item={item}
-                              route={route}
-                              passHomeToggleContext={passHomeToggleContext}
-                            />
-                          );
-                        })
-                      ) : null
+                        route.child.map((item, index) => (
+                          <Collapse
+                            key={index}
+                            showRouteContent={showRouteContent}
+                            item={item}
+                          />
+                        ))
+                      )
                   }
                 </Grid>
-              ) : null
+              )
           );
         })}
       </List>

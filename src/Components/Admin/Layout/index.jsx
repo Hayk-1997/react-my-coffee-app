@@ -37,12 +37,12 @@ const Layout = (props) => {
   const API_URL = process.env.REACT_APP_API_URL;
 
   const getRoutes = () => {
-    return routes.map((route) => {
+    return routes.map((route, index) => {
       if (route.auth) {
         const Component = route.component;
         return (
           <Route
-            key={route.id}
+            key={index}
             path={route.path}
             render={(props) => {
               return (

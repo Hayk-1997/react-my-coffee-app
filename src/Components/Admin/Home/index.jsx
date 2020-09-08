@@ -1,72 +1,70 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { RouteToggleContext } from '../Context/RouteToggleContext';
 import AwesomeSliderCard from './CardMedia/AweseomSliderCard';
 import InfoCard from './CardMedia/Info';
 import OurStoryCard from './CardMedia/OurStoryCard';
 import ServicesCard from './CardMedia/Services';
-import AwesomeSlider from './Containers/AwesomeSlider';
-import Info from './Containers/Info';
 import Grid from '@material-ui/core/Grid';
-import OurStory from './Containers/OurStory';
-import Services from './Containers/Services';
 import OurMenuCard from './CardMedia/OurMenu';
-import OurMenu from './Containers/OurMenu';
+import routes from '../../../Routes/Admin/routes';
 import useStyles from './useStyles';
 
+const Home = (props) => {
+  const { API_URL, location: { pathname } } = props;
 
-const Index = (props) => {
-  const { context, handleUseHomeToggleContext } = useContext(RouteToggleContext);
   const classes = useStyles();
-  const [passedContext, setPassedContext] = useState();
-
+  const [homeRoutes, setHomeRoutes] = useState([]);
+  
   useEffect(() => {
-    if (context)
-      setPassedContext(context);
-  }, [context]);
-
-  const renderComponent = component => handleUseHomeToggleContext(component);
-
+    const homeRoutes = routes.find((route) => route.name === 'Home' && route.layout === 'admin');
+    setHomeRoutes(homeRoutes.child);
+  }, []);
 
   const gridLayout = () => {
     return (
       <Grid container spacing={3}>
-        <AwesomeSliderCard
-          classes={classes}
-          renderComponent={renderComponent}
-        />
-        <InfoCard
-          classes={classes}
-          renderComponent={renderComponent}
-        />
-        <OurStoryCard
-          classes={classes}
-          renderComponent={renderComponent}
-        />
-        <ServicesCard
-          classes={classes}
-          renderComponent={renderComponent}
-        />
-        <OurMenuCard
-          classes={classes}
-          renderComponent={renderComponent}
-        />
+        <AwesomeSliderCard classes={classes} />
+        <InfoCard classes={classes} />
+        <OurStoryCard classes={classes} />
+        <ServicesCard classes={classes} />
+        <OurMenuCard classes={classes} />
       </Grid>
     );
   };
 
   return (
-    <div className={classes.root}>
+    <Grid className={classes.root}>
       {
-        passedContext === 'AwesomeSlider' ? <AwesomeSlider {...props} /> :
-          passedContext === 'Info' ? <Info {...props} /> :
-            passedContext === 'OurStory' ? <OurStory {...props} /> :
-              passedContext === 'Services' ? <Services {...props} /> :
-                passedContext === 'OurMenu' ? <OurMenu {...props} /> :
-                  gridLayout()
+        pathname.slice(1).split('/').length === 2 ? (
+          gridLayout()
+        ) : (
+          homeRoutes.length && homeRoutes.map((route, index) => {
+            const Component = route.component;
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                render={(props) => (
+                  <Component
+                    API_URL={API_URL}
+                    {...props}
+                  />
+                )}
+              />
+            );
+          })
+        )
       }
-    </div>
+    </Grid>
   );
 };
 
-export default withRouter(Index);
+
+Home.propTypes = {
+  API_URL: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+};
+
+export default withRouter(Home);
