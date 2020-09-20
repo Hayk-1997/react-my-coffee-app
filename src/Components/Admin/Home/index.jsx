@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import OurMenuCard from './CardMedia/OurMenu';
 import routes from '../../../Routes/Admin/routes';
 import useStyles from './useStyles';
+import StaticCounterCard from './CardMedia/StaticCounter';
 
 const Home = (props) => {
   const { API_URL, location: { pathname } } = props;
@@ -30,6 +31,7 @@ const Home = (props) => {
         <OurStoryCard classes={classes} />
         <ServicesCard classes={classes} />
         <OurMenuCard classes={classes} />
+        <StaticCounterCard classes={classes} />
       </Grid>
     );
   };

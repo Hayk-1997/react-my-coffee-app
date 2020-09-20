@@ -7,6 +7,7 @@ import Info from '../../Components/Admin/Home/Containers/Info';
 import OurStory from '../../Components/Admin/Home/Containers/OurStory';
 import Services from '../../Components/Admin/Home/Containers/Services';
 import OurMenu from '../../Components/Admin/Home/Containers/OurMenu';
+import StaticCounter from '../../Components/Admin/Home/Containers/StaticCounter';
 
 const routes = [
   {
@@ -81,6 +82,13 @@ const routes = [
         name: 'Our Menu',
         icon: 'fa fa-slideshare',
         component: OurMenu,
+      },
+      {
+        path: '/admin/home/static-counter',
+        parent: 'Home',
+        name: 'Static Counter',
+        icon: 'fa fa-slideshare',
+        component: StaticCounter,
       },
     ]
   },

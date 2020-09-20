@@ -10,6 +10,7 @@ import Info from './Admin/Info/reducer';
 import OurStory from './Admin/OurStory/reducer';
 import Services from './Admin/Services/reducer';
 import OurMenu from './Admin/OurMenu/reducer';
+import StaticCounter from './Admin/StaticCounter/reducer';
 // COFFEE
 import IP from './IP/reducer';
 
@@ -24,7 +25,8 @@ const AppReducer = combineReducers({
   OurStory,
   Services,
   OurMenu,
-  IP
+  IP,
+  StaticCounter,
 });
 
 const rootReducer = (state, action) => {
