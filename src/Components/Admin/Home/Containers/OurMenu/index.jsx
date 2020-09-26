@@ -22,7 +22,8 @@ const OurMenu = (props) => {
     API_URL, GetOurMenu, OurMenuSuccess, OurMenuData,
     UpdateOurMenu, UpdateOurMenuSuccess, UpdateOurMenuSuccessMessage,
     UpdateOurMenuError, UpdateOurMenuErrorMessage,
-    UploadImage, UploadImageSuccess, UploadImageSuccessMessage, UploadImageError, UploadImageErrorMessage
+    UploadImage, UploadImageSuccess, UploadImageSuccessMessage,
+    UploadImageError, UploadImageErrorMessage
   } = props;
 
   const classes = useStyles();

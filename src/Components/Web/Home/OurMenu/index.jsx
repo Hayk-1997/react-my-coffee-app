@@ -62,7 +62,7 @@ const OurMenu = (props) => {
                   if (typeof data.OurMenu[language][item] === 'object') {
                     return (
                       <div className="col-md-6 image-cards" key={index}>
-                        <div  className="card rounded">
+                        <div className="card rounded">
                           <div className="card__overlay">
                           </div>
                           <div className="card__image" style={{ backgroundImage: `url(${API_URL + data.OurMenu[language][item].image})` }} />
