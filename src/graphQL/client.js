@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3100/coffee',
+  uri: `${process.env.REACT_APP_API_URL}coffee`,
   cache: new InMemoryCache(),
   shouldBatch: false
 });

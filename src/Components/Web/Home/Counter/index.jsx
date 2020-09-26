@@ -1,9 +1,26 @@
 import React from 'react';
 import img from '../../../../assets/web/images/bg_2.jpg';
 import CountUp from 'react-countup';
+import { gql } from '@apollo/client';
+import { useQuery } from '@apollo/react-hooks';
+import Spinner from '../../../Spinner';
 
 const Counter = () => {
-  return (
+
+  const GET_STATIC_COUNTER = gql`
+    query {
+      StaticCounter {
+        coffeeBranches
+        awards
+        customers
+        staffs
+      }
+    }
+  `;
+
+  const { loading, error, data } = useQuery(GET_STATIC_COUNTER);
+
+  return loading || error ? <Spinner/> : (
     <section className="ftco-counter ftco-bg-dark img" id="section-counter"
       style={{ backgroundImage: `url(${img})` }}
     >
@@ -18,7 +35,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={100} />
+                      <CountUp delay={5} end={parseInt(data.StaticCounter.coffeeBranches)}/>
                     </strong>
                     <span>Coffee Branches</span>
                   </div>
@@ -30,7 +47,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={100} />
+                      <CountUp delay={5} end={parseInt(data.StaticCounter.awards)}/>
                     </strong>
                     <span>Number of Awards</span>
                   </div>
@@ -42,7 +59,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={100} />
+                      <CountUp delay={5} end={parseInt(data.StaticCounter.customers)}/>
                     </strong>
                     <span>Happy Customer</span>
                   </div>
@@ -54,7 +71,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={100} />
+                      <CountUp delay={5} end={parseInt(data.StaticCounter.staffs)}/>
                     </strong>
                     <span>Staff</span>
                   </div>

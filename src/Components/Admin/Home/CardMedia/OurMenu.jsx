@@ -17,7 +17,7 @@ const OurMenu = (props) => {
     <Grid item lg={4} md={6} xs={12}>
       <MUILink
         component={Link}
-        to={'/admin/home/awesome-slider'}
+        to={'/admin/home/our-menu'}
       >
         <Paper>
           <Card className={classes.cardContent}>
