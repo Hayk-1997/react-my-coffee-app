@@ -17,18 +17,19 @@ import useStyles from '../../useStyles/useStyle';
 
 const RouteList = (props) => {
   const {
-    open, handleDrawerClose, handleDrawerOpen
+    open, handleDrawerClose, handleDrawerOpen, history
   } = props;
 
   const classes = useStyles();
   const [showRouteContent, setShowRouteContent] = useState('');
 
-  const openRouteContent = (name) => {
+  const openRouteContent = (name, path) => {
     if (name === showRouteContent) {
       name = '';
     }
     handleDrawerOpen();
     setShowRouteContent(name);
+    history.push(path);
   };
 
   return (
@@ -56,8 +57,8 @@ const RouteList = (props) => {
           return (
             route.auth &&
               (
-                <Grid key={index} onClick={() => openRouteContent(route.name, route.path)}>
-                  <ListItem button>
+                <Grid key={index}>
+                  <ListItem button onClick={() => openRouteContent(route.name, route.path)}>
                     <ListItemIcon>
                       <Icon><i className={route.icon} /></Icon>
                     </ListItemIcon>

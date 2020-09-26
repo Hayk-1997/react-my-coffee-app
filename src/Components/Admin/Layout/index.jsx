@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Route } from 'react-router-dom';
 import RouteList from './RouteList';
 import routes from '../../../Routes/Admin/routes';
 import PropTypes from 'prop-types';
 import { RouteToggleContext } from '../Context/RouteToggleContext';
-import RenderMenu from './RenderMenu/RenderMenu';
-import RenderMobileMenu from './RenderMobileMenu/RenderMobileMenu';
+import { MemoizedRenderMenu } from './RenderMenu/RenderMenu';
+import { MemoizedRenderMobileMenu } from './RenderMobileMenu/RenderMobileMenu';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
@@ -25,16 +25,12 @@ import useStyles from '../useStyles/useStyle';
 const Layout = (props) => {
   const { history } = props;
 
+  const API_URL = process.env.REACT_APP_API_URL;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [context, setContext] = useState();
-  const menuId = 'primary-search-account-menu';
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const API_URL = process.env.REACT_APP_API_URL;
 
   const getRoutes = () => {
     return routes.map((route, index) => {
@@ -64,14 +60,14 @@ const Layout = (props) => {
 
   const handleProfileMenuOpen = event => setAnchorEl(event.currentTarget);
 
-  const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
+  const handleMobileMenuClose = useCallback(() => setMobileMoreAnchorEl(null),[mobileMoreAnchorEl]);
+
+  const handleMobileMenuOpen = event => setMobileMoreAnchorEl(event.currentTarget);
 
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
-
-  const handleMobileMenuOpen = event => setMobileMoreAnchorEl(event.currentTarget);
 
   const handleUseHomeToggleContext = context => setContext(context);
 
@@ -126,7 +122,7 @@ const Layout = (props) => {
               <IconButton
                 edge="end"
                 aria-label="account of current user"
-                aria-controls={menuId}
+                aria-controls={'primary-search-account-menu'}
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="inherit"
@@ -137,7 +133,7 @@ const Layout = (props) => {
             <Grid className={classes.sectionMobile}>
               <IconButton
                 aria-label="show more"
-                aria-controls={mobileMenuId}
+                aria-controls={'primary-search-account-menu-mobile'}
                 aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
                 color="inherit"
@@ -146,23 +142,22 @@ const Layout = (props) => {
             </Grid>
           </Toolbar>
         </AppBar>
-        <RenderMobileMenu
+        <MemoizedRenderMobileMenu
           anchorEl={mobileMoreAnchorEl}
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          id={mobileMenuId}
           keepMounted
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-          open={isMobileMenuOpen}
+          open={!!mobileMoreAnchorEl}
           onClose={handleMobileMenuClose}
           handleProfileMenuOpen={handleProfileMenuOpen}
         />
-        <RenderMenu
+        <MemoizedRenderMenu
           anchorEl={anchorEl}
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          id={menuId}
+          id={'primary-search-account-menu'}
           keepMounted
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-          open={isMenuOpen}
+          open={!!anchorEl}
           onClose={handleMenuClose}
           handleMenuClose={handleMenuClose}
         />
