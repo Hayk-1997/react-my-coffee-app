@@ -8,6 +8,7 @@ import OurStory from '../../Components/Admin/Home/Containers/OurStory';
 import Services from '../../Components/Admin/Home/Containers/Services';
 import OurMenu from '../../Components/Admin/Home/Containers/OurMenu';
 import StaticCounter from '../../Components/Admin/Home/Containers/StaticCounter';
+import Categories from '../../Components/Admin/Categories';
 
 const routes = [
   {
@@ -92,6 +93,14 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/admin/categories',
+    name: 'Categories',
+    component: Categories,
+    icon: 'fa fa-list-alt',
+    layout: 'admin',
+    auth: true,
+  }
 ];
 
 export default routes;
