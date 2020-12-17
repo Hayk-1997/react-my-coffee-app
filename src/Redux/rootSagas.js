@@ -11,6 +11,7 @@ import OurMenu from './Admin/OurMenu/saga';
 import IP from './IP/saga';
 import StaticCounter from './Admin/StaticCounter/saga';
 import SocialSignIn from './Web/Auth/SocialLogin/saga';
+import Categories from './Admin/Categories/saga';
 
 export default function* rootSagas() {
   yield all([
@@ -25,5 +26,6 @@ export default function* rootSagas() {
     OurMenu(),
     StaticCounter(),
     IP(),
+    Categories(),
   ]);
 }
