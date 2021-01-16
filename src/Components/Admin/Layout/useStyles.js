@@ -6,6 +6,9 @@ export default makeStyles(theme => ({
       textAlign: 'center',
     },
   },
+  categoriesAutoField: {
+    marginTop: '25px',
+  },
   root: {
     flexGrow: 1,
     marginTop: '25px',

@@ -9,8 +9,6 @@ import { notify } from '../../../../../Config/Notify';
 import { ToastContainer } from 'react-toastify';
 import FilePondEditor from '../../../../Main/FilePondEditor';
 import Spinner from '../../../../Spinner';
-import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
 import usePrevious from '../../../../../CustomHooks/usePrevious';
 import TabsAppBar from '../../../Main/TabsAppBar';
 import TextEditor from '../../../../Main/TextEditor';

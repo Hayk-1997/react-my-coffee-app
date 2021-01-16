@@ -23,7 +23,7 @@ registerPlugin(
   FilePondPluginImageEdit
 );
 
-const FilePondEditor = ({ image, setImage }) => {
+const FilePondEditor = ({ image, setImage, allowMultiple }) => {
   return (
     <FilePond
       server={
@@ -41,6 +41,7 @@ const FilePondEditor = ({ image, setImage }) => {
           }
         }
       }
+      allowMultiple={allowMultiple}
       files={ image }
       method="POST"
       instantUpload={false}
@@ -53,7 +54,8 @@ const FilePondEditor = ({ image, setImage }) => {
 
 FilePondEditor.propTypes = {
   image: PropTypes.array,
-  setImage: PropTypes.func.isRequired
+  setImage: PropTypes.func.isRequired,
+  allowMultiple: PropTypes.bool,
 };
 
 export default FilePondEditor;

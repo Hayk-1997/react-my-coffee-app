@@ -12,6 +12,7 @@ import IP from './IP/saga';
 import StaticCounter from './Admin/StaticCounter/saga';
 import SocialSignIn from './Web/Auth/SocialLogin/saga';
 import Categories from './Admin/Categories/saga';
+import Products from './Admin/Products/saga';
 
 export default function* rootSagas() {
   yield all([
@@ -27,5 +28,6 @@ export default function* rootSagas() {
     StaticCounter(),
     IP(),
     Categories(),
+    Products(),
   ]);
 }

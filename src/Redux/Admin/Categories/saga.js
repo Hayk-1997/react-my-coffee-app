@@ -8,7 +8,7 @@ import {
 
 function* GetAllCategoriesData () {
   try {
-    const response = yield axiosInstance.get('admin/all-categories');
+    const response = yield axiosInstance.get('admin/categories');
     if (response.status === 200) {
       yield put(AllCategoriesSuccess(response.data));
     } else {
