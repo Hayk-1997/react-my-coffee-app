@@ -4,6 +4,9 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    '& .MuiIcon-root': {
+      height: '2em !important',
+    }
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -131,8 +134,8 @@ const useStyles = makeStyles(theme => ({
     },
     '&:focus': {
       color: '#bfbfbf',
-    }
-  }
+    },
+  },
 }));
 
 export default useStyles;

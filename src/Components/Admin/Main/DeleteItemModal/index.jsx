@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -6,25 +7,27 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-const DeleteProductOrCategoryModal = (props) => {
+const DeleteItemModal = (props) => {
 
   const {
     closeModal,
-    deleteProduct
+    deleteProduct,
+    title,
+    description
   } = props;
 
   return (
     <Dialog
       open={true}
       onClose={closeModal}
+      fullWidth={true}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+      <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          Let Google help apps determine location. This means sending anonymous location data to
-          Google, even when no apps are running.
+          {description}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -39,5 +42,11 @@ const DeleteProductOrCategoryModal = (props) => {
   );
 };
 
+DeleteItemModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
-export default memo(DeleteProductOrCategoryModal);
+export default memo(DeleteItemModal);

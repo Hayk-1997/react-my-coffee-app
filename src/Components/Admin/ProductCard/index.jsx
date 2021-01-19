@@ -65,7 +65,7 @@ const ProductCard = (props) => {
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
   API_URL: PropTypes.string.isRequired,
-  selectProduct: PropTypes.object.isRequired,
+  selectProduct: PropTypes.func.isRequired,
   openDeleteModal: PropTypes.func.isRequired,
 };
 
