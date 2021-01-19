@@ -10,6 +10,9 @@ import Grid from '@material-ui/core/Grid';
 
 
 const useStyles = makeStyles({
+  thumbnailBox: {
+    margin: 5,
+  },
   media: {
     height: 140,
   },
@@ -17,14 +20,19 @@ const useStyles = makeStyles({
 
 const ImageCard = (props) => {
 
-  const { thumbnails, API_URL } = props;
+  const {
+    thumbnails,
+    API_URL,
+    removeThumbnail,
+  } = props;
+
   const classes = useStyles();
-  
+
   return (
     <>
       {
         thumbnails.map((thumbnail, index) => (
-          <Grid item md={3} xs={12} key={index}>
+          <Grid item md={3} xs={12} key={index} className={classes.thumbnailBox}>
             <Card>
               <CardActionArea>
                 <CardMedia
@@ -34,7 +42,7 @@ const ImageCard = (props) => {
                 />
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={() => removeThumbnail(thumbnail)}>
                   Remove
                 </Button>
               </CardActions>
@@ -49,6 +57,7 @@ const ImageCard = (props) => {
 ImageCard.propTypes = {
   API_URL: PropTypes.string.isRequired,
   thumbnails: PropTypes.array.isRequired,
+  removeThumbnail: PropTypes.func.isRequired,
 };
 
 export default ImageCard;

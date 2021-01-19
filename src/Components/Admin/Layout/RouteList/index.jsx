@@ -60,7 +60,9 @@ const RouteList = (props) => {
                 <Grid key={index}>
                   <ListItem button onClick={() => openRouteContent(route.name, route.path)}>
                     <ListItemIcon>
-                      <Icon><i className={route.icon} /></Icon>
+                      <Icon>
+                        <i className={route.icon} />
+                      </Icon>
                     </ListItemIcon>
                     <List className={classes.link}>
                       {route.name}

@@ -9,6 +9,9 @@ import {
   DeleteProductRequest,
   DeleteProductSuccess,
   DeleteProductError,
+  UpdateProductRequest,
+  UpdateProductSuccess,
+  UpdateProductError
 } from './actions';
 
 const initialState = {
@@ -23,6 +26,10 @@ const initialState = {
   DeleteProductSuccessMessage: '',
   DeleteProductError: false,
   DeleteProductErrorMessage: '',
+  UpdateProductSuccess: false,
+  UpdateProductSuccessMessage: '',
+  UpdateProductError: false,
+  UpdateProductErrorMessage: '',
 };
 
 const reducer = handleActions({
@@ -86,6 +93,28 @@ const reducer = handleActions({
     DeleteProductSuccessMessage: '',
     DeleteProductError: true,
     DeleteProductErrorMessage: payload.message,
+  }),
+
+  [UpdateProductRequest]: (state) => ({
+    ...state,
+    UpdateProductSuccess: false,
+    UpdateProductSuccessMessage: '',
+    UpdateProductError: false,
+    UpdateProductErrorMessage: '',
+  }),
+  [UpdateProductSuccess]: (state, { payload }) => ({
+    ...state,
+    UpdateProductSuccess: true,
+    UpdateProductSuccessMessage: payload.message,
+    UpdateProductError: false,
+    UpdateProductErrorMessage: '',
+  }),
+  [UpdateProductError]: (state, { payload }) => ({
+    ...state,
+    UpdateProductSuccess: false,
+    UpdateProductSuccessMessage: '',
+    UpdateProductError: true,
+    UpdateProductErrorMessage: payload.message,
   }),
 }, initialState);
 

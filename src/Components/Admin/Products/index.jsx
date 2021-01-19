@@ -13,7 +13,7 @@ import useStyles from './useStyles';
 import usePrevious from '../../../CustomHooks/usePrevious';
 import { notify } from '../../../Config/Notify';
 import { ToastContainer } from 'react-toastify';
-import DeleteProductOrCategoryModal from '../Main/DeleteProductOrCategoryModal';
+import DeleteItemModal from '../Main/DeleteItemModal';
 
 const Products = (props) => {
   const {
@@ -25,7 +25,11 @@ const Products = (props) => {
     CreateProductSuccessMessage,
     CreateProductError,
     CreateProductErrorMessage,
-    DeleteProduct
+    DeleteProduct,
+    DeleteProductSuccess,
+    DeleteProductSuccessMessage,
+    DeleteProductError,
+    DeleteProductErrorMessage,
   } = props;
 
   const classes = useStyles();
@@ -37,6 +41,8 @@ const Products = (props) => {
   const [isDeleteProductModal, setIsDeleteProductModal] = useState(false);
   const PreviousCreateProductSuccess = usePrevious(CreateProductSuccess);
   const PreviousCreateCreateProductError = usePrevious(CreateProductError);
+  const PreviousDeleteProductSuccess = usePrevious(DeleteProductSuccess);
+  const PreviousDeleteProductError = usePrevious(DeleteProductError);
 
   useEffect(() => {
     GetAllProductsData();
@@ -60,6 +66,15 @@ const Products = (props) => {
     }
   }, [CreateProductSuccess, CreateProductError]);
 
+  useEffect(() => {
+    if (PreviousDeleteProductSuccess === false && DeleteProductSuccess) {
+      notify(DeleteProductSuccessMessage, 1000, 'SUCCESS');
+    }
+    if (DeleteProductError && PreviousDeleteProductError) {
+      notify(DeleteProductErrorMessage, 1000, 'ERROR');
+    }
+  }, [DeleteProductSuccess, DeleteProductError]);
+
   const selectProduct = product => {
     setSelectedProduct(product);
     setOpen(true);
@@ -76,17 +91,20 @@ const Products = (props) => {
   };
 
   const deleteProduct = () => {
-    console.log('selectedProduct', selectedProduct);
     setIsDeleteProductModal(false);
-    DeleteProduct({id: selectedProduct._id});
+    setProducts((products) => products.filter(product => product._id !== selectedProduct._id));
+    setIsDeleteProductModal(false);
+    DeleteProduct({ id: selectedProduct._id });
   };
 
   return !loading ? (
     <Grid className={layoutStyles.body}>
       <ToastContainer />
-      { isDeleteProductModal && <DeleteProductOrCategoryModal
+      { isDeleteProductModal && <DeleteItemModal
         closeModal={() => setIsDeleteProductModal(false)}
         deleteProduct={deleteProduct}
+        title="Delete Product"
+        description="Delete this product"
       /> }
       { open && <MemoizedCreateOrEditProductDialog
         handleClose={() => setOpen(false)}
@@ -135,6 +153,10 @@ Products.propTypes = {
   CreateProductError: PropTypes.bool.isRequired,
   CreateProductErrorMessage: PropTypes.string.isRequired,
   DeleteProduct: PropTypes.func.isRequired,
+  DeleteProductSuccess: PropTypes.bool.isRequired,
+  DeleteProductSuccessMessage: PropTypes.string.isRequired,
+  DeleteProductError: PropTypes.bool.isRequired,
+  DeleteProductErrorMessage: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

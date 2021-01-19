@@ -106,7 +106,7 @@ const routes = [
     path: '/admin/products',
     name: 'Products',
     component: Products,
-    icon: 'fa fa-list-alt',
+    icon: 'fa fa-product-hunt',
     layout: 'admin',
     auth: true,
   }

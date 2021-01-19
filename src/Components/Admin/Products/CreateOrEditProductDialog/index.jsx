@@ -13,7 +13,7 @@ import handleAdminInputChange from '../../../../CustomHooks/handleAdminInputChan
 import { MemoizedCategoriesAutoCompleteField } from '../../Main/MemoizedCategoriesAutoCompleteField';
 import TextEditor from '../../../Main/TextEditor';
 import FilePondEditor from '../../../Main/FilePondEditor';
-import { CreateProductRequest } from '../../../../Redux/Admin/Products/actions';
+import { CreateProductRequest, UpdateProductRequest } from '../../../../Redux/Admin/Products/actions';
 import SatisfiedRating from '../../../Main/SatisfiedRating';
 import TabsAppBar from '../../Main/TabsAppBar';
 import ImageCard from './ImageCard';
@@ -27,6 +27,7 @@ const CreateOrEditProductDialog = (props) => {
     CreateProduct,
     product,
     API_URL,
+    UpdateProduct,
   } = props;
 
   const classes = useLayoutStyles();
@@ -39,23 +40,16 @@ const CreateOrEditProductDialog = (props) => {
     en: fields,
     am: fields,
     categories: [],
-    thumbnail: [],
     price: '',
     discount: '',
     rate: 0,
+    thumbnail: [],
   });
-
+  const [removedThumbnails, setRemovedThumbnails] = useState([]);
 
   useEffect(() => {
     Object.keys(product).length && setForm(product);
   }, [product]);
-
-  useEffect(() => {
-    setForm((prevState) => ({
-      ...prevState,
-      thumbnail: image,
-    }));
-  }, [image]);
 
   const handleTabChange = useCallback((tab, lang) => {
     setTab(tab);
@@ -76,9 +70,23 @@ const CreateOrEditProductDialog = (props) => {
     }));
   };
 
+  const removeThumbnail = (thumbnail) => {
+    const removedElement = form.thumbnail.indexOf(thumbnail);
+    setRemovedThumbnails(prevState => ([
+      ...prevState,
+      thumbnail,
+    ]));
+    form.thumbnail.splice(removedElement, 1);
+    setForm((prevState) => ({
+      ...prevState,
+      thumbnail: form.thumbnail,
+    }));
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    CreateProduct(form);
+    const data = { form, images: image, removedThumbnails };
+    Object.keys(product).length ? UpdateProduct(data) : CreateProduct(data);
   };
 
   return (
@@ -93,7 +101,7 @@ const CreateOrEditProductDialog = (props) => {
         <Grid container spacing={3} display={'flex'} justify='space-between'>
           <Grid item>
             <Typography gutterBottom variant="h5" component="h2">
-              Add New Product
+              { product ? 'Update Product' : 'Add New Product'}
             </Typography>
           </Grid>
           <Grid item>
@@ -162,7 +170,7 @@ const CreateOrEditProductDialog = (props) => {
                 name="discount"
               />
             </Grid>
-            <Grid item xs={12} >
+            <Grid item xs={12}>
               <TextEditor
                 handleInputChange={handleAdminInputChange}
                 setForm={setForm}
@@ -176,12 +184,12 @@ const CreateOrEditProductDialog = (props) => {
                 setImage={setImage}
                 allowMultiple={true}
               />
-            </Grid >
+            </Grid>
             <Grid item xs={12}>
               {
                 form.thumbnail && (
-                  <Grid container className={classes.root} display='flex' justify='space-between'>
-                    <ImageCard thumbnails={form.thumbnail} API_URL={API_URL}/>
+                  <Grid container className={classes.root} display='flex'>
+                    <ImageCard thumbnails={form.thumbnail} API_URL={API_URL} removeThumbnail={removeThumbnail} />
                   </Grid>
                 )
               }
@@ -199,7 +207,7 @@ const CreateOrEditProductDialog = (props) => {
                 type="submit"
                 className={classes.button}
               >
-                { product ? 'Add Product' : 'Update Product' }
+                { Object.keys(product).length ? 'Update Product' : 'Add Product' }
               </Button>
             </DialogActions>
           </ValidatorForm>
@@ -214,6 +222,7 @@ CreateOrEditProductDialog.propTypes = {
   CreateProduct: PropTypes.func.isRequired,
   product: PropTypes.object,
   API_URL: PropTypes.string.isRequired,
+  UpdateProduct: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -225,6 +234,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   CreateProduct: (data) => dispatch(CreateProductRequest(data)),
+  UpdateProduct: (data) => dispatch(UpdateProductRequest(data)),
 });
 
 function moviePropsAreEqual(prevMovie, nextMovie) {

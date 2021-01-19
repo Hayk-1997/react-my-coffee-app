@@ -11,3 +11,7 @@ export const CreateProductError = createAction('CREATE_PRODUCT_ERROR');
 export const DeleteProductRequest = createAction('DELETE_PRODUCT_REQUEST');
 export const DeleteProductSuccess = createAction('DELETE_PRODUCT_SUCCESS');
 export const DeleteProductError = createAction('DELETE_PRODUCT_ERROR');
+
+export const UpdateProductRequest = createAction('UPDATE_PRODUCT_REQUEST');
+export const UpdateProductSuccess = createAction('UPDATE_PRODUCT_SUCCESS');
+export const UpdateProductError = createAction('UPDATE_PRODUCT_ERROR');
