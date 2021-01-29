@@ -39,6 +39,7 @@ const Products = (props) => {
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState({});
   const [isDeleteProductModal, setIsDeleteProductModal] = useState(false);
+
   const PreviousCreateProductSuccess = usePrevious(CreateProductSuccess);
   const PreviousCreateCreateProductError = usePrevious(CreateProductError);
   const PreviousDeleteProductSuccess = usePrevious(DeleteProductSuccess);
@@ -97,6 +98,11 @@ const Products = (props) => {
     DeleteProduct({ id: selectedProduct._id });
   };
 
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedProduct({});
+  };
+
   return !loading ? (
     <Grid className={layoutStyles.body}>
       <ToastContainer />
@@ -107,7 +113,7 @@ const Products = (props) => {
         description="Delete this product"
       /> }
       { open && <MemoizedCreateOrEditProductDialog
-        handleClose={() => setOpen(false)}
+        handleClose={handleClose}
         product={selectedProduct}
         API_URL={API_URL}
       /> }

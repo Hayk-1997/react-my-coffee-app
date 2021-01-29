@@ -57,7 +57,7 @@ const CategoriesAutoCompleteField = ({ setCategory, categories }) => {
       value={selectedCategories}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => option.en.title}
       onChange={(event, newValue) => {
         setSelectedCategories([...newValue]);
       }}
