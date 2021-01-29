@@ -61,14 +61,14 @@ function* DeleteProduct ({ payload }) {
 
 function* UpdateProduct ({ payload }) {
   try {
-    const { form, images, removedThumbnails } = payload;
+    const { form, images, removedThumbnails, id } = payload;
     const formData = new FormData();
     formData.append('form', JSON.stringify(form));
     formData.append('thumbnail', images);
     images.map(image => formData.append('thumbnail', image));
     form.thumbnail.map(thumbnail => formData.append('previousThumbnail', thumbnail));
     removedThumbnails.map(thumbnail => formData.append('removedThumbnails', thumbnail));
-    const response = yield axiosInstance.put(`admin/product/${form._id}`, formData);
+    const response = yield axiosInstance.put(`admin/product/${id}`, formData);
     if (response.status === 200) {
       yield put(UpdateProductSuccess(response.data));
     } else {

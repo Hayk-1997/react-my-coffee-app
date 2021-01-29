@@ -48,7 +48,7 @@ const ProductCard = (props) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            { product.name }
+            { product.en.name }
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{ __html: product.en.description }} />
         </CardContent>
