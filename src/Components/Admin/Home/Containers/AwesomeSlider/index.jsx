@@ -51,7 +51,7 @@ const AwesomeSlider = (props) => {
     if (AwesomeSliderSuccess) {
       const { en, am, image } = awesomeSliderData;
       const formData = {
-        en: en[0], am: am[0]
+        en: en, am: am
       };
       setForm(formData);
       setImage([

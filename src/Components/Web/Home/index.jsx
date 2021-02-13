@@ -17,7 +17,7 @@ const Home = (props) => {
       <Services/>
       <OurMenu {...props} />
       <Counter />
-      <CoffeeSellers />
+      <CoffeeSellers {...props} />
       <Gallery />
       <Customers />
       <RecentBlog />

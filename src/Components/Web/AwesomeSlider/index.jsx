@@ -38,11 +38,11 @@ const AwesomeSlider = () => {
                   <div className="row slider-text justify-content-center align-items-center">
                     <div className="col-md-8 col-sm-12 text-center ftco-animate">
                       <span className="subheading">
-                        <h1>{data.AwesomeSlider[language][0].title}</h1>
+                        <h1>{data.AwesomeSlider[language].title}</h1>
                       </span>
                       <h3
                         className="mb-4"
-                        dangerouslySetInnerHTML={{ __html: data.AwesomeSlider[language][0].description }}/>
+                        dangerouslySetInnerHTML={{ __html: data.AwesomeSlider[language].description }}/>
                       <div className="button-box">
                         <button href="#" className="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</button>
                         <a href="#" className="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a>
