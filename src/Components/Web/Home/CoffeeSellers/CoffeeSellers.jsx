@@ -13,7 +13,7 @@ const CoffeeSellers =(props) => {
 
   const GET_RECENT_PRODUCTS = gql`
         query {
-            RecentProducts {
+            RecentProductsQuery {
               ${language} {
                 title
               }
@@ -38,7 +38,7 @@ const CoffeeSellers =(props) => {
         </div>
         <div className="row">
           {
-            data.RecentProducts.map((product, index) => (
+            data.RecentProductsQuery.map((product, index) => (
               <div className="col-md-3" key={index}>
                 <div className="menu-entry">
                   <a href="#" className="img" style={{ backgroundImage: `url(${API_URL + product.mainThumbnail})` }} />

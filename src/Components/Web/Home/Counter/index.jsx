@@ -9,7 +9,7 @@ const Counter = () => {
 
   const GET_STATIC_COUNTER = gql`
     query {
-      StaticCounter {
+      StaticCounterQuery {
         coffeeBranches
         awards
         customers
@@ -35,7 +35,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={parseInt(data.StaticCounter.coffeeBranches)}/>
+                      <CountUp delay={5} end={parseInt(data.StaticCounterQuery.coffeeBranches)}/>
                     </strong>
                     <span>Coffee Branches</span>
                   </div>
@@ -47,7 +47,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={parseInt(data.StaticCounter.awards)}/>
+                      <CountUp delay={5} end={parseInt(data.StaticCounterQuery.awards)}/>
                     </strong>
                     <span>Number of Awards</span>
                   </div>
@@ -59,7 +59,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={parseInt(data.StaticCounter.customers)}/>
+                      <CountUp delay={5} end={parseInt(data.StaticCounterQuery.customers)}/>
                     </strong>
                     <span>Happy Customer</span>
                   </div>
@@ -71,7 +71,7 @@ const Counter = () => {
                   <div className="text">
                     <div className="icon"><span className="flaticon-coffee-cup"/></div>
                     <strong className="number">
-                      <CountUp delay={5} end={parseInt(data.StaticCounter.staffs)}/>
+                      <CountUp delay={5} end={parseInt(data.StaticCounterQuery.staffs)}/>
                     </strong>
                     <span>Staff</span>
                   </div>

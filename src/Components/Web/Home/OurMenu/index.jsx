@@ -17,7 +17,7 @@ const OurMenu = (props) => {
 
   const GET_OUR_HISTORY = gql`
      query {
-       OurMenu {
+       OurMenuQuery {
          ${language} {
            description
            card1 {
@@ -51,23 +51,23 @@ const OurMenu = (props) => {
             <div className="heading-section text-md-right ftco-animate">
               <span className="subheading">Discover</span>
               <h2 className="mb-4">Our Menu</h2>
-              <p className="mb-4" dangerouslySetInnerHTML={{ __html: data.OurMenu[language].description }} />
+              <p className="mb-4" dangerouslySetInnerHTML={{ __html: data.OurMenuQuery[language].description }} />
               <p><a href="#" className="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu </a></p>
             </div>
           </div>
           <div className="col-md-6">
             <div className="row">
               {
-                Object.keys(data.OurMenu[language]).map((item, index) => {
-                  if (typeof data.OurMenu[language][item] === 'object') {
+                Object.keys(data.OurMenuQuery[language]).map((item, index) => {
+                  if (typeof data.OurMenuQuery[language][item] === 'object') {
                     return (
                       <div className="col-md-6 image-cards" key={index}>
                         <div className="card rounded">
                           <div className="card__overlay">
                           </div>
-                          <div className="card__image" style={{ backgroundImage: `url(${API_URL + data.OurMenu[language][item].image})` }} />
+                          <div className="card__image" style={{ backgroundImage: `url(${API_URL + data.OurMenuQuery[language][item].image})` }} />
                           <div className="card__heading">
-                            <h2>{data.OurMenu[language][item].description}</h2>
+                            <h2>{data.OurMenuQuery[language][item].description}</h2>
                           </div>
                         </div>
                       </div>

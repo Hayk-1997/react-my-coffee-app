@@ -9,7 +9,7 @@ const Services = () => {
   const { language } = useContext(LanguageContext);
   const GET_OUR_HISTORY = gql`
     query {
-        Service {
+        ServiceQuery {
             ${language} {
                 box1 {
                     title
@@ -52,33 +52,33 @@ const Services = () => {
           <div className="col-md-4 ftco-animate">
             <div className="media d-block text-center block-6 services">
               <div className="icon d-flex justify-content-center align-items-center mb-5">
-                <div className={classes.iconBox} style={{ backgroundImage: `url(${data.Service[language].box1.icon.item.preview_url})` }} />
+                <div className={classes.iconBox} style={{ backgroundImage: `url(${data.ServiceQuery[language].box1.icon.item.preview_url})` }} />
               </div>
               <div className="media-body">
-                <h3 className="heading">{data.Service[language].box1.title}</h3>
-                <p>{data.Service[language].box1.description}</p>
+                <h3 className="heading">{data.ServiceQuery[language].box1.title}</h3>
+                <p>{data.ServiceQuery[language].box1.description}</p>
               </div>
             </div>
           </div>
           <div className="col-md-4 ftco-animate">
             <div className="media d-block text-center block-6 services">
               <div className="icon d-flex justify-content-center align-items-center mb-5">
-                <div className={classes.iconBox} style={{ backgroundImage: `url(${data.Service[language].box2.icon.item.preview_url})` }} />
+                <div className={classes.iconBox} style={{ backgroundImage: `url(${data.ServiceQuery[language].box2.icon.item.preview_url})` }} />
               </div>
               <div className="media-body">
-                <h3 className="heading">{data.Service[language].box2.title}</h3>
-                <p>{data.Service[language].box2.description}</p>
+                <h3 className="heading">{data.ServiceQuery[language].box2.title}</h3>
+                <p>{data.ServiceQuery[language].box2.description}</p>
               </div>
             </div>
           </div>
           <div className="col-md-4 ftco-animate">
             <div className="media d-block text-center block-6 services">
               <div className="icon d-flex justify-content-center align-items-center mb-5">
-                <div className={classes.iconBox} style={{ backgroundImage: `url(${data.Service[language].box3.icon.item.preview_url})` }} />
+                <div className={classes.iconBox} style={{ backgroundImage: `url(${data.ServiceQuery[language].box3.icon.item.preview_url})` }} />
               </div>
               <div className="media-body">
-                <h3 className="heading">{data.Service[language].box3.title}</h3>
-                <p>{data.Service[language].box3.description}</p>
+                <h3 className="heading">{data.ServiceQuery[language].box3.title}</h3>
+                <p>{data.ServiceQuery[language].box3.description}</p>
               </div>
             </div>
           </div>

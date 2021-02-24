@@ -13,7 +13,7 @@ const Home = (props) => {
 
   return (
     <div>
-      <OurStory/>
+      <OurStory {...props} />
       <Services/>
       <OurMenu {...props} />
       <Counter />
