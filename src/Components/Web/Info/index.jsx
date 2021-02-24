@@ -9,7 +9,7 @@ const Info = () => {
   const { language } = useContext(LanguageContext);
   const GET_INFO = gql`
     query {
-      Info {
+      InfoQuery {
         ${language} {
           phone {
             icon {
@@ -50,29 +50,29 @@ const Info = () => {
       <div className="row no-gutters">
         <div className="col-md-4 d-flex ftco-animate">
           <div className="icon">
-            <div className="icon-box" style={{ backgroundImage: `url(${data.Info[language].phone.icon.item.preview_url})` }} />
+            <div className="icon-box" style={{ backgroundImage: `url(${data.InfoQuery[language].phone.icon.item.preview_url})` }} />
           </div>
           <div className="text">
-            <h3>{data.Info[language].phone.number}</h3>
-            <p>{data.Info[language].phone.description}</p>
+            <h3>{data.InfoQuery[language].phone.number}</h3>
+            <p>{data.InfoQuery[language].phone.description}</p>
           </div>
         </div>
         <div className="col-md-4 d-flex ftco-animate">
           <div className="icon">
-            <div className="icon-box" style={{ backgroundImage: `url(${data.Info[language].address.icon.item.preview_url})` }} />
+            <div className="icon-box" style={{ backgroundImage: `url(${data.InfoQuery[language].address.icon.item.preview_url})` }} />
           </div>
           <div className="text">
-            <h3>{data.Info[language].address.title}</h3>
-            <p>{data.Info[language].address.description}</p>
+            <h3>{data.InfoQuery[language].address.title}</h3>
+            <p>{data.InfoQuery[language].address.description}</p>
           </div>
         </div>
         <div className="col-md-4 d-flex ftco-animate">
           <div className="icon">
-            <div className="icon-box" style={{ backgroundImage: `url(${data.Info[language].workingHours.icon.item.preview_url})` }} />
+            <div className="icon-box" style={{ backgroundImage: `url(${data.InfoQuery[language].workingHours.icon.item.preview_url})` }} />
           </div>
           <div className="text">
-            <h3>{data.Info[language].workingHours.title}</h3>
-            <p>{data.Info[language].workingHours.description}</p>
+            <h3>{data.InfoQuery[language].workingHours.title}</h3>
+            <p>{data.InfoQuery[language].workingHours.description}</p>
           </div>
         </div>
       </div>
