@@ -31,6 +31,7 @@
     "graphql-tag": "^2.10.4",
     "history": "latest",
     "jquery": "^3.5.1",
+    "material-ui-phone-number": "^2.2.6",
     "moment": "^2.27.0",
     "mongodb": "^3.5.9",
     "node-sass": "^4.14.1",
