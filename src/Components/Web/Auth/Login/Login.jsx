@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { OldSocialLogin as SocialLogin } from 'react-social-login';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux';
-import { SocialLoginRequest } from '../../../../Redux/Web/Auth/SocialLogin/actions';
+import { SocialLoginRequest } from '../../../../Redux/Coffee/Auth/SocialLogin/actions';
 import { useForm } from '../../../../CustomHooks/useForm';
 import { validateLoginForm } from '../../../../Helpers/validateForm';
 import './Login.css';

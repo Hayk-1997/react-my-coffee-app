@@ -26,7 +26,7 @@ const OurStory = (props) => {
   return loading || error ? <Spinner /> : (
     <div>
       <section className="ftco-about d-md-flex">
-        <div className="one-half img" style={{ backgroundImage: `url(${API_URL + data.OurStoryQuery.image})` }} />
+        <div className="one-half img" style={{ backgroundImage: `url(${data.OurStoryQuery.image})` }} />
         <div className="one-half ftco-animate">
           <div className="overlap">
             <div className="heading-section ">

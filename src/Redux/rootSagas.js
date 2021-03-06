@@ -10,16 +10,20 @@ import Services from './Admin/Services/saga';
 import OurMenu from './Admin/OurMenu/saga';
 import IP from './IP/saga';
 import StaticCounter from './Admin/StaticCounter/saga';
-import SocialSignIn from './Web/Auth/SocialLogin/saga';
 import Categories from './Admin/Categories/saga';
 import Products from './Admin/Products/saga';
+
+// Coffee
+// import SocialSignIn from './Coffee/Auth/SocialLogin/saga';
+import Register from './Coffee/Auth/Register/sagas';
+
 
 export default function* rootSagas() {
   yield all([
     AdminLogin(),
     AdminRegister(),
     VerifyAdminToken(),
-    SocialSignIn(),
+    // SocialSignIn(),
     AwesomeSlider(),
     Info(),
     OurStory(),
@@ -29,5 +33,6 @@ export default function* rootSagas() {
     IP(),
     Categories(),
     Products(),
+    Register(),
   ]);
 }

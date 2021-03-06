@@ -4,7 +4,6 @@ import { reducer as toastrReducer } from 'react-redux-toastr';
 import AdminLogin from './Admin/Auth/Login/reducer';
 import AdminRegister from './Admin/Auth/Register/reducer';
 import VerifyAdminToken from './Admin/VerifyAdminToken/reducer';
-import SocialSignIn from './Web/Auth/SocialLogin/reducer';
 import AdminAwesomeSlider from './Admin/AwesomeSlider/reducer';
 import Info from './Admin/Info/reducer';
 import OurStory from './Admin/OurStory/reducer';
@@ -15,13 +14,15 @@ import Categories from './Admin/Categories/reducer';
 import Products from './Admin/Products/reducer';
 // COFFEE
 import IP from './IP/reducer';
+import Register from './Coffee/Auth/Register/reducer';
+// import SocialSignIn from './Coffee/Auth/SocialLogin/reducer';
 
 const AppReducer = combineReducers({
   // toastr: toastrReducer,
   AdminLogin,
   AdminRegister,
   VerifyAdminToken,
-  SocialSignIn,
+  // SocialSignIn,
   AdminAwesomeSlider,
   Info,
   OurStory,
@@ -30,7 +31,9 @@ const AppReducer = combineReducers({
   IP,
   StaticCounter,
   Categories,
-  Products
+  Products,
+  //Coffee
+  Register
 });
 
 const rootReducer = (state, action) => {
