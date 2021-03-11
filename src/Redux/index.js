@@ -15,6 +15,8 @@ import Products from './Admin/Products/reducer';
 // COFFEE
 import IP from './IP/reducer';
 import Register from './Coffee/Auth/Register/reducer';
+import VerifyUserToken from './Coffee/Auth/Verify/reducer';
+import Login from './Coffee/Auth/Login/reducer';
 // import SocialSignIn from './Coffee/Auth/SocialLogin/reducer';
 
 const AppReducer = combineReducers({
@@ -33,7 +35,9 @@ const AppReducer = combineReducers({
   Categories,
   Products,
   //Coffee
-  Register
+  Register,
+  VerifyUserToken,
+  Login
 });
 
 const rootReducer = (state, action) => {

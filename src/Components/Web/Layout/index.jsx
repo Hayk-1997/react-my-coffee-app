@@ -10,15 +10,24 @@ import { IPRequest } from '../../../Redux/IP/actions';
 import AwesomeSlider from '../AwesomeSlider';
 import { LanguageContext } from '../Context/LanguageContext';
 import Spinner from '../../Spinner';
+import { VerifyUserTokenRequest } from '../../../Redux/Coffee/Auth/Verify/actions';
+import usePrevious from '../../../CustomHooks/usePrevious';
 
 const Layout = (props) => {
   const {
-    GetIPLocalization, IP,
-    IPSuccess, IPError,
+    history,
+    GetIPLocalization,
+    IP,
+    IPSuccess,
+    IPError,
+    VerifyUserToken,
+    VerifyUserTokenError
   } = props;
 
   const API_URL = process.env.REACT_APP_API_URL;
   const [language, setLanguage] = useState(localStorage.getItem('language'));
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const previousVerifyUserTokenError = usePrevious(VerifyUserTokenError);
 
   useEffect(() => {
     GetIPLocalization();
@@ -31,6 +40,16 @@ const Layout = (props) => {
       !language ? setLanguage('en') : localStorage.setItem('language', language);
     }
   }, [IPSuccess, IPError]);
+
+  useEffect(() => {
+    token && VerifyUserToken();
+  }, [token]);
+
+  useEffect(() => {
+    if (previousVerifyUserTokenError === false && VerifyUserTokenError) {
+      history.push('/coffee/login');
+    }
+  },[VerifyUserTokenError]);
 
   const getRoutes = () => {
     return routes.map((route) => {
@@ -59,11 +78,12 @@ const Layout = (props) => {
     window.location.reload();
   };
 
-  return language ? (
+  return !language ? <Spinner /> : (
     <>
       <LanguageContext.Provider
         value={{
-          language, changeLanguage,
+          language,
+          changeLanguage,
         }}
       >
         <SideBar />
@@ -73,24 +93,29 @@ const Layout = (props) => {
         <Footer />
       </LanguageContext.Provider>
     </>
-  ) : <Spinner />;
+  );
 };
 
 Layout.propTypes = {
+  history: PropTypes.object.isRequired,
   GetIPLocalization: PropTypes.func.isRequired,
   IP: PropTypes.object.isRequired,
   IPSuccess: PropTypes.bool.isRequired,
   IPError: PropTypes.bool.isRequired,
+  VerifyUserToken: PropTypes.func.isRequired,
+  VerifyUserTokenError: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   IPSuccess: state.IP.IPSuccess,
   IPError: state.IP.IPError,
   IP: state.IP.IP,
+  VerifyUserTokenError: state.VerifyUserToken.VerifyUserTokenError,
 });
 
 const mapsDispatchToProps = (dispatch) => ({
   GetIPLocalization: () => dispatch(IPRequest()),
+  VerifyUserToken: () => dispatch(VerifyUserTokenRequest()),
 });
 
 export default connect(mapStateToProps,mapsDispatchToProps)(Layout);
