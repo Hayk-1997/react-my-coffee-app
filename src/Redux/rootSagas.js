@@ -16,7 +16,8 @@ import Products from './Admin/Products/saga';
 // Coffee
 // import SocialSignIn from './Coffee/Auth/SocialLogin/saga';
 import Register from './Coffee/Auth/Register/sagas';
-
+import VerifyUserToken from './Coffee/Auth/Verify/sagas';
+import Login from './Coffee/Auth/Login/sagas';
 
 export default function* rootSagas() {
   yield all([
@@ -34,5 +35,7 @@ export default function* rootSagas() {
     Categories(),
     Products(),
     Register(),
+    VerifyUserToken(),
+    Login(),
   ]);
 }

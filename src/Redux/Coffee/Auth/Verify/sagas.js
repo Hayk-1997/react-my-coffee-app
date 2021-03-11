@@ -3,27 +3,26 @@ import client from './../../../../graphQL/client';
 import mutation from './mutation';
 
 import {
-  RegisterRequest,
-  RegisterSuccess,
-  RegisterError,
+  VerifyUserTokenRequest,
+  VerifyUserTokenSuccess,
+  VerifyUserTokenError
 } from './actions';
 
-function* Register({ payload }) {
+function* VerifyUserToken () {
   try {
     const response = yield client.mutate({
-      variables: { ...payload },
       mutation,
     }).then((response) => response).catch((error) => error);
-    if (response.data.registration.token) {
-      yield put(RegisterSuccess(response.data.registration));
+    if (response.data.verifyUserToken) {
+      yield put(VerifyUserTokenSuccess());
     } else {
-      yield put(RegisterError(response.message));
+      yield put(VerifyUserTokenError());
     }
   } catch (e) {
-    put(RegisterError(e.errors));
+    yield put(VerifyUserTokenError());
   }
 }
 
 export default function* () {
-  yield takeLatest(RegisterRequest, Register);
+  yield takeLatest(VerifyUserTokenRequest, VerifyUserToken);
 }

@@ -31,7 +31,6 @@ const Register = (props) => {
     confirmPassword: '',
     phoneNumber: ''
   });
-
   const [inputFocus, setInputFocus] = useState({
     firstName: false,
     lastName: false,
@@ -39,10 +38,13 @@ const Register = (props) => {
     password: false,
     confirmPassword: false,
   });
-
   const [errors, setErrors] = useState({});
   const previousRegisterSuccess = usePrevious(RegisterSuccess);
   const previousRegisterError = usePrevious(RegisterError);
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   useEffect(() => {
     const { password, confirmPassword } = form;
@@ -54,11 +56,10 @@ const Register = (props) => {
     });
   }, [form]);
 
-
   useEffect(() => {
     if (previousRegisterSuccess === false && RegisterSuccess) {
-      if (RegisterSuccessData._id) {
-        localStorage.setItem('user', RegisterSuccessData._id);
+      if (RegisterSuccessData.token) {
+        localStorage.setItem('token', RegisterSuccessData.token);
         history.push('/coffee/home');
       }
     } else if (previousRegisterError === false && RegisterError) {
