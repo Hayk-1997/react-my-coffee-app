@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
+import Ellipsis from '../../../../assets/animation/ellipsis';
+import { LoginRequest } from '../../../../Redux/Coffee/Auth/Login/actions';
+import Button from '@material-ui/core/Button';
+import usePrevious from '../../../../CustomHooks/usePrevious';
+import { Link } from 'react-router-dom';
 import { OldSocialLogin as SocialLogin } from 'react-social-login';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux';
@@ -8,14 +14,9 @@ import { useForm } from '../../../../CustomHooks/useForm';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import './styles.scss';
 import useLayoutStyles from '../../../Web/Layout/useStyles';
-import Grid from '@material-ui/core/Grid';
-import Ellipsis from '../../../../assets/animation/ellipsis';
-import { LoginRequest } from '../../../../Redux/Coffee/Auth/Login/actions';
-import Button from '@material-ui/core/Button';
-import usePrevious from '../../../../CustomHooks/usePrevious';
+
 
 const Login = (props) => {
-
   const {
     history,
     SocialSignIn,
@@ -33,6 +34,7 @@ const Login = (props) => {
     email: false,
     password: false,
   });
+
   const ref = useRef();
   const previousLoginSuccess = usePrevious(LoginSuccess);
 
@@ -80,7 +82,22 @@ const Login = (props) => {
             >
               <div className="row align-items-end">
                 <div className="col-md-12">
-                  <h3 className="mb-4 sign-in-heading">Sign In to My Coffee</h3>
+                  <Grid container>
+                    <Grid item md={6} xs={12}>
+                      <h3 className="mb-4 sign-in-heading">Sign In to My Coffee</h3>
+                    </Grid>
+                    <Grid item md={6} xs={12}>
+                      <Grid container justify={'flex-end'}>
+                        <Grid item>
+                          <Button
+                            component={Link}
+                            to="/coffee/register">
+                            Register
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
                   <Grid item xs={12}>
                     {
                       !inputFocus.email && !form.email && <Ellipsis style={{ left: 55, top: 11 }} />
