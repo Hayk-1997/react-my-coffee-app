@@ -1,9 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { LanguageContext } from '../../Context/LanguageContext';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './styles.scss';
 
 const NavBarCollapse = (props) => {
+  const {
+    VerifyUserTokenSuccess
+  } = props;
+
   const { changeLanguage, language } = useContext(LanguageContext);
   return (
     <div className="collapse navbar-collapse" id="ftco-nav">
@@ -25,12 +31,16 @@ const NavBarCollapse = (props) => {
         </li>
         <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
         <li className="nav-item">
-          <Link
-            className="nav-link"
-            to='/coffee/login'
-          >
-             Sign In
-          </Link>
+          {
+            !VerifyUserTokenSuccess && (
+              <Link
+                className="nav-link"
+                to='/coffee/login'
+              >
+                Sign In
+              </Link>
+            )
+          }
         </li>
         <li className="nav-item cart"><a href="cart.html" className="nav-link">
           <span className="icon icon-shopping_cart"/><span
@@ -42,12 +52,17 @@ const NavBarCollapse = (props) => {
             <img src={require(`../../../../assets/web/flags/${language}-flag.png`)} width="25" alt="" />
           </a>
           <div className="lang-dropdown-menu dropdown-menu" aria-labelledby="lang-dropdown">
-            <a className="dropdown-item" onClick={() => changeLanguage('am')}>
-              <img src={require('../../../../assets/web/flags/am-flag.png')} width="25" alt="" />
-            </a>
-            <a className="dropdown-item" onClick={() => changeLanguage('en')}>
-              <img src={require('../../../../assets/web/flags/en-flag.png')} width="25" alt="" />
-            </a>
+            {
+              language === 'am' ? (
+                <a className="dropdown-item" onClick={() => changeLanguage('en')}>
+                  <img src={require('../../../../assets/web/flags/en-flag.png')} width="25" alt="" />
+                </a>
+              ) : (
+                <a className="dropdown-item" onClick={() => changeLanguage('am')}>
+                  <img src={require('../../../../assets/web/flags/am-flag.png')} width="25" alt="" />
+                </a>
+              )
+            }
           </div>
         </li>
       </ul>
@@ -55,4 +70,12 @@ const NavBarCollapse = (props) => {
   );
 };
 
-export default NavBarCollapse;
+NavBarCollapse.propTypes = {
+  VerifyUserTokenSuccess: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  VerifyUserTokenSuccess: state.VerifyUserToken.VerifyUserTokenSuccess,
+});
+
+export default connect(mapStateToProps, null)(NavBarCollapse);

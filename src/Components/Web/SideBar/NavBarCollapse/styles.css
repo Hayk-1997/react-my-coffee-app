@@ -1,5 +1,12 @@
 .collapse.navbar-collapse .lang-dropdown-menu.show {
   display: flex;
+  min-width: unset !important;
+  position: absolute;
+  top: 50px;
+  background-color: #0000004f !important;
+}
+.collapse.navbar-collapse .lang-dropdown-menu.show a {
+  background-color: #0000004f !important;
 }
 
 /*# sourceMappingURL=styles.css.map */
