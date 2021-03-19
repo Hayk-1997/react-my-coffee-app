@@ -11141,6 +11141,7 @@ h1, h2, h3, h4, h5,
 .product-details h3 {
     text-transform: uppercase;
     font-size: 34px;
+    color: #fff !important;
 }
 
 .product-details .price span {

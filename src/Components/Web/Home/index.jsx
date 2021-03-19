@@ -8,11 +8,12 @@ import Gallery from './Gallery/Gallery';
 import Customers from './Customers/Customers';
 import RecentBlog from './RecentBlog/RecentBlog';
 import Appointment from './Appointment/Appointment';
+import Intro from '../Intro';
 
 const Home = (props) => {
-
   return (
     <div>
+      <Intro />
       <OurStory {...props} />
       <Services/>
       <OurMenu {...props} />
