@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Index from '../Intro';
 import SideBar from '../SideBar';
 import Footer from '../Footer/Footer';
 import routes from '../../../Routes/Web/routes';
@@ -79,20 +78,17 @@ const Layout = (props) => {
   };
 
   return !language ? <Spinner /> : (
-    <>
-      <LanguageContext.Provider
-        value={{
-          language,
-          changeLanguage,
-        }}
-      >
-        <SideBar />
-        <AwesomeSlider />
-        <Index />
-        {getRoutes()}
-        <Footer />
-      </LanguageContext.Provider>
-    </>
+    <LanguageContext.Provider
+      value={{
+        language,
+        changeLanguage,
+      }}
+    >
+      <SideBar />
+      <AwesomeSlider />
+      {getRoutes()}
+      <Footer />
+    </LanguageContext.Provider>
   );
 };
 

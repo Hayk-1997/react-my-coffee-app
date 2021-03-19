@@ -51,6 +51,7 @@ const CreateOrEditProductDialog = (props) => {
     discount: '',
     rate: 0,
     thumbnail: [],
+    slug: '',
   });
   const [removedThumbnails, setRemovedThumbnails] = useState([]);
 
@@ -92,7 +93,7 @@ const CreateOrEditProductDialog = (props) => {
     const removedElement = form.thumbnail.indexOf(thumbnail);
     setRemovedThumbnails(prevState => ([
       ...prevState,
-      thumbnail,
+      [thumbnail],
     ]));
     form.thumbnail.splice(removedElement, 1);
     setForm((prevState) => ({
@@ -153,6 +154,19 @@ const CreateOrEditProductDialog = (props) => {
                   errorMessages={['Field is required']}
                   onChange={(e) => handleAdminInputChange(lang,'title', e.target.value, setForm)}
                   name="title"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextValidator
+                  label="Slug"
+                  margin="normal"
+                  className={classes.textArea}
+                  variant="outlined"
+                  value={form.slug}
+                  validators={['required']}
+                  errorMessages={['Field is required']}
+                  onChange={(e) => handleInputChange('slug', e.target.value)}
+                  name="slug"
                 />
               </Grid>
               <Grid item xs={12}>

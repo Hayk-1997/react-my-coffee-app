@@ -1,5 +1,6 @@
 import Home from '../../Components/Web/Home/';
 import Login from '../../Components/Web/Auth/Login/';
+import SingleProduct from '../../Components/Web/SingleProduct';
 
 const routes = [
   {
@@ -16,6 +17,13 @@ const routes = [
     component: Home,
     layout: 'web',
   },
+  {
+    id: 3,
+    path: '/coffee/single-product/:slug',
+    name: 'coffee-single-product',
+    component: SingleProduct,
+    layout: 'web',
+  }
 ];
 
 export default routes;
