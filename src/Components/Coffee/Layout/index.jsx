@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SideBar from '../SideBar';
 import Footer from '../Footer/Footer';
-import routes from '../../../Routes/Web/routes';
+import routes from '../../../Routes/Coffee/routes';
 import { IPRequest } from '../../../Redux/IP/actions';
 import AwesomeSlider from '../AwesomeSlider';
 import { LanguageContext } from '../Context/LanguageContext';
@@ -23,22 +23,15 @@ const Layout = (props) => {
     VerifyUserTokenError
   } = props;
 
+  // eslint-disable-next-line no-undef
   const API_URL = process.env.REACT_APP_API_URL;
+  const token = localStorage.getItem('userToken');
   const [language, setLanguage] = useState(localStorage.getItem('language'));
-  const [token, setToken] = useState(localStorage.getItem('token'));
   const previousVerifyUserTokenError = usePrevious(VerifyUserTokenError);
 
   useEffect(() => {
     GetIPLocalization();
   }, []);
-
-  useEffect(() => {
-    if (IPSuccess) {
-      !language ? setLanguage(IP.cc.toLowerCase()) : localStorage.setItem('language', language);
-    } else if (IPError) {
-      !language ? setLanguage('en') : localStorage.setItem('language', language);
-    }
-  }, [IPSuccess, IPError]);
 
   useEffect(() => {
     token && VerifyUserToken();
@@ -49,6 +42,14 @@ const Layout = (props) => {
       history.push('/coffee/login');
     }
   },[VerifyUserTokenError]);
+
+  useEffect(() => {
+    if (IPSuccess) {
+      !language ? setLanguage(IP.cc.toLowerCase()) : localStorage.setItem('language', language);
+    } else if (IPError) {
+      !language ? setLanguage('en') : localStorage.setItem('language', language);
+    }
+  }, [IPSuccess, IPError]);
 
   const getRoutes = () => {
     return routes.map((route) => {
@@ -85,7 +86,7 @@ const Layout = (props) => {
       }}
     >
       <SideBar />
-      <AwesomeSlider />
+      <AwesomeSlider API_URL={API_URL} />
       {getRoutes()}
       <Footer />
     </LanguageContext.Provider>

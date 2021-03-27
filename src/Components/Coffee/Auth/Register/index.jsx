@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Grid from '@material-ui/core/Grid';
-import useLayoutStyles from '../../../Web/Layout/useStyles';
+import useLayoutStyles from '../../../Coffee/Layout/useStyles';
 import Ellipsis from '../../../../assets/animation/ellipsis';
 import { RegisterRequest } from '../../../../Redux/Coffee/Auth/Register/actions';
 import usePrevious from '../../../../CustomHooks/usePrevious';
@@ -41,9 +41,10 @@ const Register = (props) => {
   const [errors, setErrors] = useState({});
   const previousRegisterSuccess = usePrevious(RegisterSuccess);
   const previousRegisterError = usePrevious(RegisterError);
+  const savedProduct = localStorage.getItem('savedProduct');
 
   useEffect(() => {
-    localStorage.clear();
+    localStorage.removeItem('userToken');
   }, []);
 
   useEffect(() => {
@@ -59,8 +60,8 @@ const Register = (props) => {
   useEffect(() => {
     if (previousRegisterSuccess === false && RegisterSuccess) {
       if (RegisterSuccessData.token) {
-        localStorage.setItem('token', RegisterSuccessData.token);
-        history.push('/coffee/home');
+        localStorage.setItem('userToken', RegisterSuccessData.token);
+        history.push(savedProduct ? `/coffee/single-product/${savedProduct}` : '/coffee/home');
       }
     } else if (previousRegisterError === false && RegisterError) {
       setErrors(RegisterErrorMessage.split('ValidationError: ')[1]);
@@ -195,7 +196,7 @@ const Register = (props) => {
                       data-cy="user-phone"
                       variant="filled"
                       defaultCountry={'am'}
-                      onlyCountries = {['am']}
+                      onlyCountries = {['am', 'ru']}
                       value={form.phoneNumber}
                       onChange={(e) => setForm({ ...form, phoneNumber: e })}
                       className={classes.phoneNumber}

@@ -11,10 +11,10 @@ import {
 function* VerifyUserToken () {
   try {
     const response = yield client.mutate({
-      mutation,
+      mutation
     }).then((response) => response).catch((error) => error);
     if (response.data.verifyUserToken) {
-      yield put(VerifyUserTokenSuccess());
+      yield put(VerifyUserTokenSuccess(response.data.verifyUserToken._id));
     } else {
       yield put(VerifyUserTokenError());
     }

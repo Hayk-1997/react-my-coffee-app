@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { LanguageContext } from '../Context/LanguageContext';
 import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/react-hooks';
@@ -6,7 +7,10 @@ import Spinner from '../../Spinner';
 import './style.css';
 import '../../../assets/web/css/demo/demo1.css';
 
-const AwesomeSlider = () => {
+const AwesomeSlider = (props) => {
+  const {
+    API_URL,
+  } = props;
   const { language } = useContext(LanguageContext);
   const GET_SLIDER = gql`
     query {
@@ -27,10 +31,10 @@ const AwesomeSlider = () => {
       <div id="carouselExampleIndicators">
         <div className="content">
           <div className="glitch">
-            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSliderQuery.image})` }}/>
-            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSliderQuery.image})` }}/>
-            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSliderQuery.image})` }}/>
-            <div className="glitch__img" style={{ backgroundImage: `url(${data.AwesomeSliderQuery.image})` }}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${API_URL + data.AwesomeSliderQuery.image})` }}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${API_URL + data.AwesomeSliderQuery.image})` }}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${API_URL + data.AwesomeSliderQuery.image})` }}/>
+            <div className="glitch__img" style={{ backgroundImage: `url(${API_URL + data.AwesomeSliderQuery.image})` }}/>
             <span className="slider-header">
               <div className="slider-item">
                 <div className="overlay"/>
@@ -59,5 +63,8 @@ const AwesomeSlider = () => {
   );
 };
 
+AwesomeSlider.propTypes = {
+  API_URL: PropTypes.string.isRequired,
+};
 
 export default AwesomeSlider;
