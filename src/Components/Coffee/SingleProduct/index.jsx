@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { notify } from '../../../Config/Notify';
 import { GET_SINGLE_PRODUCT } from '../../../graphQL/queries';
-import { useQuery } from '@apollo/react-hooks';
+import { ADD_TO_CART } from '../../../graphQL/mutations';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 
 const SingleProduct = (props) => {
   const {
@@ -16,16 +17,33 @@ const SingleProduct = (props) => {
   } = props;
 
   const { language } = useContext(LanguageContext);
-  const { VerifyUserTokenSuccess } = useSelector(state => state.VerifyUserToken);
+  const { VerifyUserTokenSuccess, userId } = useSelector(state => state.VerifyUserToken);
   const slug = useParams();
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
+  const [type, setType] = useState('small');
 
-  const addToCart = (event) => {
+  const [
+    addToCart,
+    { addToCartLoading, addToCartData }
+  ] = useMutation(ADD_TO_CART, {
+    variables: {
+      product: product._id,
+      quantity,
+      type,
+      user: userId
+    }
+  });
+
+  const handleAddToCart = (event) => {
     event.preventDefault();
     if (!VerifyUserTokenSuccess) {
+      // TODO set dynamic language message
       notify('Need to Sign In After add to cart', 3000, 'ERROR');
-      sessionStorage.setItem('savedProduct', product.slug);
+      localStorage.setItem('savedProduct', product.slug);
+      console.log('product', product);
+    } else {
+      addToCart();
     }
   };
 
@@ -34,31 +52,31 @@ const SingleProduct = (props) => {
   });
 
   useEffect(() => {
-     data && setProduct(data.SingleProductQuery);
-  }, [data?.SingleProductQuery]);
+    !loading && setProduct(data.SingleProductQuery);
+  }, [loading]);
 
-  return loading || error ? <Spinner /> : (
+  return !loading || error ? (
     <section className="ftco-section">
       <ToastContainer />
       <div className="container">
         <div className="row">
           <div className="col-lg-6 mb-5 ftco-animate">
-            <img src={API_URL + product.mainThumbnail} className="img-fluid" alt="Colorlib Template" />
+            <img src={API_URL + data.SingleProductQuery.mainThumbnail} className="img-fluid" alt=""/>
           </div>
           <div className="col-lg-6 product-details pl-md-5 ftco-animate">
-            <h3>{product[language]?.title}</h3>
-            <p className="price"><span>${product.price * quantity}</span></p>
-            <div dangerouslySetInnerHTML={{ __html: product[language]?.description }} />
+            <h3>{data.SingleProductQuery[language].title}</h3>
+            <p className="price"><span>${data.SingleProductQuery.price * quantity}</span></p>
+            <div dangerouslySetInnerHTML={{ __html: data.SingleProductQuery[language].description }} />
             <div className="row mt-4">
               <div className="col-md-6">
                 <div className="form-group d-flex">
                   <div className="select-wrap">
                     <div className="icon"><span className="ion-ios-arrow-down"/></div>
-                    <select name="" id="" className="form-control">
-                      <option value="">Small</option>
-                      <option value="">Medium</option>
-                      <option value="">Large</option>
-                      <option value="">Extra Large</option>
+                    <select className="form-control" onChange={(e) => setType(e.target.value)}>
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                      <option value="extra">Extra Large</option>
                     </select>
                   </div>
                 </div>
@@ -98,7 +116,7 @@ const SingleProduct = (props) => {
             <p>
               <a
                 className="btn btn-primary py-3 px-5"
-                onClick={addToCart}
+                onClick={handleAddToCart}
               >
                 Add to Cart
               </a>
@@ -107,7 +125,7 @@ const SingleProduct = (props) => {
         </div>
       </div>
     </section>
-  );
+  ) : <Spinner />;
 };
 
 SingleProduct.propTypes = {

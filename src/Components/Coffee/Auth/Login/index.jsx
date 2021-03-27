@@ -13,8 +13,7 @@ import { SocialLoginRequest } from '../../../../Redux/Coffee/Auth/SocialLogin/ac
 import { useForm } from '../../../../CustomHooks/useForm';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import './styles.scss';
-import useLayoutStyles from '../../../Web/Layout/useStyles';
-
+import useLayoutStyles from '../../../Coffee/Layout/useStyles';
 
 const Login = (props) => {
   const {
@@ -26,6 +25,7 @@ const Login = (props) => {
   } = props;
 
   const classes = useLayoutStyles();
+  const savedProduct = localStorage.getItem('savedProduct');
   const [form, handleFormChange] = useForm({
     email: '',
     password: ''
@@ -39,13 +39,13 @@ const Login = (props) => {
   const previousLoginSuccess = usePrevious(LoginSuccess);
 
   useEffect(() => {
-    localStorage.clear();
+    localStorage.removeItem('userToken');
   }, []);
 
   useEffect(() => {
     if (previousLoginSuccess === false && LoginSuccess) {
-      localStorage.setItem('token', LoginSuccessData.token);
-      history.push('/coffee/home');
+      localStorage.setItem('userToken', LoginSuccessData.token);
+      history.push(savedProduct ? `/coffee/single-product/${savedProduct}` : '/coffee/home');
     }
   }, [previousLoginSuccess, LoginSuccess]);
 

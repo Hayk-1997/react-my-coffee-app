@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Login from '../Components/Web/Auth/Login';
-import Layout from '../Components/Web/Layout/';
-import Register from '../Components/Web/Auth/Register';
-import NotFoundPage from '../Components/Web/NotFoundPage';
-import '../Components/Web/Styles/style.css';
+import Login from '../Components/Coffee/Auth/Login';
+import Layout from '../Components/Coffee/Layout/';
+import Register from '../Components/Coffee/Auth/Register';
+import NotFoundPage from '../Components/Coffee/NotFoundPage';
+import '../Components/Coffee/Styles/style.css';
 
-function WebLayout () {
+function CoffeeLayout () {
   return (
     <>
       <Switch>
@@ -19,4 +19,4 @@ function WebLayout () {
   );
 }
 
-export default WebLayout;
+export default CoffeeLayout;

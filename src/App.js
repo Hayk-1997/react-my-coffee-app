@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch, BrowserRouter } from 'react-router-dom';
-import WebLayout from './Layouts/WebLayout';
+import CoffeeLayout from './Layouts/CoffeeLayout';
 import AdminLayout from './Layouts/AdminLayout';
 import { Provider } from 'react-redux';
 import rootStore from './Redux/store';
@@ -17,7 +17,7 @@ const App = () => (
       <Router history={hist}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/coffee*" component={WebLayout} />
+            <Route exact path="/coffee*" component={CoffeeLayout} />
             <Route path="/admin" component={AdminLayout} />
           </Switch>
         </BrowserRouter>

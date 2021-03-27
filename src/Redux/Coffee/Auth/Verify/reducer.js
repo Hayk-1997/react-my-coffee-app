@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   VerifyUserTokenSuccess: false,
+  userId: '',
   VerifyUserTokenError: false,
 };
 
@@ -15,16 +16,19 @@ const reducer = handleActions({
   [VerifyUserTokenRequest]: (state) => ({
     ...state,
     VerifyUserTokenSuccess: false,
+    userId: '',
     VerifyUserTokenError: false,
   }),
-  [VerifyUserTokenSuccess]: (state) => ({
+  [VerifyUserTokenSuccess]: (state, { payload }) => ({
     ...state,
     VerifyUserTokenSuccess: true,
+    userId: payload,
     VerifyUserTokenError: false,
   }),
   [VerifyUserTokenError]: (state) => ({
     ...state,
     VerifyUserTokenSuccess: false,
+    userId: '',
     VerifyUserTokenError: true,
   }),
 
