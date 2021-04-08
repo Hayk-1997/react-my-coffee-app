@@ -13,15 +13,16 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 const SingleProduct = (props) => {
   const {
     API_URL,
-    history
   } = props;
 
+  const slug = useParams();
   const { language } = useContext(LanguageContext);
   const { VerifyUserTokenSuccess, userId } = useSelector(state => state.VerifyUserToken);
-  const slug = useParams();
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
-  const [type, setType] = useState('small');
+  const [type, setType] = useState({});
+
+  const { loading, data } = useQuery(GET_SINGLE_PRODUCT(language),{ variables: { ...slug } });
 
   const [
     addToCart,
@@ -43,40 +44,46 @@ const SingleProduct = (props) => {
       localStorage.setItem('savedProduct', product.slug);
       console.log('product', product);
     } else {
-      addToCart();
+      addToCart().then(r => r);
     }
   };
 
-  const { loading, error, data } = useQuery(GET_SINGLE_PRODUCT(language), {
-    variables: { ...slug },
-  });
-
   useEffect(() => {
-    !loading && setProduct(data.SingleProductQuery);
+    if (!loading) {
+      setProduct(data.SingleProductQuery);
+      setType(data.SingleProductQuery[language].types[0]);
+    }
   }, [loading]);
 
-  return !loading || error ? (
+
+  const handleChangeType = (event) => {
+    const { price, label } = JSON.parse(event.target.value);
+    setType({ label, price });
+  };
+
+  return !Object.keys(product).length ? <Spinner /> : (
     <section className="ftco-section">
       <ToastContainer />
       <div className="container">
         <div className="row">
           <div className="col-lg-6 mb-5 ftco-animate">
-            <img src={API_URL + data.SingleProductQuery.mainThumbnail} className="img-fluid" alt=""/>
+            <img src={API_URL + product.mainThumbnail} className="img-fluid" alt=""/>
           </div>
           <div className="col-lg-6 product-details pl-md-5 ftco-animate">
-            <h3>{data.SingleProductQuery[language].title}</h3>
-            <p className="price"><span>${data.SingleProductQuery.price * quantity}</span></p>
-            <div dangerouslySetInnerHTML={{ __html: data.SingleProductQuery[language].description }} />
+            <h3>{product[language].title}</h3>
+            <p className="price"><span>${type.price * quantity}</span></p>
+            <div dangerouslySetInnerHTML={{ __html: product[language].description }} />
             <div className="row mt-4">
               <div className="col-md-6">
                 <div className="form-group d-flex">
                   <div className="select-wrap">
                     <div className="icon"><span className="ion-ios-arrow-down"/></div>
-                    <select className="form-control" onChange={(e) => setType(e.target.value)}>
-                      <option value="small">Small</option>
-                      <option value="medium">Medium</option>
-                      <option value="large">Large</option>
-                      <option value="extra">Extra Large</option>
+                    <select className="form-control" onChange={handleChangeType}>
+                      {
+                        product[language].types.map((type, index) => (
+                          <option value={JSON.stringify({ price:type.price, label: type.label })} key={index}>{ type.label }</option>
+                        ))
+                      }
                     </select>
                   </div>
                 </div>
@@ -125,7 +132,7 @@ const SingleProduct = (props) => {
         </div>
       </div>
     </section>
-  ) : <Spinner />;
+  );
 };
 
 SingleProduct.propTypes = {
