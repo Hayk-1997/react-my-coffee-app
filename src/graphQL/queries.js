@@ -5,9 +5,11 @@ export const GET_RECENT_PRODUCTS = (language) => gql`
         RecentProductsQuery {
             ${language} {
                 title
+                types {
+                    price
+                }
             }
             _id
-            price
             mainThumbnail
             slug
         }
@@ -18,10 +20,14 @@ export const GET_SINGLE_PRODUCT = (language) => gql`
     query SingleProductQuery($slug: String!) {
         SingleProductQuery(slug: $slug) {
             _id
-            price
             ${language} {
-              title
-              description
+                title
+                description
+                types {
+                    price
+                    label
+                    discount
+                } 
             }
             mainThumbnail
             slug

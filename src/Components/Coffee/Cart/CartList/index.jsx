@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 const CartList = (props) => {
   const { cart, language, API_URL } = props;
   const [quantity, setQuantity] = useState(cart.quantity);
-  
   return (
     <>
       <tr className="text-center">
-        <td className="product-remove"><a href="#"><span className="icon-close"/></a></td>
+        <td className="product-remove"><span className="icon-close"/></td>
         <td className="image-prod">
           <div className="img" style={{ backgroundImage: `url(${API_URL + cart.product.mainThumbnail})` }} />
         </td>

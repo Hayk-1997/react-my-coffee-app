@@ -64,4 +64,16 @@ export default makeStyles(theme => ({
       height: '100%',
     }
   },
+  button: {
+    backgroundColor: theme.palette.primary.main,
+    marginTop: theme.spacing(1),
+    '&:hover': {
+      backgroundColor: theme.palette.primary.main,
+    }
+  },
+  disabledTypeActions: {
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+  },
 }));

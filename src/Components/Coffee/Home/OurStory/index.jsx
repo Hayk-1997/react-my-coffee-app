@@ -6,8 +6,8 @@ import { useQuery } from '@apollo/react-hooks';
 import Spinner from '../../../Spinner';
 import './style.css';
 
-const OurStory = (props) => {
-  const { API_URL } = props;
+const OurStory = () => {
+
   const { language } = useContext(LanguageContext);
   const GET_OUR_STORY = gql`
       query {

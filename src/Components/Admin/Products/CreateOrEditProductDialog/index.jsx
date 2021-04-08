@@ -23,6 +23,8 @@ import Typography from '@material-ui/core/Typography';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from '@material-ui/core/IconButton';
 import usePrevious from '../../../../CustomHooks/usePrevious';
+import Types from '../Types';
+import CreateTypesDialog from '../CreateTypeDialog';
 
 const CreateOrEditProductDialog = (props) => {
   const {
@@ -42,10 +44,12 @@ const CreateOrEditProductDialog = (props) => {
   const [lang, setLang] = useState('en');
   const [tab, setTab] = useState(0);
   const [image, setImage] = useState([]);
-  const fields = { title: '', description: '', };
+  const [openTypesDialog, setOpenTypesDialog] = useState(false);
+  const fields = { title: '', description: '', types: [] };
+
   const [form, setForm] = useState({
-    en: fields,
-    am: fields,
+    en: { ...fields },
+    am: { ...fields },
     categories: [],
     price: '',
     discount: '',
@@ -53,8 +57,8 @@ const CreateOrEditProductDialog = (props) => {
     thumbnail: [],
     slug: '',
   });
-  const [removedThumbnails, setRemovedThumbnails] = useState([]);
 
+  const [removedThumbnails, setRemovedThumbnails] = useState([]);
   const PreviousUpdateProductSuccess = usePrevious(UpdateProductSuccess);
   const PreviousUpdateProductError = usePrevious(UpdateProductError);
 
@@ -102,6 +106,29 @@ const CreateOrEditProductDialog = (props) => {
     }));
   };
 
+  const handleTypeChange = (label, key, value) => {
+    const typesCopy = Array.from(form[lang].types);
+    typesCopy.filter(type => type.label === label ? type[key] = value : null);
+    setForm((prevState) => ({
+      ...prevState,
+      [lang]: {
+        ...prevState[lang],
+        types: typesCopy
+      }
+    }));
+  };
+
+  const handleSaveTypes = (types) => {
+    setForm((prevState) => ({
+      ...prevState,
+      [lang]: {
+        ...prevState[lang],
+        types: types
+      }
+    }));
+    setOpenTypesDialog(false);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     const data = { form, images: image, removedThumbnails, id: product._id };
@@ -111,6 +138,15 @@ const CreateOrEditProductDialog = (props) => {
   return (
     <>
       <ToastContainer />
+      { 
+        openTypesDialog && (
+          <CreateTypesDialog
+            handleClose={() => setOpenTypesDialog(false)}
+            handleSaveTypes={handleSaveTypes}
+            createdTypes={form[lang].types}
+          />
+        )
+      }
       <Dialog
         fullWidth={true}
         maxWidth={'lg'}
@@ -177,34 +213,6 @@ const CreateOrEditProductDialog = (props) => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextValidator
-                  label="Price"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  value={form.price}
-                  validators={['required']}
-                  errorMessages={['Field is required']}
-                  type={'number'}
-                  onChange={(e) => handleInputChange('price', e.target.value)}
-                  name="price"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextValidator
-                  label="Discount"
-                  margin="normal"
-                  className={classes.textArea}
-                  variant="outlined"
-                  type={'number'}
-                  value={form.discount}
-                  validators={['required']}
-                  errorMessages={['Field is required']}
-                  onChange={(e) => handleInputChange('discount', e.target.value)}
-                  name="discount"
-                />
-              </Grid>
-              <Grid item xs={12}>
                 <TextEditor
                   handleInputChange={handleAdminInputChange}
                   setForm={setForm}
@@ -227,6 +235,21 @@ const CreateOrEditProductDialog = (props) => {
                     </Grid>
                   )
                 }
+              </Grid>
+              <Grid item xs={12}>
+                <Types
+                  types={form[lang].types}
+                  handleTypeChange={handleTypeChange}
+                />
+                <Button
+                  variant="contained"
+                  size="large"
+                  type="button"
+                  className={classes.button}
+                  onClick={() => setOpenTypesDialog(true)}
+                >
+                  Create Types
+                </Button>
               </Grid>
               <Grid item xs={12} className={classes.categoriesAutoField}>
                 <MemoizedCategoriesAutoCompleteField

@@ -15,7 +15,7 @@ import { notify } from '../../../Config/Notify';
 import { ToastContainer } from 'react-toastify';
 import DeleteItemModal from '../Main/DeleteItemModal';
 
-const Products = (props) => {
+const ProductsList = (props) => {
   const {
     GetAllProductsData,
     AllProductsSuccess,
@@ -149,7 +149,7 @@ const Products = (props) => {
   ): <Spinner />;
 };
 
-Products.propTypes = {
+ProductsList.propTypes = {
   GetAllProductsData: PropTypes.func.isRequired,
   AllProductsSuccess: PropTypes.bool.isRequired,
   AllProductsData: PropTypes.array.isRequired,
@@ -185,4 +185,4 @@ const mapDispatchToProps = (dispatch) => ({
   DeleteProduct: (data) => dispatch(DeleteProductRequest(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
