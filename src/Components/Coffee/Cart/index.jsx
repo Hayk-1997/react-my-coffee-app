@@ -40,6 +40,7 @@ const Cart = (props) => {
                     data.CartQuery.map((cart, index) => (
                       <CartList
                         key={index}
+                        index={index}
                         language={language}
                         cart={cart}
                         API_URL={API_URL}

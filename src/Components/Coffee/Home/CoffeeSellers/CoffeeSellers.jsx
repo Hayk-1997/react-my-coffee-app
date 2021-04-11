@@ -34,7 +34,7 @@ const CoffeeSellers =(props) => {
                   <Link to={`/coffee/single-product/${product.slug}`} className="img" style={{ backgroundImage: `url(${API_URL + product.mainThumbnail})` }} />
                   <div className="text text-center pt-4">
                     <h3><a href="#">{product[language].title}</a></h3>
-                    <p className="price"><span>${product[language].types[0].price}</span></p>
+                    <p className="price"><span>${product[language].types[0]?.price}</span></p>
                     <p><a href="#" className="btn btn-primary btn-outline-primary">Add to Cart</a></p>
                   </div>
                 </div>

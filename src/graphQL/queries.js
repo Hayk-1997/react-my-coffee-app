@@ -39,8 +39,11 @@ export const GET_CART = (language) => gql`
         CartQuery(user: $user) {
             _id
             quantity
-            product {
+            type {
+                label
                 price
+            }
+            product {
                 ${language} {
                     title
                 }
@@ -48,4 +51,5 @@ export const GET_CART = (language) => gql`
             }
         }
     }
+
 `;
