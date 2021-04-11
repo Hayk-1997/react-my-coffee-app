@@ -12,6 +12,7 @@ export const GET_RECENT_PRODUCTS = (language) => gql`
             _id
             mainThumbnail
             slug
+            createdAt
         }
     }`;
 
