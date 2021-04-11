@@ -21,13 +21,9 @@ const SingleProduct = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
   const [type, setType] = useState({});
-
   const { loading, data } = useQuery(GET_SINGLE_PRODUCT(language),{ variables: { ...slug } });
 
-  const [
-    addToCart,
-    { addToCartLoading, addToCartData }
-  ] = useMutation(ADD_TO_CART, {
+  const [addToCart] = useMutation(ADD_TO_CART, {
     variables: {
       product: product._id,
       quantity,
@@ -44,7 +40,7 @@ const SingleProduct = (props) => {
       localStorage.setItem('savedProduct', product.slug);
       console.log('product', product);
     } else {
-      addToCart().then(r => r);
+      addToCart();
     }
   };
 
@@ -54,7 +50,6 @@ const SingleProduct = (props) => {
       setType(data.SingleProductQuery[language].types[0]);
     }
   }, [loading]);
-
 
   const handleChangeType = (event) => {
     const { price, label } = JSON.parse(event.target.value);
