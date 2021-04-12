@@ -127,7 +127,7 @@ const SingleProduct = (props) => {
             </div>
           </div>
           <div className="col-lg-6">
-            <RecentProduct />
+            <RecentProduct API_URL={API_URL} />
           </div>
         </div>
       </div>

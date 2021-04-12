@@ -67,7 +67,7 @@ function* UpdateProduct ({ payload }) {
     formData.append('thumbnail', images);
     images.map(image => formData.append('thumbnail', image));
     form.thumbnail.map(thumbnail => formData.append('previousThumbnail', thumbnail));
-    removedThumbnails.map(thumbnail => formData.append('removedThumbnails', thumbnail));
+    removedThumbnails.map((thumbnail, index) => formData.append(`removedThumbnails[${index}]`, thumbnail));
     const response = yield axiosInstance.put(`admin/product/${id}`, formData);
     if (response.status === 200) {
       yield put(UpdateProductSuccess(response.data));
