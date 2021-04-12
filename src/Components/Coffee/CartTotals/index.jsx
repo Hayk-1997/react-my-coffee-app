@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const CartTotal = () => {
   return (
@@ -31,4 +31,4 @@ const CartTotal = () => {
   );
 };
 
-export default CartTotal;
+export default memo(CartTotal);
