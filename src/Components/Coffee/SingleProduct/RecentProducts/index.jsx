@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_RECENT_PRODUCTS } from '../../../../graphQL/queries';
 import { LanguageContext } from '../../Context/LanguageContext';
@@ -36,4 +36,6 @@ RecentProduct.propTypes = {
   API_URL: PropTypes.string.isRequired,
 };
 
-export default RecentProduct;
+const PropsAreEqual = (prevProps, nextProps) => prevProps.API_URL === nextProps.API_URL;
+
+export default memo(RecentProduct, PropsAreEqual);
