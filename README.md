@@ -1,5 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##My Coffee App
 
+### Description
+   1. Single page application, where used latest JS technologies(**Frameworks**)
+   2. Used GraphQL Apollo Framework (query, mutation, subscription)
+   3. Used Redux with Saga middleware
+   4. Used Material UI components
+
+### Used Technologies
+1. Apollo GraphQL(ApolloClient)
+2. React + Redux 
+3. SagasMiddleware
+4. Material UI
+5. React ^16.13.1
+6. Social Login Available(Google, Facebook, Twitter)
+
+**.env.locale**
+```bash
+REACT_APP_API_URL=https://{your api URL}
+```
 ## Available Scripts
 
 In the project directory, you can run:
