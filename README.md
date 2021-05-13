@@ -3,7 +3,7 @@
 ### Used Technologies
 1. Apollo GraphQL(ApolloClient)
 2. React + Redux 
-3. SagasMiddleware
+3. Saga Middleware
 4. Material UI
 5. React ^16.13.1
 6. Social Login Available(Google, Facebook, Twitter)
