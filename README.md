@@ -1,11 +1,5 @@
 ##My Coffee App
 
-### Description
-   1. Single page application, where used latest JS technologies(**Frameworks**)
-   2. Used GraphQL Apollo Framework (query, mutation, subscription)
-   3. Used Redux with Saga middleware
-   4. Used Material UI components
-
 ### Used Technologies
 1. Apollo GraphQL(ApolloClient)
 2. React + Redux 
@@ -13,6 +7,7 @@
 4. Material UI
 5. React ^16.13.1
 6. Social Login Available(Google, Facebook, Twitter)
+7. ESLint
 
 **.env.locale**
 ```bash
